@@ -5,6 +5,7 @@
     top: 0;
     width: 100vw;
     height: auto;
+    margin: 0px;
   }
   #header .header {
     min-height: 10vh;

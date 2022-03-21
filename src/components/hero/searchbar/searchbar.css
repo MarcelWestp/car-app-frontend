@@ -2,13 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px;
     padding-bottom: 14px;
     border-style: solid;
     border-radius: 50px;
     margin-left: 30%;
     margin-right: 30%;
+    min-width: 700px;
+    max-width: 700px;
     border-width: thin solid;
+    background-color:rgba(30, 33, 33, 0.5)
 }
 #searchbar .btn{
     justify-content: center;

@@ -1,12 +1,12 @@
 import './App.css';
 import Header from './components/header/header'
-import Searchbar from './components/searchbar/searchbar';
+import Hero from './components/hero/hero';
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <Searchbar/>
+      <Hero/>
     </div>
   );
 }
