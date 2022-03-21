@@ -1,0 +1,28 @@
+#searchbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding-bottom: 14px;
+    border-style: solid;
+    border-radius: 50px;
+    margin-left: 30%;
+    margin-right: 30%;
+    border-width: thin solid;
+}
+#searchbar .btn{
+    justify-content: center;
+    margin-top: 28px;
+    margin-left: 20px;
+}
+#searchbar button{
+    background-color: white;
+    border-style: groove;
+    border-radius: 2px;
+    font-size: 15px;
+    width: 100px;
+    height: 30px;    
+}
+#searchbar button:hover{
+    background-color:rgb(63, 236, 255);
+}
