@@ -7,8 +7,8 @@ const Hero = () => {
     <div id="hero">
         <Searchbar/>
         <div className="title">
-          <h2>Search for a new Adventure?</h2>
-          <h3>Find the right car here!...</h3>
+          <h1>Search for a new Adventure?</h1>
+          <h2>Find the right car here!...</h2>
         </div>
     </div>
   )
