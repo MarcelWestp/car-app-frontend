@@ -1,14 +1,13 @@
 import './App.css';
 import Header from './components/header/header'
-import Body from './components/body/body';
 import Footer from './components/footer/footer'
+import Landingpage from './pages/landingpage'
+import Signup from './pages/signup'
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <Body/>
-      <Footer/>
+      <Signup />
     </div>
   );
 }
