@@ -12,12 +12,12 @@
     border-width: thin solid;
     background-color:rgba(30, 33, 33, 0.5)
 }
-#searchbar .btn{
+#searchbar .submit-div{
     justify-content: center;
     margin-top: 28px;
     margin-left: 20px;
 }
-#searchbar button{
+#searchbar .submit-div button{
     background-color: white;
     border-style: groove;
     border-radius: 2px;
@@ -25,6 +25,6 @@
     width: 100px;
     height: 30px;    
 }
-#searchbar button:hover{
+#searchbar .submit-div button:hover{
     background-color:rgb(63, 236, 255);
 }
