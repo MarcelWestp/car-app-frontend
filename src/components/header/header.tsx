@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import "./header.css"
 import logo from "./../../res/img/logo.jpeg";
+import { Link } from "react-router-dom";
+import Loginmodal from "./loginmodal/loginmodal"
+
 
 const Header = () => {
 
@@ -8,9 +11,20 @@ const Header = () => {
     const [headerBg, setHeaderBg] = useState({
       background: 'linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73,63,252,1) 100%)'
     });
+
+    const [openLogin, setOpenLogin] = useState(false);
   
     const hamburgerHandler = () => {
       setHamburgerOben(!hamburgerOpen);
+    };
+
+    const hamburgerHandlerModal = () => {
+      setHamburgerOben(!hamburgerOpen);
+      setOpenLogin(!openLogin);
+    };
+
+    const closeModal = () => {
+      setOpenLogin(!openLogin);
     };
   
     // useEffect(() => {
@@ -25,21 +39,20 @@ const Header = () => {
     // });
   
     const menuItems = [
-      { href: "#signup", dataAfter: "Become a host",className: "host"},
-      { href: "#signup", dataAfter: "sign up",className: "signup"},
-      { href: "#login", dataAfter: "login",className: "login"},
+      { href: "/signup", dataAfter: "Become a host",className: "host"},
+      { href: "/signup", dataAfter: "sign up",className: "signup"},
     ];
   
     return (
       <section id="header" style={headerBg}>
         <div className="header container">
           <div className="nav-bar">
-              <a href="#hero" className="brand">
+              <Link to="/" className="brand">
                   <img src={logo} alt="Logo" />
                 <h1>
                   <span>C</span>ar<span>D</span>ealer
                 </h1>
-              </a>
+              </Link>
             <div className="nav-list">
               <div
                 className={hamburgerOpen ? "hamburger active" : "hamburger"}
@@ -50,17 +63,28 @@ const Header = () => {
               <ul className={hamburgerOpen ? "active" : undefined}>
                 {menuItems.map((item, index) => (
                   <li key={index}>
-                    <a
-                      href={item.href}
+                    <Link
+                      to={item.href}
                       data-after={item.dataAfter}
                       className={item.className}
                       onClick={hamburgerHandler}
                     >
                       {item.dataAfter}
-                    </a>
+                    </Link>
                   </li>
                 ))}
+                <li>
+                    <Link
+                      to=""
+                      data-after="login"
+                      className="login"
+                      onClick={closeModal}
+                    >
+                      Login
+                    </Link>
+                  </li>
               </ul>
+                < Loginmodal open={openLogin} closeModal={closeModal} />
             </div>
           </div>
         </div>
