@@ -1,10 +1,11 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import Button from '@mui/material/Button';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const style = {
@@ -21,28 +22,32 @@ const style = {
 
 /*
     Filter
-        Doors
-        Transmission
         Fuel
-        ------------
-        Seats
         Cartype
+        Seats
+        Transmission
+        ------------
+        Doors
         Makes
         (Model)
         (Features)
 */
 
 const Filtermodal = ({ open, handleOpen }: { open: boolean, handleOpen: Function }) => {
-    
+
+    const [doors, setDoors] = useState('');
     const [make, setMake] = useState('');
-    const [cartype, setCartype] = useState('');
-    
+
+    const handleDoorsChange = (event: SelectChangeEvent) => {
+        setDoors(event.target.value as string);
+    };
     const handleMakeChange = (event: SelectChangeEvent) => {
         setMake(event.target.value as string);
-      };
-    const handleCartypeChange = (event: SelectChangeEvent) => {
-        setCartype(event.target.value as string);
-      };
+    };
+    const handleClear = () => {
+        setDoors('');
+        setMake('');
+    }
 
 
     return (
@@ -63,21 +68,21 @@ const Filtermodal = ({ open, handleOpen }: { open: boolean, handleOpen: Function
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                         <Box sx={{ minWidth: 120 }}>
                             <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">Cartype</InputLabel>
+                                <InputLabel id="demo-simple-select-label">Doors</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    value={cartype}
-                                    label="Cartype"
-                                    onChange={handleCartypeChange}
+                                    value={doors}
+                                    label="Doors"
+                                    onChange={handleDoorsChange}
                                 >
-                                    <MenuItem value={10}>Luxery</MenuItem>
-                                    <MenuItem value={20}>Oldtimer</MenuItem>
-                                    <MenuItem value={30}>SUV</MenuItem>
+                                    <MenuItem value={0}>None</MenuItem>
+                                    <MenuItem value={10}>2</MenuItem>
+                                    <MenuItem value={20}>4</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
-                        <Box sx={{ minWidth: 120 }}>
+                        <Box sx={{ minWidth: 120, marginTop: 2 }}>
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">Make</InputLabel>
                                 <Select
@@ -87,12 +92,19 @@ const Filtermodal = ({ open, handleOpen }: { open: boolean, handleOpen: Function
                                     label="Make"
                                     onChange={handleMakeChange}
                                 >
+                                    <MenuItem value={0}>None</MenuItem>
                                     <MenuItem value={10}>Volkswagen</MenuItem>
                                     <MenuItem value={20}>Ford</MenuItem>
                                     <MenuItem value={30}>Bentley</MenuItem>
+                                    <MenuItem value={50}>BMW</MenuItem>
+                                    <MenuItem value={60}>Seat</MenuItem>
+                                    <MenuItem value={70}>Audi</MenuItem>
+                                    <MenuItem value={80}>Ferrari</MenuItem>
+                                    <MenuItem value={90}>Tesla</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
+                        <Button variant="outlined" size="medium" onClick={handleClear} sx={{ marginTop: 3 }}>Clear</Button>
                     </Typography>
                 </Box>
             </Modal>
