@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import "./searchbar.css"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Link } from "react-router-dom";
 
 
 const Searchbar = () => {
@@ -37,7 +38,9 @@ const Searchbar = () => {
       />
       </div>
       <div className="submit-div">
+      <Link to="/search">
       <button type="button">Search..</button>
+      </Link>
       </div>
     </div>
   );

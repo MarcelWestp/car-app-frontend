@@ -5,6 +5,7 @@ import Footer from "./components/footer/footer";
 import Landingpage from "./pages/landingpage";
 import Signup from "./pages/signup";
 import Login from "./pages/login";
+import Search from "./pages/searchpage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Landingpage />} />
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
+          <Route path="search" element={<Search />} />
         </Routes>
       </BrowserRouter>
       ,
