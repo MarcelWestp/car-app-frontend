@@ -1,0 +1,30 @@
+#searchbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 14px;
+    border-style: solid;
+    border-radius: 50px;
+    margin-left: 30%;
+    margin-right: 30%;
+    min-width: 700px;
+    max-width: 700px;
+    border-width: thin solid;
+    background-color:rgba(30, 33, 33, 0.5)
+}
+#searchbar .submit-div{
+    justify-content: center;
+    margin-top: 28px;
+    margin-left: 20px;
+}
+#searchbar .submit-div button{
+    background-color: white;
+    border-style: groove;
+    border-radius: 2px;
+    font-size: 15px;
+    width: 100px;
+    height: 30px;    
+}
+#searchbar .submit-div button:hover{
+    background-color:rgb(63, 236, 255);
+}
