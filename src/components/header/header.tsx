@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./header.css"
 import logo from "./../../res/img/logo.jpeg";
 import { Link } from "react-router-dom";
-import Loginmodal from "./loginmodal/loginmodal"
+
 
 
 const Header = () => {
@@ -11,20 +11,9 @@ const Header = () => {
     const [headerBg, setHeaderBg] = useState({
       background: 'linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73,63,252,1) 100%)'
     });
-
-    const [openLogin, setOpenLogin] = useState(false);
   
     const hamburgerHandler = () => {
       setHamburgerOben(!hamburgerOpen);
-    };
-
-    const hamburgerHandlerModal = () => {
-      setHamburgerOben(!hamburgerOpen);
-      setOpenLogin(!openLogin);
-    };
-
-    const closeModal = () => {
-      setOpenLogin(!openLogin);
     };
   
     // useEffect(() => {
@@ -40,7 +29,8 @@ const Header = () => {
   
     const menuItems = [
       { href: "/signup", dataAfter: "Become a host",className: "host"},
-      { href: "/signup", dataAfter: "sign up",className: "signup"},
+      { href: "/signup", dataAfter: "Sign up",className: "signup"},
+      { href: "/login", dataAfter: "Log in",className: "login"},
     ];
   
     return (
@@ -73,18 +63,7 @@ const Header = () => {
                     </Link>
                   </li>
                 ))}
-                <li>
-                    <Link
-                      to=""
-                      data-after="login"
-                      className="login"
-                      onClick={closeModal}
-                    >
-                      Login
-                    </Link>
-                  </li>
               </ul>
-                < Loginmodal open={openLogin} closeModal={closeModal} />
             </div>
           </div>
         </div>
