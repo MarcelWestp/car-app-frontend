@@ -7,7 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Filtermodal from './../filtermodal/filtermodal'
+import Filtermodal from './filtermodal/filtermodal'
 
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
