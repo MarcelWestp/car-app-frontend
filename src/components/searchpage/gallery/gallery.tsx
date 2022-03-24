@@ -5,14 +5,7 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Carcard from "./carcard/carcard";
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
+import { Link } from "react-router-dom";
 
 const cars = [
   {
@@ -88,7 +81,9 @@ function Gallery() {
                 </Grid>
             </Container> */}
       {cars.map((car) => (
+        <Link to={`/car/${car.carid}`}  target="_blank" >
         <Carcard key={car.carid} car={car} />
+        </Link>
       ))}
     </div>
   );

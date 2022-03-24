@@ -6,6 +6,7 @@ import Landingpage from "./pages/landingpage";
 import Signup from "./pages/signup";
 import Login from "./pages/login";
 import Search from "./pages/searchpage";
+import Cardetail from "./pages/cardetail";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
           <Route path="search" element={<Search />} />
+          <Route path="car/:carid" element={<Cardetail />} />
         </Routes>
       </BrowserRouter>
       ,
