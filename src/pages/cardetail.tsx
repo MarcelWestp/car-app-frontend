@@ -22,12 +22,24 @@ const fetchCar = () => ({
     hp: 110,
     transmission: "automatic",
   },
-  features: ["doors", "trunk"],
+  features: ["doors", "trunk", "engine", "navi"],
   description: "this car is awesome",
-  guidelines: ["dont smoke"],
+  guidelines: ["dont smoke", "no pets"],
   ratings: [
     {
-      rating: 4.5,
+      rating: 4,
+      author: "david",
+      date: "24.03.2020",
+      content: "what a nice car!",
+    },
+    {
+      rating: 5,
+      author: "david",
+      date: "24.03.2020",
+      content: "what a nice car!",
+    },
+    {
+      rating: 2,
       author: "david",
       date: "24.03.2020",
       content: "what a nice car!",

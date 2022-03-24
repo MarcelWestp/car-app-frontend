@@ -13,7 +13,7 @@ import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
 import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
-import AirlineSeatReclineNormalIcon from '@mui/icons-material/AirlineSeatReclineNormal';
+import EventSeatIcon from '@mui/icons-material/EventSeat';
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 
 const Filtersbar = () => {
@@ -87,7 +87,7 @@ const Filtersbar = () => {
             </Box>
             <Box sx={{ minWidth: 150, maxWidth: 150, marginTop: 2 }}>
                 <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label"><AirlineSeatReclineNormalIcon/> Seats</InputLabel>
+                    <InputLabel id="demo-simple-select-label"><EventSeatIcon/> Seats</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
