@@ -6,9 +6,7 @@ import Signup from './../components/signup/signupform'
 const signup = () => {
   return (
     <div>
-      <Header />
       <Signup />
-      <Footer />
     </div>
   )
 }

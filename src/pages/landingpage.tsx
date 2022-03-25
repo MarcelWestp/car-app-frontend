@@ -8,11 +8,9 @@ import Cartypes from './../components/landingpage/cartypes/cartypes'
 const landingpage = () => {
   return (
     <div>
-        <Header />
         <Hero />
         <Destinations />
         <Cartypes />
-        <Footer />
     </div>
   )
 }

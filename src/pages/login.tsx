@@ -6,9 +6,7 @@ import Form from './../components/login/loginform'
 const Login = () => {
   return (
       <div>
-          <Header />
           <Form />
-          <Footer />
       </div>
   )
 }

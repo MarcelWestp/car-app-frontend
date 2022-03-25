@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <Header />
         <Routes>
           <Route path="/" element={<Landingpage />} />
           <Route path="signup" element={<Signup />} />
@@ -19,8 +20,8 @@ function App() {
           <Route path="search" element={<Search />} />
           <Route path="car/:carid" element={<Cardetail />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-      ,
     </div>
   );
 }

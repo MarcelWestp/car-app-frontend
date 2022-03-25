@@ -5,7 +5,7 @@ import Gallery from './gallery/gallery'
 
 const Searchpage = () => {
   return (
-    <div>
+    <div style={{margin:"50px 10%"}}>
       <Searchbar />
       <Filtersbar />
       <Gallery />

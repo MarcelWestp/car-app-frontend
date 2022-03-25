@@ -6,7 +6,7 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Carcard from "./carcard/carcard";
 import { Link } from "react-router-dom";
-import Car from "./../../../models/Car"
+import Car from "./../../../models/Car";
 
 const cars: Car[] = [
   {
@@ -263,36 +263,21 @@ const cars: Car[] = [
       city: "Braunschweig",
       zip: 38106,
     },
-  }
+  },
 ];
 
 function Gallery() {
   return (
     <div style={{ display: "flex" }}>
-      {/* <Container sx={{ marginTop: 5}}>
-                <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
-                    <Box sx={{minWidth: 300, maxWidth: 300, marginTop: 2 }}>
-                        <Grid item xs={12} sm={6} md={4} lg={4}>
-                            <Item>1</Item>
-                        </Grid>
-                    </Box>
-                    <Box sx={{minWidth: 300, maxWidth: 300, marginTop: 2 }}>
-                        <Grid item xs={12} sm={6} md={4} lg={4}>
-                            <Item>2</Item>
-                        </Grid>
-                    </Box>
-                    <Box sx={{minWidth: 300, maxWidth: 300, marginTop: 2 }}>
-                        <Grid item xs={12} sm={6} md={4} lg={4}>
-                            <Item>3</Item>
-                        </Grid>
-                    </Box>
-                </Grid>
-            </Container> */}
-      {cars.map((car) => (
-        <Link to={`/car/${car.carid}`}  target="_blank" >
-        <Carcard key={car.carid} car={car} />
-        </Link>
-      ))}
+      <Box
+        sx={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}
+      >
+        {cars.map((car) => (
+          <Link to={`/car/${car.carid}`} target="_blank">
+            <Carcard key={car.carid} car={car} />
+          </Link>
+        ))}
+      </Box>
     </div>
   );
 }

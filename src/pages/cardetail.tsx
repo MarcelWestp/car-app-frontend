@@ -59,9 +59,7 @@ const fetchCar = () => ({
 const Cardetail = () => {
   return (
     <div>
-      <Header />
       <CarDetails car={fetchCar()}/>
-      <Footer />
     </div>
   );
 };
