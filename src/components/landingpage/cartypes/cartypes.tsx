@@ -14,11 +14,11 @@ const items = [
   <div>
     <img
       src={oldtimer}
-      alt="oldtimer-car"
+      alt="classic-car"
       onDragStart={handleDragStart}
       role="presentation"
     />
-    <h2>Oldtimer</h2>
+    <h2>Classic car</h2>
   </div>,
   <div>
     <img

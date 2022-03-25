@@ -77,7 +77,7 @@ const Filtersbar = () => {
                     >
                         <MenuItem value={0}>None</MenuItem>
                         <MenuItem value={10}>Luxery</MenuItem>
-                        <MenuItem value={20}>Oldtimer</MenuItem>
+                        <MenuItem value={20}>Classic car</MenuItem>
                         <MenuItem value={30}>SUV</MenuItem>
                         <MenuItem value={40}>Cabrio</MenuItem>
                         <MenuItem value={50}>Van</MenuItem>

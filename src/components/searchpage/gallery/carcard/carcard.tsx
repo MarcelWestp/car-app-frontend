@@ -5,19 +5,13 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
-
-
-interface Car {
-    make: string;
-    model: string;
-    year: number;
-    rating: number;
-    pricePerDay: number;
-    images: string[];
-}
+import Car from "./../../../../models/Car";
 
 
 const Carcard = ( {car} : {car: Car}) => {
+
+  let ratingSum: number = car.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0) / car.ratings.length;
+
   return (
     <Card sx={{ maxWidth: 345, margin: 2 }}>
       <CardActionArea>
@@ -32,10 +26,10 @@ const Carcard = ( {car} : {car: Car}) => {
           {`${car.make} ${car.model} ${car.year}`}
           </Typography>
           <Typography gutterBottom variant="h5" component="div">
-          {`${car.rating}`}<StarIcon />
+          {ratingSum.toFixed(1)}<StarIcon />
           </Typography>
           <Typography variant="h5" color="text.secondary">
-            {`this car cost ${car.pricePerDay}$ per Day`}
+            {`this car cost $${car.pricePerDay} per Day`}
           </Typography>
         </CardContent>
       </CardActionArea>

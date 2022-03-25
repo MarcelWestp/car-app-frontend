@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Car from "../../models/Car";
+import Booking from "./booking/booking";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import Box from '@mui/material/Box';
@@ -82,22 +83,22 @@ const CarDetails = ({ car }: { car: Car }) => {
             </Box>
             <Box sx={{}}>
               <h3>Guidelines</h3>
-              {car.guidelines.map((guidelines) => <p>{guidelines}</p>)}
+              {car.guidelines.map((guidelines) => <p>- {guidelines}</p>)}
             </Box>
             <Box sx={{}}>
               <h3>Ratings and reviews</h3>
               <h4>{ratingSum.toFixed(1)} <StarIcon /></h4>
               <h5>({car.ratings.length} Ratings)</h5>
-              {car.ratings.map((rating) => 
-              <Box sx={{}}>
-                <Rating name="read-only" value={rating.rating} readOnly />
-                <h6>{rating.author}  <span style={{fontStyle: "italic", color: "grey"}}>{rating.date}</span></h6>
-                <p>{rating.content}</p>
-              </Box>)}
+              {car.ratings.map((rating) =>
+                <Box sx={{}}>
+                  <Rating name="read-only" value={rating.rating} readOnly />
+                  <h6>{rating.author}  <span style={{ fontStyle: "italic", color: "grey" }}>{rating.date}</span></h6>
+                  <p>{rating.content}</p>
+                </Box>)}
             </Box>
           </Box>
           <Box>
-            Booking
+            <Booking car={car}/>
           </Box>
         </Box>
       </div>
