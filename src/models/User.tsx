@@ -6,8 +6,10 @@ interface User{
     email: string;
     password: string;
     dob: Date;
-    picture: BinaryData;
+    picture: string;
     address: Address;
+    cars: number[];
+    booked: number[];
 }
 
 interface Address{
