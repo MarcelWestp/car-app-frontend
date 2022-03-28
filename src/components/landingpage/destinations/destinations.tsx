@@ -98,7 +98,7 @@ const Destinations = () => {
   return (
     <div id="destinations">
       <h3>Your next Destination:</h3>
-      <Carousel images={images} />
+      <Carousel images={images} doubleImg={true} />
 
       {/* <AliceCarousel
         mouseTracking

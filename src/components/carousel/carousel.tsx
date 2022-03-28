@@ -57,13 +57,24 @@ const responsive = {
     1600: { items: 2 },
 };
 
-function Carousel({ images }: { images: Images[] }) {
+function Carousel({ images, doubleImg }: { images: Images[], doubleImg: boolean }) {
 
     const [imgNumber, setImgNumber] = React.useState(0);
+    const [imgNumber2, setImgNumber2] = React.useState(1);
+
+    const backwardsAction = () => {
+        imgNumber - 1 < 0 ? setImgNumber(images.length - 1) : setImgNumber(imgNumber - 1);
+        imgNumber2 - 1 < 0 ? setImgNumber2(images.length - 1) : setImgNumber2(imgNumber2 - 1);
+    }
+
+    const forwardsAction = () => {
+        imgNumber + 1 > images.length - 1 ? setImgNumber(0) : setImgNumber(imgNumber + 1);
+        imgNumber2 + 1 > images.length - 1 ? setImgNumber2(0) : setImgNumber2(imgNumber2 + 1);
+    }
 
     return (
-        <div style={{ display: 'flex'}}>
-            <Button variant="text" onClick={() => imgNumber - 1 < 0 ? setImgNumber(images.length - 1) : setImgNumber(imgNumber - 1)}>
+        <div style={{ display: 'flex' }}>
+            <Button variant="text" onClick={backwardsAction}>
                 <ArrowBackIosIcon />
             </Button>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
@@ -90,7 +101,31 @@ function Carousel({ images }: { images: Images[] }) {
                         </Typography>
                     </Image>
                 </ImageButton>
-                <Button variant="text" onClick={() => imgNumber + 1 > images.length - 1 ? setImgNumber(0) : setImgNumber(imgNumber + 1)}>
+                {doubleImg && <ImageButton
+                    focusRipple
+                    key={images[imgNumber2].title}
+                    sx={{ marginLeft: 1 }}
+                >
+                    <ImageSrc style={{ backgroundImage: `url(${images[imgNumber2].url})` }} />
+                    <ImageBackdrop className="MuiImageBackdrop-root" />
+                    <Image>
+                        <Typography
+                            component="span"
+                            variant="subtitle1"
+                            color="inherit"
+                            sx={{
+                                position: 'relative',
+                                p: 4,
+                                pt: 2,
+                                pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                            }}
+                        >
+                            {images[imgNumber2].title}
+                            <ImageMarked className="MuiImageMarked-root" />
+                        </Typography>
+                    </Image>
+                </ImageButton>}
+                <Button variant="text" onClick={forwardsAction}>
                     <ArrowForwardIosIcon />
                 </Button>
             </Box>

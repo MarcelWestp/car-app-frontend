@@ -77,7 +77,7 @@ const Cartypes = () => {
   return (
     <div id="cartypes">
       <h3>Your Dreamcar?!..</h3>
-      <Carousel images={images} />
+      <Carousel images={images} doubleImg={false} />
 
       {/* <AliceCarousel
         mouseTracking
