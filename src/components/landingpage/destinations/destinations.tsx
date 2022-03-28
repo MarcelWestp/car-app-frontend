@@ -1,7 +1,8 @@
-import React from "react";
+
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import "./destinations.css";
+import Carousel from "./../../carousel/carousel"
 
 import berlin from "./../../../res/img/destination/berlin.jpeg";
 import hamburg from "./../../../res/img/destination/hamburg.jpeg";
@@ -12,44 +13,6 @@ import köln from "./../../../res/img/destination/köln.jpeg";
 
 const handleDragStart = (e: any) => e.preventDefault();
 
-const items = [
-  <img
-    src={berlin}
-    alt="berlin"
-    onDragStart={handleDragStart}
-    role="presentation"
-  />,
-  <img
-    src={hamburg}
-    alt="hamburg"
-    onDragStart={handleDragStart}
-    role="presentation"
-  />,
-  <img
-    src={hannover}
-    alt="hanover"
-    onDragStart={handleDragStart}
-    role="presentation"
-  />,
-  <img
-    src={dresden}
-    alt="dresden"
-    onDragStart={handleDragStart}
-    role="presentation"
-  />,
-  <img
-    src={frankfurt}
-    alt="frankfurt"
-    onDragStart={handleDragStart}
-    role="presentation"
-  />,
-  <img
-    src={köln}
-    alt="cologne"
-    onDragStart={handleDragStart}
-    role="presentation"
-  />,
-];
 const items1 = [
   <div>
     <img
@@ -98,6 +61,33 @@ const items1 = [
   </div>,
 ];
 
+const images = [
+  {
+    url: berlin,
+    title: 'Berlin'
+  },
+  {
+    url: hamburg,
+    title: 'Hamburg'
+  },
+  {
+    url: hannover,
+    title: 'Hanover'
+  },
+  {
+    url: dresden,
+    title: 'Dresden'
+  },
+  {
+    url: köln,
+    title: 'Cologne'
+  },
+  {
+    url: frankfurt,
+    title: 'Frankfurt'
+  }
+]
+
 const responsive = {
   0: { items: 1 },
   1224: { items: 2 },
@@ -108,13 +98,15 @@ const Destinations = () => {
   return (
     <div id="destinations">
       <h3>Your next Destination:</h3>
-      <AliceCarousel
+      <Carousel images={images} />
+
+      {/* <AliceCarousel
         mouseTracking
         items={items1}
         responsive={responsive}
         disableButtonsControls={true}
         infinite={true}
-      />
+      /> */}
     </div>
   );
 };

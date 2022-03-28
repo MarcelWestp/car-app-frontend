@@ -1,7 +1,7 @@
-import React from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import "./cartypes.css";
+import Carousel from "./../../carousel/carousel"
 
 import oldtimer from "./../../../res/img/cartypes/oldtimer.jpeg";
 import luxury from "./../../../res/img/cartypes/luxury.jpeg";
@@ -49,6 +49,25 @@ const items = [
   </div>,
 ];
 
+const images = [
+  { 
+    url: oldtimer,
+    title: 'Classic Car'
+  },
+  { 
+    url: luxury,
+    title: 'Luxury Car'
+  },
+  { 
+    url: sport,
+    title: 'Sportcar'
+  },
+  { 
+    url: suv,
+    title: 'SUV'
+  }
+]
+
 const responsive = {
   0: { items: 1 },
   1600: { items: 2 },
@@ -58,13 +77,15 @@ const Cartypes = () => {
   return (
     <div id="cartypes">
       <h3>Your Dreamcar?!..</h3>
-      <AliceCarousel
+      <Carousel images={images} />
+
+      {/* <AliceCarousel
         mouseTracking
         items={items}
         responsive={responsive}
         disableButtonsControls={true}
         infinite={true}
-      />
+      /> */}
     </div>
   );
 };
