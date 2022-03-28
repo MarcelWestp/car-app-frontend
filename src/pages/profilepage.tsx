@@ -5,7 +5,7 @@ import User from "../models/User";
 const Profilepage = ({ user }: { user: User }) => {
   return (
     <div>
-      <Profil  />
+      <Profil user={user} />
     </div>
   );
 };
