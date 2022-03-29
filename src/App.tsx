@@ -8,7 +8,7 @@ import Login from "./pages/login";
 import Search from "./pages/searchpage";
 import Cardetail from "./pages/cardetail";
 import Profilepage from "./pages/profilepage";
-import Hostacar from "./pages/hostacar"
+import Hostacar from "./pages/hostacarpage"
 
 
 
@@ -30,7 +30,11 @@ function App() {
         city: "braunschweig"
       },
       cars: [1,2,3],
-      booked: [],
+      booked: [
+        {carid: 1, userid: 1, from: new Date("03/26/2022"), until: new Date("03/30/2022"),},
+        {carid: 1, userid: 1, from: new Date("04/01/2022"), until: new Date("04/04/2022")},
+        {carid: 1, userid: 1, from: new Date("04/20/2022"), until: new Date("04/30/2022")}
+      ],
   }
 
 

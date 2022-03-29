@@ -9,7 +9,7 @@ interface User{
     picture: string;
     address: Address;
     cars: number[];
-    booked: number[];
+    booked: Booked[];
 }
 
 interface Address{
@@ -17,6 +17,13 @@ interface Address{
     nr: string;
     zip: number;
     city: string;
+}
+
+interface Booked{
+    carid: number;
+    userid: number;
+    from: Date;
+    until: Date;
 }
 
 

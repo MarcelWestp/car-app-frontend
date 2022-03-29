@@ -4,8 +4,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Images from "../../models/CarouselImages"
-import ImageButton from '../imagebases/imagebutton';
-import { Link } from "react-router-dom";
+import Imageclean from '../imagebases/imageclean';
 
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -39,7 +38,7 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
     top: 0,
     bottom: 0,
     backgroundColor: theme.palette.common.black,
-    opacity: 0.4,
+    opacity: 0,
     transition: theme.transitions.create('opacity'),
 }));
 
@@ -74,9 +73,7 @@ function Carousel({ images, doubleImg }: { images: Images[], doubleImg: boolean 
                 <ArrowBackIosIcon />
             </Button>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
-                <Link to={images[imgNumber].url} >
-                    <ImageButton
-                        focusRipple
+                    <Imageclean
                         key={images[imgNumber].title}
                     >
                         <ImageSrc style={{ backgroundImage: `url(${images[imgNumber].src})` }} />
@@ -93,17 +90,12 @@ function Carousel({ images, doubleImg }: { images: Images[], doubleImg: boolean 
                                     pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
                                 }}
                             >
-                                {images[imgNumber].title}
-                                <ImageMarked className="MuiImageMarked-root" />
                             </Typography>
                         </Image>
-                    </ImageButton>
-                </Link>
+                    </Imageclean>
 
                 {doubleImg &&
-                    <Link to={images[imgNumber2].url} >
-                        <ImageButton
-                            focusRipple
+                        <Imageclean
                             key={images[imgNumber2].title}
                             sx={{ marginLeft: 1 }}
                         >
@@ -125,8 +117,7 @@ function Carousel({ images, doubleImg }: { images: Images[], doubleImg: boolean 
                                     <ImageMarked className="MuiImageMarked-root" />
                                 </Typography>
                             </Image>
-                        </ImageButton>
-                    </Link>}
+                        </Imageclean>}
                 <Button variant="text" onClick={forwardsAction}>
                     <ArrowForwardIosIcon />
                 </Button>

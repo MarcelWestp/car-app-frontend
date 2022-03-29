@@ -18,10 +18,10 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 
-import oldtimer from "./../res/img/cartypes/oldtimer.jpeg";
-import luxury from "./../res/img/cartypes/luxury.jpeg";
-import sport from "./../res/img/cartypes/sport.jpeg";
-import suv from "./../res/img/cartypes/suv.jpeg";
+import oldtimer from "./../../res/img/cartypes/oldtimer.jpeg";
+import luxury from "./../../res/img/cartypes/luxury.jpeg";
+import sport from "./../../res/img/cartypes/sport.jpeg";
+import suv from "./../../res/img/cartypes/suv.jpeg";
 
 const handleDragStart = (e: any) => e.preventDefault();
 const items = [
@@ -122,9 +122,6 @@ const Hostacar = () => {
   const multihandler = (value: string[],setter:React.Dispatch<React.SetStateAction<string[]>>) =>{
     setter(value);
   }
-
-
- 
 
   return (
     <Box style={{ margin: "20px 20%", maxWidth: 800 }}>
