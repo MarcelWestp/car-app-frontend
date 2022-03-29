@@ -36,7 +36,7 @@ function Newfooter() {
                 </Box>
                 <Box sx={{ flexGrow: 1 }} />
                 <Box>
-                    <h3>&copy; {new Date().toLocaleString().substring(6, 10)}</h3>
+                    <h3>&copy; {new Date().toLocaleString().substring(6, 10)} Cardealer</h3>
                 </Box>
             </Toolbar>
         </AppBar>
