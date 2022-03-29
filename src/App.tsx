@@ -8,6 +8,7 @@ import Login from "./pages/login";
 import Search from "./pages/searchpage";
 import Cardetail from "./pages/cardetail";
 import Profilepage from "./pages/profilepage";
+import Hostacar from "./pages/hostacar"
 
 
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="search" element={<Search />} />
           <Route path="profile" element={<Profilepage user={user} />} />
           <Route path="car/:carid" element={<Cardetail />} />
+          <Route path="hostacar" element={<Hostacar />} />
         </Routes>
         <Footer />
       </BrowserRouter>

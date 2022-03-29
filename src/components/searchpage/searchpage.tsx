@@ -4,6 +4,7 @@ import Filtersbar from './filtersbar/filtersbar'
 import Gallery from './gallery/gallery'
 
 
+
 const Searchpage = () => {
   return (
     <div style={{margin:"50px 10%"}}>
