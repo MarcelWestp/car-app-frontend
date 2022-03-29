@@ -47,7 +47,7 @@ function Newheader() {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-    const [user, setUser] = React.useState(2);
+    const [user, setUser] = React.useState(undefined);
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -87,6 +87,8 @@ function Newheader() {
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    {user === undefined &&
+                    <div>
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -115,8 +117,6 @@ function Newheader() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {user === undefined ?
-                                <div>
                                     {pages.map((page) => (
                                         <Link to={page.url} >
                                             <MenuItem key={page.title} onClick={handleCloseNavMenu}>
@@ -124,15 +124,9 @@ function Newheader() {
                                             </MenuItem>
                                         </Link>
                                     ))}
-                                </div>
-                                :
-                                <Link to={settings[1].url} >
-                                    <MenuItem key={settings[1].title} onClick={handleCloseNavMenu}>
-                                        <Typography textAlign="center">{settings[1].title}</Typography>
-                                    </MenuItem>
-                                </Link>
-                            }
                         </Menu>
+                        </div>
+                    }
                     </Box>
                     <Typography
                         variant="h6"

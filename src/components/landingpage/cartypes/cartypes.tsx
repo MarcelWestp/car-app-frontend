@@ -1,70 +1,32 @@
-import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import "./cartypes.css";
-import Carousel from "./../../carousel/carousel"
+import Carousel from "../../carousel/carouselwithbutton"
 
 import oldtimer from "./../../../res/img/cartypes/oldtimer.jpeg";
 import luxury from "./../../../res/img/cartypes/luxury.jpeg";
 import sport from "./../../../res/img/cartypes/sport.jpeg";
 import suv from "./../../../res/img/cartypes/suv.jpeg";
 
-const handleDragStart = (e: any) => e.preventDefault();
-
-const items = [
-  <div>
-    <img
-      src={oldtimer}
-      alt="classic-car"
-      onDragStart={handleDragStart}
-      role="presentation"
-    />
-    <h2>Classic car</h2>
-  </div>,
-  <div>
-    <img
-      src={luxury}
-      alt="luxury-car"
-      onDragStart={handleDragStart}
-      role="presentation"
-    />
-    <h2>Luxury</h2>
-  </div>,
-  <div>
-    <img
-      src={sport}
-      alt="sport-car"
-      onDragStart={handleDragStart}
-      role="presentation"
-    />
-    <h2>Sport</h2>
-  </div>,
-  <div>
-    <img
-      src={suv}
-      alt="suv-car"
-      onDragStart={handleDragStart}
-      role="presentation"
-    />
-    <h2>Suv</h2>
-  </div>,
-];
-
 const images = [
   { 
-    url: oldtimer,
-    title: 'Classic Car'
+    src: oldtimer,
+    title: 'Classic Car',
+    url: '/search'
   },
   { 
-    url: luxury,
-    title: 'Luxury Car'
+    src: luxury,
+    title: 'Luxury Car',
+    url: '/search'
   },
   { 
-    url: sport,
-    title: 'Sportcar'
+    src: sport,
+    title: 'Sportcar',
+    url: '/search'
   },
   { 
-    url: suv,
-    title: 'SUV'
+    src: suv,
+    title: 'SUV',
+    url: '/search'
   }
 ]
 
@@ -78,14 +40,6 @@ const Cartypes = () => {
     <div id="cartypes">
       <h3>Your Dreamcar?!..</h3>
       <Carousel images={images} doubleImg={false} />
-
-      {/* <AliceCarousel
-        mouseTracking
-        items={items}
-        responsive={responsive}
-        disableButtonsControls={true}
-        infinite={true}
-      /> */}
     </div>
   );
 };

@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import User from "./../../../models/User";
-import Button from "@mui/material/Button";
 import Editmodal from "./editmodal";
 
 const portrait: string =

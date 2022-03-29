@@ -1,6 +1,7 @@
 interface Images{
-    url: string,
+    src: string,
     title: string,
+    url: string,
 }
 
 export default Images

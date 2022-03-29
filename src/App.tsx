@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/newheader";
-import Footer from "./components/footer/footer";
+import Footer from "./components/footer/newfooter";
 import Landingpage from "./pages/landingpage";
 import Signup from "./pages/signup";
 import Login from "./pages/login";
