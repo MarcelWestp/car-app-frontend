@@ -9,7 +9,7 @@ import Divider from '@mui/material/Divider';
 import Profiledetail from './profiledetail/profiledetail';
 import Profiletrips from './profiletrips/profiletrips';
 import Profilehostcars from './profilehostcars/profilehostcars';
-import Profilepayment from './profilepayment/profilepayment';
+import Profilechangepassword from './profilepayment/profilechangepassword';
 import Profiledelete from './profiledelete/profiledelete';
 import User from './../../models/User';
 import Contents from './../../models/profilecontents';
@@ -17,7 +17,7 @@ import Contents from './../../models/profilecontents';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import CardTravelIcon from '@mui/icons-material/CardTravel';
-import PaymentIcon from '@mui/icons-material/Payment';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const Profile = ({ user }: { user: User }) => {
@@ -71,11 +71,11 @@ const Profile = ({ user }: { user: User }) => {
           <nav aria-label="secondary profile list">
             <List>
               <ListItem disablePadding>
-                <ListItemButton onClick={() => setContent(Contents.PAYMENT)}>
+                <ListItemButton onClick={() => setContent(Contents.PASSWORD)}>
                   <ListItemIcon>
-                    <PaymentIcon />
+                    <VpnKeyIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Paymant options" />
+                  <ListItemText primary="Change password" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
@@ -94,7 +94,7 @@ const Profile = ({ user }: { user: User }) => {
           {content === Contents.PROFILE && <Profiledetail user={user} />}
           {content === Contents.TRIPS && <Profiletrips user={user} />}
           {content === Contents.HOST && <Profilehostcars user={user} />}
-          {content === Contents.PAYMENT && <Profilepayment user={user} />}
+          {content === Contents.PASSWORD && <Profilechangepassword user={user} />}
           {content === Contents.DELETE && <Profiledelete user={user} />}
         </Box>
       </Box>

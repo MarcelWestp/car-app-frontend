@@ -9,39 +9,39 @@ import Search from "./pages/searchpage";
 import Cardetail from "./pages/cardetail";
 import Profilepage from "./pages/profilepage";
 import Hostacar from "./pages/hostacarpage"
-
+import Checkoutpage from "./pages/checkoutpage";
 
 
 function App() {
-  
+
   const user = {
     id: 1,
-      firstName: "david",
-      lastName: "drücke",
-      username: "codingdavid",
-      email: "coding@david.de",
-      password: "coding123",
-      dob: new Date(),
-      picture: "bild",
-      address: { 
-        street: "langestraße",
-        nr: "11a",
-        zip: 38106,
-        city: "braunschweig"
-      },
-      cars: [1,2,3],
-      booked: [
-        {carid: 1, userid: 1, from: new Date("03/26/2022"), until: new Date("03/30/2022"),},
-        {carid: 1, userid: 1, from: new Date("04/01/2022"), until: new Date("04/04/2022")},
-        {carid: 1, userid: 1, from: new Date("04/20/2022"), until: new Date("04/30/2022")}
-      ],
+    firstName: "david",
+    lastName: "drücke",
+    username: "codingdavid",
+    email: "coding@david.de",
+    password: "coding123",
+    dob: new Date(),
+    picture: "bild",
+    address: {
+      street: "langestraße",
+      nr: "11a",
+      zip: 38106,
+      city: "braunschweig"
+    },
+    cars: [1, 2, 3],
+    booked: [
+      { carid: 1, userid: 1, from: new Date("03/26/2022"), until: new Date("03/30/2022"), },
+      { carid: 1, userid: 1, from: new Date("04/01/2022"), until: new Date("04/04/2022") },
+      { carid: 1, userid: 1, from: new Date("04/20/2022"), until: new Date("04/30/2022") }
+    ],
   }
 
 
   return (
     <div className="App">
       <BrowserRouter>
-      <Header />
+        <Header />
         <Routes>
           <Route path="/" element={<Landingpage />} />
           <Route path="signup" element={<Signup />} />
@@ -50,7 +50,8 @@ function App() {
           <Route path="profile" element={<Profilepage user={user} />} />
           <Route path="car/:carid" element={<Cardetail />} />
           <Route path="hostacar" element={<Hostacar />} />
-        </Routes>
+          <Route path="checkout" element={<Checkoutpage />} />
+        </ Routes>
         <Footer />
       </BrowserRouter>
     </div>

@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 import DateRangePicker, { DateRange } from '@mui/lab/DateRangePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import { Link } from "react-router-dom";
 
 const Booking = ({ car }: { car: Car }) => {
 
@@ -48,12 +49,14 @@ const Booking = ({ car }: { car: Car }) => {
                     <h4>Pick up & return Location</h4>
                     <p>{car.address.zip} {car.address.city}, {car.address.street} {car.address.number}</p>
                 </Box>
-                <Button
-                    type="button"
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2, width: 350 }}>
-                    Continue
-                </Button>
+                <Link to="/checkout">
+                    <Button
+                        type="button"
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2, width: 350 }}>
+                        Continue
+                    </Button>
+                </Link>
                 <Box sx={{ marginTop: 2 }}>
                     <p>Distance included per day: {car.distancePerDay} miles</p>
                     <span style={{ fontSize: 10, color: 'grey' }}>$2 / mi fee for additional miles driven</span>
