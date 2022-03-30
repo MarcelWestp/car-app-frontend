@@ -77,8 +77,8 @@ const Filtermodal = ({ open, handleOpen }: { open: boolean, handleOpen: Function
                                     onChange={handleDoorsChange}
                                 >
                                     <MenuItem value={0}>None</MenuItem>
-                                    <MenuItem value={10}>2</MenuItem>
-                                    <MenuItem value={20}>4</MenuItem>
+                                    <MenuItem value={2}>2</MenuItem>
+                                    <MenuItem value={4}>4</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
@@ -92,15 +92,15 @@ const Filtermodal = ({ open, handleOpen }: { open: boolean, handleOpen: Function
                                     label="Make"
                                     onChange={handleMakeChange}
                                 >
-                                    <MenuItem value={0}>None</MenuItem>
-                                    <MenuItem value={10}>Volkswagen</MenuItem>
-                                    <MenuItem value={20}>Ford</MenuItem>
-                                    <MenuItem value={30}>Bentley</MenuItem>
-                                    <MenuItem value={50}>BMW</MenuItem>
-                                    <MenuItem value={60}>Seat</MenuItem>
-                                    <MenuItem value={70}>Audi</MenuItem>
-                                    <MenuItem value={80}>Ferrari</MenuItem>
-                                    <MenuItem value={90}>Tesla</MenuItem>
+                                    <MenuItem value={"None"}>None</MenuItem>
+                                    <MenuItem value={"Volkswagen"}>Volkswagen</MenuItem>
+                                    <MenuItem value={"Ford"}>Ford</MenuItem>
+                                    <MenuItem value={"Bentley"}>Bentley</MenuItem>
+                                    <MenuItem value={"BMW"}>BMW</MenuItem>
+                                    <MenuItem value={"Seat"}>Seat</MenuItem>
+                                    <MenuItem value={"Audi"}>Audi</MenuItem>
+                                    <MenuItem value={"Ferrari"}>Ferrari</MenuItem>
+                                    <MenuItem value={"Tesla"}>Tesla</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>

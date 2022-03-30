@@ -1,4 +1,3 @@
-import React from 'react'
 import Searchbar from './../landingpage/hero/searchbar/searchbarNew'
 import Filtersbar from './filtersbar/filtersbar'
 import Gallery from './gallery/gallery'

@@ -1,8 +1,4 @@
-import React from "react";
-import Header from "./../components/header/header";
-import Footer from "./../components/footer/footer";
 import CarDetails from "./../components/car/car";
-import { useParams } from "react-router-dom";
 
 const fetchCar = () => ({
   carid: 1,

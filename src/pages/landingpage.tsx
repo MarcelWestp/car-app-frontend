@@ -1,4 +1,3 @@
-import React from 'react'
 import Hero from './../components/landingpage/hero/hero'
 import Destinations from './../components/landingpage/destinations/destinations'
 import Cartypes from './../components/landingpage/cartypes/cartypes'

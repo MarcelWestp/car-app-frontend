@@ -1,9 +1,4 @@
-import React from "react";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 import Carcard from "./carcard/carcard";
 import { Link } from "react-router-dom";
 import Car from "./../../../models/Car";

@@ -1,5 +1,3 @@
-import React from 'react'
-import Searchbar from "./searchbar/searchbar"
 import NewSearchbar from './searchbar/searchbarNew'
 import "./hero.css"
 

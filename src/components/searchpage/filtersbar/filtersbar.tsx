@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -57,11 +55,12 @@ const Filtersbar = () => {
                         label="Fuel"
                         onChange={handleFuelChange}
                     >
-                        <MenuItem value={0}>None</MenuItem>
-                        <MenuItem value={10}>Gas</MenuItem>
-                        <MenuItem value={20}>Electro</MenuItem>
-                        <MenuItem value={30}>Diesel</MenuItem>
-                        <MenuItem value={40}>Benzin</MenuItem>
+                        <MenuItem value={"None"}>None</MenuItem>
+                        <MenuItem value={"Gas"}>Gas</MenuItem>
+                        <MenuItem value={"Electric"}>Electro</MenuItem>
+                        <MenuItem value={"Diesel"}>Diesel</MenuItem>
+                        <MenuItem value={"Petrol"}>Petrol</MenuItem>
+                        <MenuItem value={"Hybrid"}>Hybrid</MenuItem>
                     </Select>
                 </FormControl>
             </Box>
@@ -75,13 +74,14 @@ const Filtersbar = () => {
                         label="Cartype"
                         onChange={handleCartypeChange}
                     >
-                        <MenuItem value={0}>None</MenuItem>
-                        <MenuItem value={10}>Luxery</MenuItem>
-                        <MenuItem value={20}>Classic car</MenuItem>
-                        <MenuItem value={30}>SUV</MenuItem>
-                        <MenuItem value={40}>Cabrio</MenuItem>
-                        <MenuItem value={50}>Van</MenuItem>
-                        <MenuItem value={60}>Cars</MenuItem>
+                        <MenuItem value={"None"}>None</MenuItem>
+                        <MenuItem value={"Luxery"}>Luxery</MenuItem>
+                        <MenuItem value={"Classic"}>Classic</MenuItem>
+                        <MenuItem value={"Sport"}>Sport</MenuItem>
+                        <MenuItem value={"SUV"}>SUV</MenuItem>
+                        <MenuItem value={"Cabrio"}>Cabrio</MenuItem>
+                        <MenuItem value={"Van"}>Van</MenuItem>
+                        <MenuItem value={"Cars"}>Cars</MenuItem>
                     </Select>
                 </FormControl>
             </Box>
@@ -96,10 +96,10 @@ const Filtersbar = () => {
                         onChange={handleSeatsChange}
                     >
                         <MenuItem value={0}>None</MenuItem>
-                        <MenuItem value={10}>2</MenuItem>
-                        <MenuItem value={20}>4</MenuItem>
-                        <MenuItem value={30}>5</MenuItem>
-                        <MenuItem value={40}>7</MenuItem>
+                        <MenuItem value={2}>2</MenuItem>
+                        <MenuItem value={4}>4</MenuItem>
+                        <MenuItem value={5}>5</MenuItem>
+                        <MenuItem value={7}>7</MenuItem>
                     </Select>
                 </FormControl>
             </Box>
@@ -113,9 +113,9 @@ const Filtersbar = () => {
                         label="Transmission"
                         onChange={handleTransmissionChange}
                     >
-                        <MenuItem value={0}>None</MenuItem>
-                        <MenuItem value={10}>Automatic</MenuItem>
-                        <MenuItem value={20}>Handshift</MenuItem>
+                        <MenuItem value={"None"}>None</MenuItem>
+                        <MenuItem value={"Automatic"}>Automatic</MenuItem>
+                        <MenuItem value={"Shift"}>Shift</MenuItem>
                     </Select>
                 </FormControl>
             </Box>

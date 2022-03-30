@@ -1,4 +1,3 @@
-import React from "react";
 import Profil from "./../components/profil/profile";
 import User from "../models/User";
 

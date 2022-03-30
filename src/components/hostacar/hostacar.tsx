@@ -102,6 +102,9 @@ const Hostacar = () => {
   const [year, setYear] = useState("");
   const [fuel, setFuel] = useState("");
   const [seats, setSeats] = useState("");
+  const [doors, setDoors] = useState("");
+  const [hp, setHp] = useState("");
+  const [transmission, setTransmission] = useState("");
   const [pricePerDay, setPricePerDay] = useState("");
   const [distancePerDay, setDistancePerDay] = useState("");
   const [street, setStreet] = useState("");
@@ -189,12 +192,15 @@ const Hostacar = () => {
           <MenuItem value={"Luxury"}>Luxury</MenuItem>
           <MenuItem value={"Sport"}>Sport</MenuItem>
           <MenuItem value={"SUV"}>SUV</MenuItem>
+          <MenuItem value={"Cabrio"}>Cabrio</MenuItem>
+          <MenuItem value={"Van"}>Van</MenuItem>
+          <MenuItem value={"Cars"}>Cars</MenuItem>
         </Select>
         <p>Year:</p>
         <TextField
           id="year"
           type="number"
-          label="year"
+          label="Year"
           variant="standard"
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             handleChangeHandler(event, setYear)
@@ -213,17 +219,50 @@ const Hostacar = () => {
           <MenuItem value={"Diesel"}>Diesel</MenuItem>
           <MenuItem value={"Hybrid"}>Hybrid</MenuItem>
           <MenuItem value={"Electric"}>Electric</MenuItem>
+          <MenuItem value={"Gas"}>Gas</MenuItem>
         </Select>
         <p>Seats:</p>
         <TextField
           id="seats"
           type="number"
-          label="seats"
+          label="Seats"
           variant="standard"
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             handleChangeHandler(event, setSeats)
           }
         />
+        <p>Doors:</p>
+        <TextField
+          id="doors"
+          type="number"
+          label="Doors"
+          variant="standard"
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            handleChangeHandler(event, setDoors)
+          }
+        />
+        <p>Hp:</p>
+        <TextField
+          id="hp"
+          type="number"
+          label="Hp"
+          variant="standard"
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            handleChangeHandler(event, setHp)
+          }
+        />
+        <p>Transmission:</p>
+        <Select
+          labelId="transmission"
+          id="transmission"
+          value={transmission}
+          onChange={(event: SelectChangeEvent) =>
+            handleChangeHandler(event, setTransmission)
+          }
+        >
+          <MenuItem value={"Shift"}>Shift</MenuItem>
+          <MenuItem value={"Automatic"}>Automatic</MenuItem>
+        </Select>
       </Box>
       <Grid container spacing={2}>
         <Grid item xs={4}>
