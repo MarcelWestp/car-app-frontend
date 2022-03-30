@@ -4,7 +4,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
-import DateRangePicker from "@mui/lab/DateRangePicker";
+import DateRangePicker, { DateRange } from '@mui/lab/DateRangePicker';
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import SearchIcon from "@mui/icons-material/Search";
@@ -13,7 +13,7 @@ import "./searchbar.css";
 import { Link } from "react-router-dom";
 
 const SearchbarNew = () => {
-  const [value, setValue] = useState([null, null]);
+  const [value, setValue] = React.useState<DateRange<Date>>([null, null]);
 
   return (
       <AppBar

@@ -17,14 +17,33 @@ import Datepicker from './datepicker'
 
 const theme = createTheme();
 
-export default function SignUp() {
+function Signup() {
+
+  const [username, setUsername] = React.useState<string>("")
+  const [email, setEmail] = React.useState<string>("")
+  const [firstname, setFirstname] = React.useState<string>("")
+  const [lastname, setLastname] = React.useState<string>("")
+  const [dob, setDob] = React.useState<Date>(new Date())
+  const [address, setAddress] = React.useState<string>("")
+  const [housenumber, setHousenumber] = React.useState<string>("")
+  const [zip, setZip] = React.useState<string>("")
+  const [city, setCity] = React.useState<string>("")
+  const [password, setPassword] = React.useState<string>("")
+  const [passwordconfirm, setPasswordconfirm] = React.useState<string>("")
+
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    if(password === passwordconfirm){
+      const data = new FormData(event.currentTarget)
+    }
+  };
+
+  const handleChangeHandler = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    setter: React.Dispatch<React.SetStateAction<string>>
+  ) => {
+    setter(event.target.value as string);
   };
 
   return (
@@ -56,6 +75,9 @@ export default function SignUp() {
                   name="username"
                   autoComplete="username"
                   autoFocus
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChangeHandler(event, setUsername)
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -66,6 +88,9 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChangeHandler(event, setEmail)
+                  }
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -76,6 +101,9 @@ export default function SignUp() {
                   fullWidth
                   id="firstName"
                   label="First Name"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChangeHandler(event, setFirstname)
+                  }
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -86,10 +114,13 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChangeHandler(event, setLastname)
+                  }
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
-                <Datepicker />
+                <Datepicker value={dob} setValue={setDob}/>
               </Grid>
               <Grid item xs={12} sm={8}>
                 <TextField
@@ -99,6 +130,9 @@ export default function SignUp() {
                   label="Address"
                   name="adress"
                   autoComplete="adress"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChangeHandler(event, setAddress)
+                  }
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -109,6 +143,9 @@ export default function SignUp() {
                   label="Housenumber"
                   name="housenumber"
                   autoComplete="housenumber"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChangeHandler(event, setHousenumber)
+                  }
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -119,6 +156,9 @@ export default function SignUp() {
                   label="Zip"
                   name="zip"
                   autoComplete="zip"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChangeHandler(event, setZip)
+                  }
                 />
               </Grid>
               <Grid item xs={12} sm={8}>
@@ -129,6 +169,9 @@ export default function SignUp() {
                   label="City"
                   name="city"
                   autoComplete="city"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChangeHandler(event, setCity)
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -140,6 +183,9 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChangeHandler(event, setPassword)
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -151,6 +197,9 @@ export default function SignUp() {
                   type="password"
                   id="passwordconfirm"
                   autoComplete="new-password"
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    handleChangeHandler(event, setPasswordconfirm)
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -181,3 +230,5 @@ export default function SignUp() {
     </ThemeProvider>
   );
 }
+
+export default Signup

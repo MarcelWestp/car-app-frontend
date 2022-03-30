@@ -4,9 +4,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 
-const Datepicker = () => {
-
-  const [value, setValue] = useState(null);
+const Datepicker = ({value, setValue}: {value: Date, setValue: Function}) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -14,6 +12,7 @@ const Datepicker = () => {
         label="Day of birth"
         value={value}
         onChange={(newValue) => {
+          console.log(newValue);
           setValue(newValue);
         }}
         renderInput={(params) => <TextField {...params} />}

@@ -25,6 +25,16 @@ const Loginform = () => {
     });
   };
 
+  const [email, setEmail] = React.useState<string>("")
+  const [password, setPassword] = React.useState<string>("")
+
+  const changeHandler = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    setter: React.Dispatch<React.SetStateAction<string>>
+  ) => {
+    setter(event.target.value as string)
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -58,6 +68,7 @@ const Loginform = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => changeHandler(event, setEmail)}
             />
             <TextField
               margin="normal"
@@ -68,6 +79,7 @@ const Loginform = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => changeHandler(event, setPassword)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

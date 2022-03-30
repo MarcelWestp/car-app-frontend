@@ -1,4 +1,4 @@
-import Searchbar from './../landingpage/hero/searchbar/searchbarNew'
+import Searchbar from '../searchbar/searchbarNew'
 import Filtersbar from './filtersbar/filtersbar'
 import Gallery from './gallery/gallery'
 

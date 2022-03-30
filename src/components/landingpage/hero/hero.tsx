@@ -1,4 +1,4 @@
-import NewSearchbar from './searchbar/searchbarNew'
+import NewSearchbar from '../../searchbar/searchbarNew'
 import "./hero.css"
 
 const Hero = () => {

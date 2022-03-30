@@ -9,7 +9,10 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
 const Booking = ({ car }: { car: Car }) => {
 
-    const [value, setValue] = React.useState<DateRange<Date>>([null, null]);
+    const [value, setValue] = React.useState<DateRange<Date>>([new Date(), new Date()]);
+
+    // @ts-ignore: Object is possibly 'undefined'.
+    let estimatedPrice: number = (Math.abs(value[1]?.getTime() - value[0]?.getTime()) / (1000 * 60 * 60 * 24) + 1) * car.pricePerDay
 
     return (
         <div>
@@ -20,7 +23,7 @@ const Booking = ({ car }: { car: Car }) => {
                     gridTemplateColumns: 'repeat(2, 1fr)',
                 }}>
                     <h3>$ {car.pricePerDay} / Day</h3>
-                    <h3>$ {car.pricePerDay} est. total</h3>
+                    <h3>$ {estimatedPrice} est. total</h3>
                 </Box>
                 <Box sx={{ marginTop: 3 }}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
