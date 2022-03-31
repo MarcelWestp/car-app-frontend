@@ -1,9 +1,21 @@
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
+import * as React from "react";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
 
-function Paymentform() {
+const Paymentform = ({
+  setCardName,
+  setCardNumber,
+  setExpiryDate,
+  setCvv,
+}: {
+  setCardName: Function;
+  setCardNumber: Function;
+  setExpiryDate: Function;
+  setCvv: Function;
+}) => {
+  
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -18,6 +30,7 @@ function Paymentform() {
             fullWidth
             autoComplete="cc-name"
             variant="standard"
+            onChange={(event:React.ChangeEvent<HTMLInputElement>) => setCardName(event.target.value as string)}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -28,6 +41,7 @@ function Paymentform() {
             fullWidth
             autoComplete="cc-number"
             variant="standard"
+            onChange={(event:React.ChangeEvent<HTMLInputElement>) => setCardNumber(event.target.value as string)}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -38,6 +52,7 @@ function Paymentform() {
             fullWidth
             autoComplete="cc-exp"
             variant="standard"
+            onChange={(event:React.ChangeEvent<HTMLInputElement>) => setExpiryDate(event.target.value as string)}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -49,11 +64,12 @@ function Paymentform() {
             fullWidth
             autoComplete="cc-csc"
             variant="standard"
+            onChange={(event:React.ChangeEvent<HTMLInputElement>) => setCvv(event.target.value as string)}
           />
         </Grid>
       </Grid>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default Paymentform
+export default Paymentform;

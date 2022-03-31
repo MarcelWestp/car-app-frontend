@@ -19,16 +19,25 @@ const steps = ['Trip details', 'Payment details', 'Review your order'];
 
 const theme = createTheme();
 
-function Checkout({trip}: {trip:Trip}) {
+const Checkout = ({trip}: {trip:Trip}) => {
+
+    const [cardName,setCardName] = React.useState<string>('');
+    const [cardNumber,setCardNumber] = React.useState<string>('');
+    const [expiryDate,setExpiryDate] = React.useState<string>('');
+    const [cvv,setCvv] = React.useState<string>('');
     
     const getStepContent = (step: number) => {
       switch (step) {
         case 0:
           return <Tripdetails trip={trip} />;
         case 1:
-          return <PaymentForm />;
+          return <PaymentForm
+          setCardName={setCardName}
+          setCardNumber={setCardNumber}
+          setExpiryDate={setExpiryDate}
+          setCvv={setCvv} />;
         case 2:
-          return <Checkoutdetails />;
+          return <Checkoutdetails  trip={trip} payment={{cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvv: cvv}}/>;
         default:
           throw new Error('Unknown step');
       }
