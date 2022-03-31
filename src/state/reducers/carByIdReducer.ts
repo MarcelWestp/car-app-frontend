@@ -9,7 +9,7 @@ const initialState: Car  = {
     year: 0,
     images: [],
     details: {
-        fueltype: '',
+        fuelType: '',
         seats: 0,
         doors: 0,
         hp: 0,

@@ -43,7 +43,7 @@ const CarDetails = ({ car }: { car: Car }) => {
         infinite={true}
       />
       <div>
-        <h2>{car.model}</h2>
+        <h2>{car.make} {car.model} {car.year}</h2>
       </div>
       <div className="box">
         <Box sx={{
@@ -61,7 +61,7 @@ const CarDetails = ({ car }: { car: Car }) => {
               gridTemplateColumns: 'repeat(2, 1fr)'
             }}>
               <p><KeyboardDoubleArrowRightIcon /> {car.details.hp} hp</p>
-              <p><LocalGasStationIcon /> {car.details.fueltype}</p>
+              <p><LocalGasStationIcon /> {car.details.fuelType}</p>
               <p><SensorDoorIcon /> {car.details.doors} doors</p>
               <p><EventSeatIcon /> {car.details.seats} seats</p>
               <p><MiscellaneousServicesIcon /> {car.details.transmission}</p>

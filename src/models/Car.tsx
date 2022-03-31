@@ -27,7 +27,7 @@ interface content {
    data: string
 }
 interface details {
-  fueltype: string;
+  fuelType: string;
   seats: number;
   doors: number;
   hp: number;
