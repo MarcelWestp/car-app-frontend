@@ -14,6 +14,8 @@ import Checkoutpage from "./pages/checkoutpage";
 
 function App() {
 
+  
+
   const user = {
     id: 1,
     firstName: "david",

@@ -117,8 +117,8 @@ function Newheader() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                                    {pages.map((page) => (
-                                        <Link to={page.url} >
+                                    {pages.map((page,index) => (
+                                        <Link to={page.url} key={index} >
                                             <MenuItem key={page.title} onClick={handleCloseNavMenu}>
                                                 <Typography textAlign="center">{page.title}</Typography>
                                             </MenuItem>
@@ -148,8 +148,8 @@ function Newheader() {
 
                     {user === undefined ?
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'right' }}>
-                            {pages.map((page) => (
-                                <Link to={page.url} >
+                            {pages.map((page,index) => (
+                                <Link to={page.url} key={index}>
                                     <Button
                                         key={page.title}
                                         sx={{ my: 2, color: 'white', display: 'block' }}
@@ -191,8 +191,8 @@ function Newheader() {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <Link to={setting.url}>
+                            {settings.map((setting,index) => (
+                                <Link to={setting.url} key={index}>
                                     <MenuItem key={setting.title}>
                                         <Typography textAlign="center">{setting.title}</Typography>
                                     </MenuItem>
