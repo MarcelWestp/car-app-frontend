@@ -1,5 +1,6 @@
 import CarDetails from "./../components/car/car";
 
+
 const fetchCar = () => ({
   carid: 1,
   hostUserId: 1,
@@ -53,6 +54,10 @@ const fetchCar = () => ({
 });
 
 const Cardetail = () => {
+
+  
+
+
   return (
     <div>
       <CarDetails car={fetchCar()}/>

@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
+import CarReducer from "./carReducer";
 
-const reducers = combineReducers({
+export const reducers = combineReducers({
+    cars: CarReducer
 })
 
-export default reducers;
+export type RootState = ReturnType<typeof reducers>

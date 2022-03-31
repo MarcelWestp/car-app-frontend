@@ -1,15 +1,25 @@
 import Searchbar from '../searchbar/searchbarNew'
 import Filtersbar from './filtersbar/filtersbar'
 import Gallery from './gallery/gallery'
-
+import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import { bindActionCreators } from 'redux'
+import { actionCreators } from "../../state/index"
+import { RootState } from './../../state/reducers/index'
 
 
 const Searchpage = () => {
+
+  const dispatch = useDispatch();
+  const { getAllCars } = bindActionCreators(actionCreators, dispatch);
+
+  const cars = useSelector((state: RootState) => state.cars);
+
   return (
     <div style={{margin:"50px 10%"}}>
       <Searchbar />
       <Filtersbar />
-      <Gallery />
+      <Gallery cars={cars} />
     </div>
   )
 }
