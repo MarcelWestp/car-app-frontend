@@ -5,13 +5,24 @@ export const getAllCars =  () => {
     return async (dispatch:any) => {
       try {
         const response = await fetch(`${URL}/cars`);
-        console.log("IM ACTION CREATOR")
-        console.log(`${URL}/cars`)
         const cars = await response.json();
-        console.log(cars)
         dispatch({type: 'getAllCars',payload: cars});
       }catch(e) {
         
       }
     };
   };
+
+  export const getCarById =  (id:number) => {
+    return async (dispatch:any) => {
+      try {
+        const response = await fetch(`${URL}/car/${id}`);
+        console.log("IM ACTION CREATOR")
+        console.log(`${URL}/car/${id}`)
+        const carById = await response.json();
+        dispatch({type: 'getCarById',payload: carById});
+      }catch(e) {
+        
+      }
+    };
+  };  

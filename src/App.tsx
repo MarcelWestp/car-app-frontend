@@ -50,7 +50,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="search" element={<Search />} />
           <Route path="profile" element={<Profilepage user={user} />} />
-          <Route path="car/:carid" element={<Cardetail />} />
+          <Route path="car/:id" element={<Cardetail />} />
           <Route path="hostacar" element={<Hostacar />} />
           <Route path="checkout" element={<Checkoutpage />} />
         </ Routes>

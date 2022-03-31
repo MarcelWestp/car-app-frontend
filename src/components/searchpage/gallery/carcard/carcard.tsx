@@ -9,7 +9,7 @@ import Car from "./../../../../models/Car";
 
 const Carcard = ( {car} : {car: Car}) => {
 
-  let ratingSum: number = car.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0) / car.ratings.length;
+   let ratingSum: number = car.ratings.length === 0 ? 0 : (car.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0)  / car.ratings.length);
 
   return (
     <Card sx={{ maxWidth: 345, margin: 2 }}>
@@ -17,7 +17,7 @@ const Carcard = ( {car} : {car: Car}) => {
         <CardMedia
           component="img"
           height="140"
-          image={car.images[0]}
+          image={`data:image/jpg;base64,${car.images[0].content.data}`}
           alt={`${car.make} ${car.model}`}
         />
         <CardContent>

@@ -10,8 +10,8 @@ function Gallery({cars}:{cars:Car[]}) {
         sx={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}
       >
         {cars.map((car,index) => (
-          <Link to={`/car/${car.carid}`} target="_blank" key={index}>
-            <Carcard key={car.carid} car={car} />
+          <Link to={`/car/${car.id}`} target="_blank" key={index}>
+            <Carcard key={car.id} car={car} />
           </Link>
         ))}
       </Box>

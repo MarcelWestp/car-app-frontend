@@ -1,11 +1,11 @@
 interface Car {
-  carid: number;
+  id: number;
   hostUserId: number;
   make: string;
   model: string;
   type: string;
   year: number;
-  images: string[];
+  images: images[];
   details: details;
   features: string[];
   description: string;
@@ -17,6 +17,15 @@ interface Car {
   address: address;
 }
 
+interface images {
+  id: number;
+  content: content
+}
+
+interface content {
+   type: number;
+   data: string
+}
 interface details {
   fueltype: string;
   seats: number;
@@ -26,10 +35,10 @@ interface details {
 }
 
 interface ratings {
-  rating: number;
   author: string;
   date: string;
-  content: string;
+  rating: number;
+  text: string;
 }
 
 interface bookings {

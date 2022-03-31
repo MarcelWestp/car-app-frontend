@@ -16,11 +16,15 @@ import StarIcon from '@mui/icons-material/Star';
 
 const CarDetails = ({ car }: { car: Car }) => {
   const handleDragStart = (e: any) => e.preventDefault();
+  
+  console.log(car)
+
+  let ratingSum: number = car.ratings.length === 0 ? 0 : (car.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0)  / car.ratings.length);
 
   const getImages = () =>
     car.images.map((img) => (
       <img
-        src={img}
+        src={`data:image/jpg;base64,${img.content.data}`}
         alt={car.model}
         onDragStart={handleDragStart}
         role="presentation"
@@ -28,7 +32,6 @@ const CarDetails = ({ car }: { car: Car }) => {
       />
     ));
 
-  let ratingSum: number = car.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0) / car.ratings.length;
 
   return (
     <div style={{ marginLeft: "10%", width: '80%' }}>
@@ -93,7 +96,7 @@ const CarDetails = ({ car }: { car: Car }) => {
                 <Box sx={{}}>
                   <Rating name="read-only" value={rating.rating} readOnly />
                   <h6>{rating.author}  <span style={{ fontStyle: "italic", color: "grey" }}>{rating.date}</span></h6>
-                  <p>{rating.content}</p>
+                  <p>{rating.text}</p>
                 </Box>)}
             </Box>
           </Box>

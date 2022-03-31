@@ -18,7 +18,6 @@ const Searchpage = () => {
 
   return (
     <div style={{margin:"50px 10%"}}>
-      {console.log(cars)}
       <Searchbar />
       <Filtersbar />
       <Gallery cars={cars} />
