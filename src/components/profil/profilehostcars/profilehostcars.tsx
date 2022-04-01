@@ -1,16 +1,69 @@
 import User from './../../../models/User'
 import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
+import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
+const Profilehostcars = ({ user }: { user: User }) => {
 
-function Profilehostcars({user}: {user: User}) {
+  let rows = user.cars.map(car => ({ id: car.id, make: car.make, model: car.model, year: car.year, delete: 0 }))
+
+  const columns: GridColDef[] = [
+    {
+      field: 'make',
+      headerName: 'Make',
+      width: 150,
+    },
+    {
+      field: 'model',
+      headerName: 'Model',
+      width: 150,
+    },
+    {
+      field: 'year',
+      headerName: 'Year',
+      type: 'number',
+      width: 50,
+    },
+    {
+      field: 'delete',
+      headerName: 'Delete',
+      width: 150,
+      renderCell: (params: GridRenderCellParams<number>) => (
+        <strong>
+          <Button
+            type="button"
+            fullWidth
+            variant="contained"
+            sx={{ marginLeft: 1, mt: 3, mb: 2, bgcolor: "secondary.main" }}>
+            <DeleteForeverIcon />
+          </Button>
+        </strong>
+      ),
+    }
+  ];
+
   return (
-    <div>Profilehostcars
-<Button  >
-  <Link to="/hostacar">
-    Host a Car
-  </Link>
-</Button>
+    <div>
+      <Button >
+        <Link to="/hostacar">
+          Host a Car
+        </Link>
+      </Button>
+      {user.cars.length > 0 ? <Container sx={{ height: 375, width: 560 }}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          disableSelectionOnClick
+        />
+      </Container>
+        :
+        <p>Host your own car and make people happy.</p>
+      }
     </div>
   )
 }

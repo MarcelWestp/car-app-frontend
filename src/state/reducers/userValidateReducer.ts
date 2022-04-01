@@ -17,7 +17,7 @@ const initialState: User  = {
       },
     },
     cars: [],
-    booked: [],
+    bookings: [],
     address: {
         street: '',
         number: '',

@@ -31,7 +31,7 @@ const Loginform = () => {
 
   const userValidate = useSelector((state: RootState) => state.userValidate);
 
-  const handleSubmit = () => {
+  const handleSubmit =  () => {
     if (email !== "" && password !== "") {
       getValidateUser(email, password);
     } else {

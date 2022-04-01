@@ -8,8 +8,8 @@ interface User {
     dateOfBirth: string;
     image: Image;
     address: Address;
-    cars: number[];
-    booked: Booked[];
+    cars: Car[];
+    bookings: Bookings[];
     ratings: Ratings[];
 }
 
@@ -31,11 +31,12 @@ interface Content {
     data: string
 }
 
-interface Booked {
-    carid: number;
-    userid: number;
-    from: Date;
-    until: Date;
+interface Bookings {
+    id: number;
+    carId: number;
+    userId: number;
+    from: string;
+    until: string;
 }
 
 interface Ratings {
@@ -43,7 +44,15 @@ interface Ratings {
     date: Date;
     rating: number;
     text: string;
-  }
+}
+
+interface Car {
+    id: number;
+    hostUserId: number;
+    make: string;
+    model: string;
+    year: number;
+}
 
 
 export default User;

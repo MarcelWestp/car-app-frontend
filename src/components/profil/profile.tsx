@@ -28,7 +28,7 @@ const Profile = ({ user }: { user: User }) => {
     <div className="profile">
       <Box sx={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(5, 1fr)',
+        gridTemplateColumns: 'repeat(2, 1fr)',
       }}>
 
         <Box sx={{
@@ -90,7 +90,7 @@ const Profile = ({ user }: { user: User }) => {
           </nav>
         </Box>
 
-        <Box sx={{ gridColumn: 2 / 5 }}>
+        <Box sx={{ gridColumn: 2}}>
           {content === Contents.PROFILE && <Profiledetail user={user} />}
           {content === Contents.TRIPS && <Profiletrips user={user} />}
           {content === Contents.HOST && <Profilehostcars user={user} />}

@@ -35,7 +35,7 @@ const settings = [
     },
     {
         title: 'Become a host',
-        url: '/profile'
+        url: '/hostacar'
     },
     {
         title: 'Logout',
