@@ -2,14 +2,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/newheader";
 import Footer from "./components/footer/newfooter";
-import Landingpage from "./pages/landingpage";
-import Signup from "./pages/signup";
-import Login from "./pages/login";
-import Search from "./pages/searchpage";
-import Cardetail from "./pages/cardetail";
-import Profilepage from "./pages/profilepage";
-import Hostacar from "./pages/hostacarpage"
-import Checkoutpage from "./pages/checkoutpage";
+import Landingpage from "./pages/LandingPage";
+import Signup from "./pages/SignupPage";
+import Login from "./pages/LoginPage";
+import Search from "./pages/SearchPage";
+import Cardetail from "./pages/CarDetailPage";
+import Profilepage from "./pages/ProfilePage";
+import Hostacar from "./pages/HostACarPage"
+import Checkoutpage from "./pages/CheckoutPage";
 
 
 function App() {

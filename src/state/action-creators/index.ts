@@ -37,8 +37,8 @@ export const getAllCars =  () => {
     };
   };  
 
-  export const getValidateUser = async (email: string, password: string): Promise<any> => {
-    return async (dispatch:any): Promise<any> => {
+  export const getValidateUser = (email: string, password: string)=> {
+    return async (dispatch:any) => {
       try {
         const response = await fetch(`${URL}/validate?input=${email}&password=${password}`);
         const userValidate = await response.json();

@@ -5,30 +5,30 @@ interface Car {
   model: string;
   type: string;
   year: number;
-  images: images[];
-  details: details;
+  images: Images[];
+  details: Details;
   features: string[];
   description: string;
   guidelines: string[];
-  ratings: ratings[];
+  ratings: Ratings[];
   pricePerDay: number;
   distancePerDay: number;
-  bookings: bookings[];
-  address: address;
+  bookings: Bookings[];
+  address: Address;
 }
 
-interface images {
+interface Images {
   id: number;
   contentType: string;
-  content: content
+  content: Content
 }
 
-interface content {
+interface Content {
   type: number;
   data: string
 }
 
-interface details {
+interface Details {
   fuelType: string;
   seats: number;
   doors: number;
@@ -36,20 +36,20 @@ interface details {
   transmission: string;
 }
 
-interface ratings {
+interface Ratings {
   author: string;
   date: Date;
   rating: number;
   text: string;
 }
 
-interface bookings {
+interface Bookings {
   user: string;
   from: string;
   until: string;
 }
 
-interface address {
+interface Address {
   street: string;
   number: string;
   city: string;

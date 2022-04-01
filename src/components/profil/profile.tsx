@@ -12,7 +12,7 @@ import Profilehostcars from './profilehostcars/profilehostcars';
 import Profilechangepassword from './profilepayment/profilechangepassword';
 import Profiledelete from './profiledelete/profiledelete';
 import User from './../../models/User';
-import Contents from './../../models/profilecontents';
+import Contents from '../../models/ProfileContents';
 
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';

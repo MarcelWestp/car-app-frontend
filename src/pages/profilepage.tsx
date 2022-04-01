@@ -1,10 +1,10 @@
 import React from "react";
-import Profil from "./../components/profil/profile";
+import Profil from "../components/profil/profile";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { useParams } from "react-router-dom";
-import { actionCreators } from "./../state/index";
-import { RootState } from "./../state/reducers/index";
+import { actionCreators } from "../state/index";
+import { RootState } from "../state/reducers/index";
 
 
 const Profilepage = () => {

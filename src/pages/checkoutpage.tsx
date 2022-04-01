@@ -2,8 +2,8 @@ import React from 'react';
 import Checkout from "../components/checkout/checkout"
 import { useSelector,useDispatch } from "react-redux"
 import { bindActionCreators } from 'redux'
-import { actionCreators } from "./../state/index"
-import { RootState } from './../state/reducers/index'
+import { actionCreators } from "../state/index"
+import { RootState } from '../state/reducers/index'
 
 const Checkoutpage =() => {
 
