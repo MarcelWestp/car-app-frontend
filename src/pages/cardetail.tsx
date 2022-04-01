@@ -1,5 +1,5 @@
 import React from "react";
-import CarDetails from "./../components/car/car";
+import CarDetails from "../components/car/CarDetails";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { useParams } from "react-router-dom";
@@ -13,20 +13,23 @@ const Cardetail = () => {
     actionCreators,
     dispatch
   );
+
   const carById = useSelector((state: RootState) => state.carById);
   const userById = useSelector((state: RootState) => state.userById);
 
   React.useEffect(() => {
-    async function fetchData() {
-      const carID = await getCarById(Number(id));
-      await getUserById(carById.hostUserId);
-    }
-    fetchData();
+    getCarById(Number(id));
   }, []);
+
+  React.useEffect(() => {
+    if (carById.hostUserId !== 0) {
+      getUserById(carById.hostUserId);
+    }
+  }, [carById]);
 
   return (
     <div>
-      <CarDetails car={carById} />
+      <CarDetails car={carById} user={userById} />
     </div>
   );
 };

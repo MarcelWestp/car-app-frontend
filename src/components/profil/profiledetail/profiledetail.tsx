@@ -24,7 +24,7 @@ const Profiledetail = ({ user }: { user: User }) => {
           }}
         >
           <p>Username: </p>
-          <p>{user.username}</p>
+          <p>{user.userName}</p>
           <p>Firstname:</p>
           <p>{user.firstName}</p>
           <p>Lastname:</p>
@@ -32,10 +32,10 @@ const Profiledetail = ({ user }: { user: User }) => {
           <p>Email:</p>
           <p>{user.email}</p>
           <p>Birthdate:</p>
-          <p>{user.dob.toLocaleString().substring(0, 10)}</p>
+          <p>{user.dateOfBirth.toLocaleString().substring(0, 10)}</p>
           <p>Adress:</p>
           <p>
-            {user.address.street} {user.address.nr}
+            {user.address.street} {user.address.number}
           </p>
           <p>City:</p>
           <p>

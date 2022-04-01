@@ -36,7 +36,7 @@ function Profiledelete({ user }: { user: User }) {
             name="username"
             type=""
             id="username"
-            value={user.username}
+            value={user.userName}
           />
           <p>Password:</p>
           <TextField

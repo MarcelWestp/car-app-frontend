@@ -36,7 +36,7 @@ type Payload = {
 
 const reducer = (state = initialState, action: Payload) => {
   switch (action.type) {
-    case "getUserById":
+    case "getValidateUser":
       return action.payload;
     default:
       return state;

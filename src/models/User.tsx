@@ -1,30 +1,49 @@
-interface User{
+interface User {
     id: number;
     firstName: string;
     lastName: string;
-    username: string;
+    userName: string;
     email: string;
     password: string;
-    dob: Date;
-    picture: string;
+    dateOfBirth: string;
+    image: Image;
     address: Address;
     cars: number[];
     booked: Booked[];
+    ratings: Ratings[];
 }
 
-interface Address{
+interface Address {
     street: string;
-    nr: string;
+    number: string;
     zip: number;
     city: string;
 }
 
-interface Booked{
+interface Image {
+    id: number;
+    contentType: string;
+    content: Content
+}
+
+interface Content {
+    type: number;
+    data: string
+}
+
+interface Booked {
     carid: number;
     userid: number;
     from: Date;
     until: Date;
 }
+
+interface Ratings {
+    author: string;
+    date: Date;
+    rating: number;
+    text: string;
+  }
 
 
 export default User;

@@ -19,13 +19,15 @@ interface Car {
 
 interface images {
   id: number;
+  contentType: string;
   content: content
 }
 
 interface content {
-   type: number;
-   data: string
+  type: number;
+  data: string
 }
+
 interface details {
   fuelType: string;
   seats: number;
@@ -36,7 +38,7 @@ interface details {
 
 interface ratings {
   author: string;
-  date: string;
+  date: Date;
   rating: number;
   text: string;
 }

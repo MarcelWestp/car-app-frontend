@@ -24,6 +24,7 @@ export const getAllCars =  () => {
       }
     };
   };  
+
   export const getUserById = (id:number) => {
     return async (dispatch:any) => {
       try {
@@ -32,6 +33,18 @@ export const getAllCars =  () => {
         dispatch({type: 'getUserById',payload: userById});
       }catch(e) {
         
+      }
+    };
+  };  
+
+  export const getValidateUser = (email: string, password: string) => {
+    return async (dispatch:any) => {
+      try {
+        const response = await fetch(`${URL}/validate?input=${email}&password=${password}`);
+        const userValidate = await response.json();
+        dispatch({type: 'getValidateUser',payload: userValidate});
+      }catch(e) {
+      
       }
     };
   };  

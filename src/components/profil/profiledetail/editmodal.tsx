@@ -22,7 +22,7 @@ const Editmodal = ({ user }: { user: User }) => {
     setOpen(false);
   };
 
-  const [value, setValue] = React.useState<Date | null>(user.dob);
+  const [value, setValue] = React.useState<string | null>(user.dateOfBirth);
 
   return (
     <div>
@@ -45,7 +45,7 @@ const Editmodal = ({ user }: { user: User }) => {
               required
               id="outlined-required"
               label="Username:"
-              defaultValue={user.username}
+              defaultValue={user.userName}
             />
             <p>Firstname:</p>
             <TextField
@@ -93,7 +93,7 @@ const Editmodal = ({ user }: { user: User }) => {
               required
               id="outlined-required"
               label="Street:"
-              defaultValue={user.address.nr}
+              defaultValue={user.address.number}
             />
             <p>City:</p>
             <TextField

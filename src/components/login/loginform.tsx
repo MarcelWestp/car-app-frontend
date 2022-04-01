@@ -5,25 +5,45 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "./../../state/index";
+import { RootState } from "./../../state/reducers/index";
 
 const theme = createTheme();
 
 const Loginform = () => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+
+  const dispatch = useDispatch();
+  const { getValidateUser } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
+
+  let navigate = useNavigate();
+
+  const userValidate = useSelector((state: RootState) => state.userValidate);
+
+  const handleSubmit = () => {
+    if (email !== "" && password !== "") {
+      getValidateUser(email, password);
+    } else {
+      /*TODO Snackbar with error message "Username / email or password are required*/
+    }
   };
+
+  React.useEffect(() => {
+    if (userValidate.id !== 0) {
+      navigate(`/profile/${userValidate.id}`);
+    }
+  }, [userValidate]);
 
   const [email, setEmail] = React.useState<string>("")
   const [password, setPassword] = React.useState<string>("")
@@ -55,7 +75,6 @@ const Loginform = () => {
           </Typography>
           <Box
             component="form"
-            onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}
           >
@@ -85,16 +104,15 @@ const Loginform = () => {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <Link to="/profile">
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, bgcolor: "secondary.main" }}
-              >
-                Log in
-              </Button>
-            </Link>
+            <Button
+              type="button"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, bgcolor: "secondary.main" }}
+              onClick={handleSubmit}
+            >
+              Log in
+            </Button>
             <Grid container>
               <Grid item xs>
                 <Link to="#">Forgot password?</Link>

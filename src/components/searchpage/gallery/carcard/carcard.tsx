@@ -17,7 +17,7 @@ const Carcard = ( {car} : {car: Car}) => {
         <CardMedia
           component="img"
           height="140"
-          image={`data:image/jpg;base64,${car.images[0].content.data}`}
+          image={`data:${car.images[0].contentType};base64,${car.images[0].content.data}`}
           alt={`${car.make} ${car.model}`}
         />
         <CardContent>
