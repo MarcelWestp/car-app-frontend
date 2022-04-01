@@ -9,7 +9,7 @@ type Payload = {
 
 const reducer = (state = initialState, action: Payload) => {
   switch (action.type) {
-    case "getAllCars":
+    case "getAllCarsByHostId":
       return [...action.payload];
     default:
       return state;

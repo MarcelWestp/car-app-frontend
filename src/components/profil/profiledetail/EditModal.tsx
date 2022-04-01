@@ -40,13 +40,6 @@ const EditModal = ({ user }: { user: User }) => {
               marginTop: 2,
             }}
           >
-            <p>Username: </p>
-            <TextField
-              required
-              id="outlined-required"
-              label="Username:"
-              defaultValue={user.userName}
-            />
             <p>Firstname:</p>
             <TextField
               required
@@ -60,13 +53,6 @@ const EditModal = ({ user }: { user: User }) => {
               id="outlined-required"
               label="Lastname:"
               defaultValue={user.lastName}
-            />
-            <p>Email:</p>
-            <TextField
-              required
-              id="outlined-required"
-              label="Email:"
-              defaultValue={user.email}
             />
             <p>Birthdate:</p>
             <LocalizationProvider dateAdapter={AdapterDateFns}>

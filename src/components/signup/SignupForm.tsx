@@ -13,29 +13,57 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Datepicker from './Datepicker'
-
+import PostUser from './../../models/PostUser'
+import { useSelector,useDispatch } from "react-redux"
+import { bindActionCreators } from 'redux'
+import { actionCreators } from "./../../state/index"
+import { RootState } from './../../state/reducers/index'
+import { format } from 'date-fns'
 
 const theme = createTheme();
 
 const Signup = () => {
 
-  const [username, setUsername] = React.useState<string>("")
+  const [userName, setUserName] = React.useState<string>("")
   const [email, setEmail] = React.useState<string>("")
-  const [firstname, setFirstname] = React.useState<string>("")
-  const [lastname, setLastname] = React.useState<string>("")
+  const [firstName, setFirstName] = React.useState<string>("")
+  const [lastName, setLastName] = React.useState<string>("")
   const [dob, setDob] = React.useState<Date>(new Date())
   const [address, setAddress] = React.useState<string>("")
-  const [housenumber, setHousenumber] = React.useState<string>("")
+  const [houseNumber, setHouseNumber] = React.useState<string>("")
   const [zip, setZip] = React.useState<string>("")
   const [city, setCity] = React.useState<string>("")
   const [password, setPassword] = React.useState<string>("")
-  const [passwordconfirm, setPasswordconfirm] = React.useState<string>("")
+  const [passwordConfirm, setPasswordConfirm] = React.useState<string>("")
 
+  const dispatch = useDispatch();
+  const { postUser } = bindActionCreators(actionCreators, dispatch);
+  const user = useSelector((state: RootState) => state.userAdd);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if(password === passwordconfirm){
-      const data = new FormData(event.currentTarget)
+  const handleSubmit = () => {
+    if (userName !== "" || email !== "" || password !== "" ||
+    passwordConfirm !== "" || firstName !== "" || lastName !== "" ||
+    email !== "" || address !== "" || city !== "" ||
+    zip !== "" || houseNumber !== "" || dob.toLocaleString() !== undefined) {
+      if (password === passwordConfirm) {
+        let dateOfBirth: string = format(dob, 'yyyy-MM-dd')
+        let addUser: PostUser = {
+          firstName: firstName,
+          lastName: lastName,
+          userName: userName,
+          email: email,
+          password: password,
+          dateOfBirth: dateOfBirth,
+          address: {
+            street: address,
+            number: houseNumber,
+            city: city,
+            zip: Number(zip),
+          },
+          ratings: [],
+        }
+        postUser(addUser);
+      }
     }
   };
 
@@ -64,19 +92,19 @@ const Signup = () => {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-            <Grid item xs={12}>
+              <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  id="username"
+                  id="userName"
                   label="Username"
                   name="username"
                   autoComplete="username"
                   autoFocus
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    handleChangeHandler(event, setUsername)
+                    handleChangeHandler(event, setUserName)
                   }
                 />
               </Grid>
@@ -85,7 +113,7 @@ const Signup = () => {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label="Email address"
                   name="email"
                   autoComplete="email"
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
@@ -100,9 +128,9 @@ const Signup = () => {
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label="Firstname"
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    handleChangeHandler(event, setFirstname)
+                    handleChangeHandler(event, setFirstName)
                   }
                 />
               </Grid>
@@ -111,16 +139,16 @@ const Signup = () => {
                   required
                   fullWidth
                   id="lastName"
-                  label="Last Name"
+                  label="Lastname"
                   name="lastName"
                   autoComplete="family-name"
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    handleChangeHandler(event, setLastname)
+                    handleChangeHandler(event, setLastName)
                   }
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
-                <Datepicker value={dob} setValue={setDob}/>
+                <Datepicker value={dob} setValue={setDob} />
               </Grid>
               <Grid item xs={12} sm={8}>
                 <TextField
@@ -139,12 +167,12 @@ const Signup = () => {
                 <TextField
                   required
                   fullWidth
-                  id="housenumber"
+                  id="houseNumber"
                   label="Housenumber"
                   name="housenumber"
                   autoComplete="housenumber"
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    handleChangeHandler(event, setHousenumber)
+                    handleChangeHandler(event, setHouseNumber)
                   }
                 />
               </Grid>
@@ -152,6 +180,7 @@ const Signup = () => {
                 <TextField
                   required
                   fullWidth
+                  type="number"
                   id="zip"
                   label="Zip"
                   name="zip"
@@ -192,13 +221,13 @@ const Signup = () => {
                 <TextField
                   required
                   fullWidth
-                  name="passwordconfirm"
+                  name="passwordConfirm"
                   label="Password confirm"
                   type="password"
                   id="passwordconfirm"
                   autoComplete="new-password"
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    handleChangeHandler(event, setPasswordconfirm)
+                    handleChangeHandler(event, setPasswordConfirm)
                   }
                 />
               </Grid>
@@ -210,10 +239,10 @@ const Signup = () => {
               </Grid>
             </Grid>
             <Button
-              type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2, bgcolor: 'secondary.main' }}
+              onClick={() => handleSubmit()}
             >
               Sign Up
             </Button>
