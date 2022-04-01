@@ -1,7 +1,7 @@
 import React from 'react';
-import Searchbar from '../searchbar/searchbarNew'
-import Filtersbar from './filtersbar/filtersbar'
-import Gallery from './gallery/gallery'
+import Searchbar from '../searchbar/SearchBarNew'
+import FiltersBar from './filtersbar/FiltersBar'
+import Gallery from './gallery/Gallery'
 import { useSelector,useDispatch } from "react-redux"
 import { bindActionCreators } from 'redux'
 import { actionCreators } from "../../state/index"
@@ -19,7 +19,7 @@ const Searchpage = () => {
   return (
     <div style={{margin:"50px 10%"}}>
       <Searchbar />
-      <Filtersbar />
+      <FiltersBar />
       <Gallery cars={cars} />
     </div>
   )

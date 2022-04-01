@@ -10,9 +10,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Trip from "./../../models/Trip"
-import Tripdetails from "./tripdetails/tripdetails"
-import PaymentForm from "./paymentform/paymentform"
-import Checkoutdetails from "./checkoutdetails/checkoutdetails"
+import TripDetails from "./tripdetails/TripDetails"
+import PaymentForm from "./paymentform/PaymentForm"
+import CheckoutDetails from "./checkoutdetails/CheckoutDetails"
 
 const steps = ['Trip details', 'Payment details', 'Review your order'];
 
@@ -29,7 +29,7 @@ const Checkout = ({trip}: {trip:Trip}) => {
     const getStepContent = (step: number) => {
       switch (step) {
         case 0:
-          return <Tripdetails trip={trip} />;
+          return <TripDetails trip={trip} />;
         case 1:
           return <PaymentForm
           setCardName={setCardName}
@@ -37,7 +37,7 @@ const Checkout = ({trip}: {trip:Trip}) => {
           setExpiryDate={setExpiryDate}
           setCvv={setCvv} />;
         case 2:
-          return <Checkoutdetails  trip={trip} payment={{cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvv: cvv}}/>;
+          return <CheckoutDetails trip={trip} payment={{cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvv: cvv}}/>;
         default:
           throw new Error('Unknown step');
       }

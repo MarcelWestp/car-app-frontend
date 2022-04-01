@@ -1,6 +1,6 @@
 import Car from "../../models/Car";
 import User from "../../models/User";
-import Booking from "./booking/booking";
+import Booking from "./booking/Booking";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import Box from '@mui/material/Box';
