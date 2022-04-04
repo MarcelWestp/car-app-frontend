@@ -132,7 +132,7 @@ const NewHeader = () => {
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', bgcolor: "primary.light" } }}
                     >
                         <Link to="/" className="brand">
                             <Box sx={{ display: 'flex' }}>

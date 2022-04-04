@@ -6,6 +6,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
 
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import EventSeatIcon from '@mui/icons-material/EventSeat';
@@ -42,7 +43,9 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
         infinite={true}
       />
       <div>
-        <h2>{car.make} {car.model} {car.year}</h2>
+        <Typography component="h2" variant="h2">
+          {car.make} {car.model} {car.year}
+        </Typography>
       </div>
       <div className="box">
         <Box sx={{
@@ -59,14 +62,27 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
               gap: 3,
               gridTemplateColumns: 'repeat(2, 1fr)'
             }}>
-              <p><KeyboardDoubleArrowRightIcon /> {car.details.hp} hp</p>
-              <p><LocalGasStationIcon /> {car.details.fuelType}</p>
-              <p><SensorDoorIcon /> {car.details.doors} doors</p>
-              <p><EventSeatIcon /> {car.details.seats} seats</p>
-              <p><MiscellaneousServicesIcon /> {car.details.transmission}</p>
+              <Typography component="p" variant="body2">
+                <KeyboardDoubleArrowRightIcon /> {car.details.hp} hp
+              </Typography>
+              <Typography component="p" variant="body2">
+                <LocalGasStationIcon /> {car.details.fuelType}
+              </Typography>
+              <Typography component="p" variant="body2">
+                <SensorDoorIcon /> {car.details.doors} doors
+              </Typography>
+              <Typography component="p" variant="body2">
+                <EventSeatIcon /> {car.details.seats} seats
+              </Typography>
+              <Typography component="p" variant="body2">
+                <MiscellaneousServicesIcon /> {car.details.transmission}
+              </Typography>
+
             </Box>
             <Box sx={{}}>
-              <h3>Hosted by</h3>
+              <Typography component="h3" variant="h3">
+                Hosted by
+              </Typography>
               <Box sx={{
                 display: 'grid',
                 gap: 3,
@@ -78,8 +94,8 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
                   sx={{ width: 64, height: 64 }}
                 />
                 <Box>
-                <p>{user.userName}</p>
-                <p>{ratingSumUser.toFixed(1)} <StarIcon /></p>
+                  <p>{user.userName}</p>
+                  <p>{ratingSumUser.toFixed(1)} <StarIcon /></p>
                 </Box>
               </Box>
             </Box>
