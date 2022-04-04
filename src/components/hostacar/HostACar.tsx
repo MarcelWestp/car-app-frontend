@@ -205,11 +205,27 @@ const HostACar = () => {
 
   const [images,setImages] = React.useState<string>("");
 
-  const inputHandler = (value:string) => {
+  const inputHandler = (e:any) => {
     console.log("IM HANDLER")
-    setImages(value);
-    console.log(images)
+    console.log(e.target.files[0] as string)
+    postImage(e.target.files[0] as string)
   }
+
+  async function postImage(imageToPost: string): Promise<any | undefined > {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/file/image?referenceId=12&type=CAR&file=${imageToPost}`, {
+        method: "POST",
+        body: JSON.stringify(imageToPost),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const carResponse = await response.json();
+      console.log(carResponse)
+      return carResponse;
+    } catch (e) {}
+  };
 
 
   return (
@@ -225,7 +241,7 @@ const HostACar = () => {
           disableDotsControls={true}
         />
         <label htmlFor="icon-button-file">
-          <Input id="icon-button-file" type="file" value={images} onChange={(e) => inputHandler(e.target.value as string)} />
+          <Input id="icon-button-file" type="file" value={images} onChange={(e) => inputHandler(e)} />
           <IconButton
             color="primary"
             aria-label="upload picture"
