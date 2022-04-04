@@ -3,7 +3,6 @@ import User from "./../../models/User";
 import PostUser from "./../../models/PostUser";
 
 const URL: string = process.env.REACT_APP_BASE_URL as string;
-// const URL: string = 'http://localhost:8080';
 
 export const getAllCars = () => {
   return async (dispatch: any) => {
@@ -105,7 +104,7 @@ export const postUser = (user: PostUser) => {
           Accept: "application/json",
         },
       });
-      const postUser = await response.json();
+      const postUser:User = await response.json();
       dispatch({ type: "postUser", payload: postUser });
     } catch (e) {}
   };

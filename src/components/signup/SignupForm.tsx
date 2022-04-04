@@ -38,7 +38,8 @@ const Signup = () => {
 
   const dispatch = useDispatch();
   const { postUser } = bindActionCreators(actionCreators, dispatch);
-  const user = useSelector((state: RootState) => state.userAdd);
+
+  // const user = useSelector((state: RootState) => state.user);
 
   const handleSubmit = () => {
     if (userName !== "" || email !== "" || password !== "" ||

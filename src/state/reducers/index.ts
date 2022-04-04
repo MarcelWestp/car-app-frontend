@@ -5,7 +5,6 @@ import CarsByCityReducer from './CarsByCityReducer';
 import CarByIdReducer from "./CarByIdReducer";
 import CarDeleteByIdReducer from './CarDeleteByIdReducer';
 import CarAddReducer from './CarAddReducer';
-import UserAddReducer from './UserAddReducer';
 import UserReducer from './UserReducer'
 
 export const reducers = combineReducers({
@@ -16,7 +15,6 @@ export const reducers = combineReducers({
     carDeleteById: CarDeleteByIdReducer,
     carAdd: CarAddReducer,
     user: UserReducer,
-    userAdd: UserAddReducer,
 })
 
 export type RootState = ReturnType<typeof reducers>

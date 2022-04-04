@@ -46,16 +46,6 @@ const Cardetail = () => {
 
   const [carHost, setCarHost] = React.useState(initialState);
 
-  // const fetchHost = async (hostId: number): Promise<User> =>{
-  //   try {
-  //     const response = await fetch(`${URL}/user/${id}`);
-  //     const userById = await response.json();
-  //     return userById;
-  //   } catch (e) {
-
-  //   }
-  // };
-
   async function fetchHost<User>(hostId: number): Promise<User> {
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/user/${hostId}`);
     return await response.json();
@@ -67,7 +57,6 @@ const Cardetail = () => {
 
   React.useEffect(() => {
     async function fetchData() {
-      // You can await here
       const response: User = await fetchHost(carById.hostUserId);
       console.log(response);
       setCarHost(response);
