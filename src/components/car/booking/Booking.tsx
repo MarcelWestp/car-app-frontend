@@ -8,6 +8,7 @@ import DateRangePicker, { DateRange } from '@mui/lab/DateRangePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { Link } from "react-router-dom";
+import theme from './../../../AppTheme'
 
 const Booking = ({ car }: { car: Car }) => {
 
@@ -52,7 +53,7 @@ const Booking = ({ car }: { car: Car }) => {
                 </Box>
                 <Box sx={{ marginTop: 2 }}>
                     <Typography component="h4" variant="h4">
-                        Pick up & return Location
+                        <b>Pick up & return Location</b>
                     </Typography>
                     <Typography component="p" variant="body2">
                         {car.address.zip} {car.address.city}, {car.address.street} {car.address.number}
@@ -70,7 +71,9 @@ const Booking = ({ car }: { car: Car }) => {
                     <Typography component="h3" variant="h3">
                         Distance included per day: {car.distancePerDay} miles
                     </Typography>
-                    <span style={{ fontSize: 10, color: 'grey' }}>$2 / mi fee for additional miles driven</span>
+                    <Typography component="p" variant="caption" color={theme.palette.grey[600]}>
+                        $2 / mi fee for additional miles driven
+                    </Typography>
                 </Box>
             </Box>
         </div>

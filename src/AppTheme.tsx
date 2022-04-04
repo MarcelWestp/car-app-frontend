@@ -8,6 +8,9 @@ const AppTheme = createTheme({
         },
         secondary: {
             main: '#00A991'
+        },
+        grey: {
+            600: "#757575"
         }
     },
     typography: {
@@ -18,10 +21,10 @@ const AppTheme = createTheme({
         },
         h2: { 
             fontSize: 36,
-            fontWeight: 600
+            fontWeight: 700
         },
         h3: { 
-            fontSize: 24,
+            fontSize: 20,
             fontWeight: 600
         },
         h4: { 
@@ -30,11 +33,25 @@ const AppTheme = createTheme({
         h5: { 
             fontSize: 20
         },
+        h6: { 
+            fontSize: 14,
+            fontWeight: 600
+        },
         body1: {
             fontSize: 16
         },
         body2: {
-            fontSize: 20
+            fontSize: 18
+        },
+        subtitle1: { 
+            fontSize: 12,
+        },
+        subtitle2: { 
+            fontSize: 12,
+            fontWeight: 300
+        },
+        caption: {
+            fontSize: 12,
         }
     },
 })
