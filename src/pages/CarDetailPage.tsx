@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import { useParams } from "react-router-dom";
 import { actionCreators } from "../state/index";
 import { RootState } from "../state/reducers/index";
+import User from "./../models/User";
 
 const Cardetail = () => {
   const dispatch = useDispatch();
@@ -15,21 +16,69 @@ const Cardetail = () => {
   );
 
   const carById = useSelector((state: RootState) => state.carById);
-  const userById = useSelector((state: RootState) => state.userById);
+
+  const initialState: User = {
+    id: 0,
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email: "",
+    password: "",
+    dateOfBirth: "",
+    image: {
+      id: 0,
+      contentType: "",
+      content: {
+        type: 0,
+        data: "",
+      },
+    },
+    cars: [],
+    bookings: [],
+    address: {
+      street: "",
+      number: "",
+      city: "",
+      zip: 0,
+    },
+    ratings: [],
+  };
+
+  const [carHost, setCarHost] = React.useState(initialState);
+
+  // const fetchHost = async (hostId: number): Promise<User> =>{
+  //   try {
+  //     const response = await fetch(`${URL}/user/${id}`);
+  //     const userById = await response.json();
+  //     return userById;
+  //   } catch (e) {
+
+  //   }
+  // };
+
+  async function fetchHost<User>(hostId: number): Promise<User> {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/user/${hostId}`);
+    return await response.json();
+  }
 
   React.useEffect(() => {
     getCarById(Number(id));
   }, []);
 
   React.useEffect(() => {
-    if (carById.hostUserId !== 0) {
-      getUserById(carById.hostUserId);
+    async function fetchData() {
+      // You can await here
+      const response: User = await fetchHost(carById.hostUserId);
+      console.log(response);
+      setCarHost(response);
     }
+    fetchData();
   }, [carById]);
+
 
   return (
     <div>
-      <CarDetails car={carById} user={userById} />
+      <CarDetails car={carById} user={carHost} />
     </div>
   );
 };

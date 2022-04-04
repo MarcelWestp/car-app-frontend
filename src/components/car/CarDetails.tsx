@@ -21,13 +21,14 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
   let ratingSumUser: number = user.ratings.length === 0 ? 0 : (user.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0) / user.ratings.length);
 
   const getImages = () =>
-    car.images.map((img) => (
+    car.images.map((img,index) => (
       <img
         src={`data:${img.contentType};base64,${img.content.data}`}
         alt={car.model}
         onDragStart={handleDragStart}
         role="presentation"
         style={{ width: "90%" }}
+        key={index}
       />
     ));
 
@@ -94,19 +95,19 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
                 gap: 3,
                 gridTemplateColumns: 'repeat(2, 1fr)'
               }}>
-                {car.features.map((feature) => <p>{feature}</p>)}
+                {car.features.map((feature,index) => <p key={index}>{feature}</p>)}
               </Box>
             </Box>
             <Box sx={{}}>
               <h3>Guidelines</h3>
-              {car.guidelines.map((guidelines) => <p>- {guidelines}</p>)}
+              {car.guidelines.map((guidelines,index ) => <p key={index}>- {guidelines}</p>)}
             </Box>
             <Box sx={{}}>
               <h3>Ratings and reviews</h3>
               <h4>{ratingSumCar.toFixed(1)} <StarIcon /></h4>
               <h5>({car.ratings.length} Ratings)</h5>
-              {car.ratings.map((rating) =>
-                <Box sx={{}}>
+              {car.ratings.map((rating,index) =>
+                <Box key={index} sx={{}}>
                   <Rating name="read-only" value={rating.rating} readOnly />
                   <h6>{rating.author}  <span style={{ fontStyle: "italic", color: "grey" }}>{rating.date}</span></h6>
                   <p>{rating.text}</p>
