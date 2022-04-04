@@ -18,18 +18,18 @@ const NewFooter = () => (
             </Box>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ marginRight: 2 }}>
-                <Link to={"#"}>
-                    <Typography component="h4" variant="h4">
+                <Typography component="h4" variant="h4">
+                    <Link to={"#"}>
                         Terms
-                    </Typography>
-                </Link>
+                    </Link>
+                </Typography>
             </Box>
             <Box>
-                <Link to={"#"}>
-                    <Typography component="h4" variant="h4">
+                <Typography component="h4" variant="h4">
+                    <Link to={"#"}>
                         About us
-                    </Typography>
-                </Link>
+                    </Link>
+                </Typography>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
             <Box>
