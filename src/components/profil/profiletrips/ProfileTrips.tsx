@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import Typography from '@mui/material/Typography';
 
 const ProfileTrips = ({ user }: { user: User }) => {
 
@@ -69,7 +70,9 @@ const ProfileTrips = ({ user }: { user: User }) => {
         />
       </Container>
         :
-        <p>Book your next dreamcar</p>
+        <Typography component="p" variant="body2">
+          Book your next dreamcar
+        </Typography>
       }
     </div>
   )
