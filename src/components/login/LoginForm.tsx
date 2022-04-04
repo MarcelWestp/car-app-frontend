@@ -29,7 +29,7 @@ const LoginForm = () => {
 
   let navigate = useNavigate();
 
-  const userValidate = useSelector((state: RootState) => state.userValidate);
+  const userValidate = useSelector((state: RootState) => state.user);
 
   const handleSubmit =  () => {
     if (email !== "" && password !== "") {

@@ -30,8 +30,6 @@ const initialState: Car  = {
     }
 };
 
-
-
 type Payload = {
   type: string;
   payload: Car;

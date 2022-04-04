@@ -10,6 +10,7 @@ import UserValidateReducer from './UserValidateReducer';
 import UserAddReducer from './UserAddReducer';
 import UserUpdateReducer from './UserUpdateReducer';
 import UserDeleteByIdReducer from './UserDeleteByIdReducer';
+import UserReducer from './UserReducer'
 
 export const reducers = combineReducers({
     cars: CarsReducer,
@@ -18,6 +19,7 @@ export const reducers = combineReducers({
     carById:CarByIdReducer,
     carDeleteById: CarDeleteByIdReducer,
     carAdd: CarAddReducer,
+    user: UserReducer,
     userById: UserByIdReducer,
     userValidate: UserValidateReducer,
     userAdd: UserAddReducer,

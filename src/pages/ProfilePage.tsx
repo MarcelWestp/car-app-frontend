@@ -16,7 +16,7 @@ const ProfilePage = () => {
       dispatch
     );
   
-    const userById = useSelector((state: RootState) => state.userById);
+    const userById = useSelector((state: RootState) => state.user);
   
     React.useEffect(() => {
       getUserById(Number(id));
