@@ -17,6 +17,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import { useSelector } from "react-redux"
+import { RootState } from './../../state/reducers/index'
 
 import oldtimer from "./../../res/img/cartypes/oldtimer.jpeg";
 import luxury from "./../../res/img/cartypes/luxury.jpeg";
@@ -24,6 +26,7 @@ import sport from "./../../res/img/cartypes/sport.jpeg";
 import suv from "./../../res/img/cartypes/suv.jpeg";
 
 const handleDragStart = (e: any) => e.preventDefault();
+
 const items = [
   <div>
     <img
@@ -63,6 +66,8 @@ const items = [
   </div>,
 ];
 
+// const items:any = string[];
+
 const responsive = {
   0: { items: 1 },
   1600: { items: 2 },
@@ -96,21 +101,22 @@ const HostACar = () => {
     setOpen(false);
   };
 
-  const [make, setMake] = useState("");
-  const [model, setModel] = useState("");
-  const [type, setType] = useState("");
-  const [year, setYear] = useState("");
-  const [fuel, setFuel] = useState("");
-  const [seats, setSeats] = useState("");
-  const [doors, setDoors] = useState("");
-  const [hp, setHp] = useState("");
-  const [transmission, setTransmission] = useState("");
-  const [pricePerDay, setPricePerDay] = useState("");
-  const [distancePerDay, setDistancePerDay] = useState("");
-  const [street, setStreet] = useState("");
-  const [number, setNumber] = useState("");
-  const [city, setCity] = useState("");
-  const [zip, setZip] = useState("");
+  const [make, setMake] = useState("Nizza");
+  const [model, setModel] = useState("Salat");
+  const [type, setType] = useState("Van");
+  const [year, setYear] = useState("1986");
+  const [fuelType, setFuel] = useState("Petrol");
+  const [seats, setSeats] = useState("2");
+  const [doors, setDoors] = useState("3");
+  const [hp, setHp] = useState("126");
+  const [transmission, setTransmission] = useState("Automatic");
+  const [pricePerDay, setPricePerDay] = useState("12");
+  const [distancePerDay, setDistancePerDay] = useState("144");
+  const [street, setStreet] = useState("dorfstraße 11");
+  const [number, setNumber] = useState("12");
+  const [city, setCity] = useState("wob");
+  const [zip, setZip] = useState("1586");
+  const [description, setDescription] = useState("WAS EIN GEILES CAR!");
 
   const handleChangeHandler = (
     event: SelectChangeEvent | React.ChangeEvent<HTMLInputElement>,
@@ -119,12 +125,92 @@ const HostACar = () => {
     setter(event.target.value as string);
   };
 
-  const [features,setFeatures] = useState<string[]>([]);
-  const [guidelines,setGuidelines] = useState<string[]>([]);
+  const [features, setFeatures] = useState<string[]>([]);
+  const [guidelines, setGuidelines] = useState<string[]>([]);
 
-  const multihandler = (value: string[],setter:React.Dispatch<React.SetStateAction<string[]>>) =>{
+  const multihandler = (
+    value: string[],
+    setter: React.Dispatch<React.SetStateAction<string[]>>
+  ) => {
     setter(value);
+  };
+
+  const user = useSelector((state: RootState) => state.user);
+
+  const handleSubmit = () => {
+    if (
+      make !== "" ||
+      model !== "" ||
+      type !== "" ||
+      year !== "" ||
+      fuelType !== "" ||
+      seats !== "" ||
+      doors !== "" ||
+      hp !== "" ||
+      transmission !== "" ||
+      pricePerDay !== "" ||
+      distancePerDay !== "" ||
+      street !== "" ||
+      number !== "" ||
+      city !== "" ||
+      zip !== ""
+    ) {
+      let addCar: any = {
+        hostUserId: user.id,
+        make,
+        model,
+        type,
+        year: Number(year),
+        details:{
+          fuelType,
+          seats: Number(seats),
+          doors: Number(doors),
+          hp: Number(hp),
+          transmission
+        },
+        features,
+        description,
+        guidelines,
+        ratings: [],
+        pricePerDay: Number(pricePerDay),
+        distancePerDay: Number(distancePerDay),
+        bookings: [],
+        address:{
+          street,
+          number,
+          city,
+          zip: Number(zip)
+        }
+      }
+      postCar(addCar)
+    }
+  };
+
+  async function postCar<Car>(carToPost: Car): Promise<Car | undefined > {
+    console.log(carToPost)
+    try {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/car`, {
+        method: "POST",
+        body: JSON.stringify(carToPost),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const carResponse = await response.json();
+      console.log(carResponse)
+      return carResponse;
+    } catch (e) {}
+  };
+
+  const [images,setImages] = React.useState<string>("");
+
+  const inputHandler = (value:string) => {
+    console.log("IM HANDLER")
+    setImages(value);
+    console.log(images)
   }
+
 
   return (
     <Box style={{ margin: "20px 20%", maxWidth: 800 }}>
@@ -139,7 +225,7 @@ const HostACar = () => {
           disableDotsControls={true}
         />
         <label htmlFor="icon-button-file">
-          <Input accept="image/*" id="icon-button-file" type="file" />
+          <Input id="icon-button-file" type="file" value={images} onChange={(e) => inputHandler(e.target.value as string)} />
           <IconButton
             color="primary"
             aria-label="upload picture"
@@ -210,7 +296,7 @@ const HostACar = () => {
         <Select
           labelId="fuel"
           id="fuel"
-          value={fuel}
+          value={fuelType}
           onChange={(event: SelectChangeEvent) =>
             handleChangeHandler(event, setFuel)
           }
@@ -272,7 +358,9 @@ const HostACar = () => {
           <Autocomplete
             multiple
             id="tags-filled"
-            onChange={(event:any,value:string[]) => multihandler(value,setFeatures)}
+            onChange={(event: any, value: string[]) =>
+              multihandler(value, setFeatures)
+            }
             options={featuresArray.map((feature) => feature)}
             freeSolo
             renderTags={(value: readonly string[], getTagProps) =>
@@ -286,9 +374,9 @@ const HostACar = () => {
             }
             renderInput={(params) => (
               <TextField
-              {...params}
-              variant="standard"
-              placeholder="Features"
+                {...params}
+                variant="standard"
+                placeholder="Features"
               />
             )}
           />
@@ -319,7 +407,9 @@ const HostACar = () => {
         <Grid item xs={8} style={{ marginTop: 15 }}>
           <Autocomplete
             multiple
-            onChange={(event:any,value:string[]) => multihandler(value,setGuidelines)}
+            onChange={(event: any, value: string[]) =>
+              multihandler(value, setGuidelines)
+            }
             id="tags-filled"
             options={guidelinesArray.map((guideline) => guideline)}
             freeSolo
@@ -413,7 +503,7 @@ const HostACar = () => {
           }
         />
         <p></p>
-        <Button style={{ marginTop: 20, height: 40 }} variant="contained">
+        <Button style={{ marginTop: 20, height: 40 }} variant="contained" onClick={handleSubmit}>
           <h2>Continue</h2>
         </Button>
       </Box>
