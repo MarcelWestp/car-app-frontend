@@ -41,7 +41,7 @@ const LoginForm = () => {
 
   React.useEffect(() => {
     if (userValidate.id !== 0) {
-      navigate(`/profile/${userValidate.id}`);
+      navigate(`/profile`);
     }
   }, [userValidate]);
 

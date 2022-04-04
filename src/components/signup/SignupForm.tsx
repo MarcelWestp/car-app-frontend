@@ -19,6 +19,8 @@ import { bindActionCreators } from 'redux'
 import { actionCreators } from "./../../state/index"
 import { RootState } from './../../state/reducers/index'
 import { format } from 'date-fns'
+import { useNavigate, } from "react-router-dom";
+
 
 const theme = createTheme();
 
@@ -39,7 +41,15 @@ const Signup = () => {
   const dispatch = useDispatch();
   const { postUser } = bindActionCreators(actionCreators, dispatch);
 
-  // const user = useSelector((state: RootState) => state.user);
+  const user = useSelector((state: RootState) => state.user);
+
+  let navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (user.id !== 0) {
+      navigate(`/profile`)
+    }
+  }, [user]);
 
   const handleSubmit = () => {
     if (userName !== "" || email !== "" || password !== "" ||

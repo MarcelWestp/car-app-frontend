@@ -1,31 +1,14 @@
 import React from "react";
 import Profil from "../components/profil/Profile";
-import { useSelector, useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-import { useParams } from "react-router-dom";
-import { actionCreators } from "../state/index";
+import { useSelector } from "react-redux";
 import { RootState } from "../state/reducers/index";
 
-
 const ProfilePage = () => {
-  
-  const dispatch = useDispatch();
-    const { id } = useParams();
-    const { getUserById } = bindActionCreators(
-      actionCreators,
-      dispatch
-    );
-  
-    const userById = useSelector((state: RootState) => state.user);
-  
-    React.useEffect(() => {
-      getUserById(Number(id));
-    }, []);
-
+  const user = useSelector((state: RootState) => state.user);
 
   return (
     <div>
-      <Profil user={userById} />
+      <Profil user={user} />
     </div>
   );
 };
