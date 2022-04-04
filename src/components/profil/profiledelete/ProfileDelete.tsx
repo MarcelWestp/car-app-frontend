@@ -3,6 +3,7 @@ import User from './../../../models/User'
 import TextField from '@mui/material/TextField';
 import Box from "@mui/material/Box";
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 const ProfileDelete = ({ user }: { user: User }) => {
 
@@ -18,8 +19,12 @@ const ProfileDelete = ({ user }: { user: User }) => {
     <Box sx={{ display: 'flex' }}>
       <Box sx={{ flexGrow: 1 }} />
       <Box sx={{ marginTop: 2, }}>
-        <p>Are you sure you want to delete this profile?</p>
-        <p>Confrim with yout password to delete this profile.</p>
+        <Typography component="p" variant="body2">
+          Are you sure you want to delete this profile?
+        </Typography>
+        <Typography component="p" variant="body2">
+          Confrim with yout password to delete this profile.
+        </Typography>
         <Box
           sx={{
             display: "grid",
@@ -28,7 +33,9 @@ const ProfileDelete = ({ user }: { user: User }) => {
             marginTop: 2,
           }}
         >
-          <p>Username:</p>
+          <Typography component="p" variant="body2">
+            Username:
+          </Typography>
           <TextField
             required
             fullWidth
@@ -38,7 +45,9 @@ const ProfileDelete = ({ user }: { user: User }) => {
             id="username"
             value={user.userName}
           />
-          <p>Password:</p>
+          <Typography component="p" variant="body2">
+            Password:
+          </Typography>
           <TextField
             required
             fullWidth
@@ -51,8 +60,8 @@ const ProfileDelete = ({ user }: { user: User }) => {
           />
           <Box sx={{ gridColumn: 2 }}>
             <Button
-            variant="contained"
-            disabled={password !== user.password}
+              variant="contained"
+              disabled={password !== user.password}
             >
               Confirm
             </Button>
