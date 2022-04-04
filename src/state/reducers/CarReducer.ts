@@ -13,7 +13,14 @@ const reducer = (state = initialState, action: Payload) => {
       return [...action.payload];
     case "delteCarById":
       return action.payload;
-   
+    case "postCar":
+      return action.payload;
+    case "getCarById":
+      return action.payload;
+    case "getAllCarsByCity":
+      return [...action.payload];
+      case "getAllCars":
+        return [...action.payload];
     default:
       return state;
   }

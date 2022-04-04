@@ -9,7 +9,7 @@ const CheckoutPage =() => {
 
   const dispatch = useDispatch();
   const { getAllCars } = bindActionCreators(actionCreators, dispatch);
-  const cars = useSelector((state: RootState) => state.cars);
+  const cars = useSelector((state: RootState) => state.car);
 
   React.useEffect( () => {
     getAllCars()
