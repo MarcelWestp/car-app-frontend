@@ -79,54 +79,54 @@ const NewHeader = () => {
                                 <Box sx={{ width: 50, height: 50 }}>
                                     <img src={Logo} alt="Logo" />
                                 </Box>
-                                <h1>
-                                    <span>C</span>ar<span>D</span>ealer
-                                </h1>
+                                <Typography component="h2" variant="h2">
+                                    CarDealer
+                                </Typography>
                             </Box>
                         </Link>
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                    {user === undefined &&
-                    <div>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'block', md: 'none' },
-                            }}
-                        >
-                                    {pages.map((page,index) => (
+                        {user === undefined &&
+                            <div>
+                                <IconButton
+                                    size="large"
+                                    aria-label="account of current user"
+                                    aria-controls="menu-appbar"
+                                    aria-haspopup="true"
+                                    onClick={handleOpenNavMenu}
+                                    color="inherit"
+                                >
+                                    <MenuIcon />
+                                </IconButton>
+                                <Menu
+                                    id="menu-appbar"
+                                    anchorEl={anchorElNav}
+                                    anchorOrigin={{
+                                        vertical: 'bottom',
+                                        horizontal: 'left',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'left',
+                                    }}
+                                    open={Boolean(anchorElNav)}
+                                    onClose={handleCloseNavMenu}
+                                    sx={{
+                                        display: { xs: 'block', md: 'none' },
+                                    }}
+                                >
+                                    {pages.map((page, index) => (
                                         <Link to={page.url} key={index} >
                                             <MenuItem key={page.title} onClick={handleCloseNavMenu}>
                                                 <Typography textAlign="center">{page.title}</Typography>
                                             </MenuItem>
                                         </Link>
                                     ))}
-                        </Menu>
-                        </div>
-                    }
+                                </Menu>
+                            </div>
+                        }
                     </Box>
                     <Typography
                         variant="h6"
@@ -139,16 +139,16 @@ const NewHeader = () => {
                                 <Box sx={{ width: 50, height: 50 }}>
                                     <img src={Logo} alt="Logo" />
                                 </Box>
-                                <h1>
-                                    <span>C</span>ar<span>D</span>ealer
-                                </h1>
+                                <Typography component="p" variant="body2">
+                                    CarDealer
+                                </Typography>
                             </Box>
                         </Link>
                     </Typography>
 
                     {user === undefined ?
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'right' }}>
-                            {pages.map((page,index) => (
+                            {pages.map((page, index) => (
                                 <Link to={page.url} key={index}>
                                     <Button
                                         key={page.title}
@@ -191,7 +191,7 @@ const NewHeader = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting,index) => (
+                            {settings.map((setting, index) => (
                                 <Link to={setting.url} key={index}>
                                     <MenuItem key={setting.title}>
                                         <Typography textAlign="center">{setting.title}</Typography>

@@ -94,38 +94,64 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
                   sx={{ width: 64, height: 64 }}
                 />
                 <Box>
-                  <p>{user.userName}</p>
-                  <p>{ratingSumUser.toFixed(1)} <StarIcon /></p>
+                  <Typography component="p" variant="body2">
+                    {user.userName}
+                  </Typography>
+                  <Typography component="p" variant="body2">
+                    {ratingSumUser.toFixed(1)} <StarIcon />
+                  </Typography>
                 </Box>
               </Box>
             </Box>
             <Box sx={{}}>
-              <h3>Description</h3>
-              <p>{car.description}</p>
+              <Typography component="h3" variant="h3">
+                Description
+              </Typography>
+              <Typography component="p" variant="body2">
+                {car.description}
+              </Typography>
             </Box>
             <Box sx={{}}>
-              <h3>Features</h3>
+              <Typography component="h3" variant="h3">
+                Features
+              </Typography>
               <Box sx={{
                 display: 'grid',
                 gap: 3,
                 gridTemplateColumns: 'repeat(2, 1fr)'
               }}>
-                {car.features.map((feature) => <p>{feature}</p>)}
+                {car.features.map((feature) => <Typography component="p" variant="body2">
+                  {feature}
+                </Typography>)}
               </Box>
             </Box>
             <Box sx={{}}>
-              <h3>Guidelines</h3>
-              {car.guidelines.map((guidelines) => <p>- {guidelines}</p>)}
+              <Typography component="h3" variant="h3">
+                Guidelines
+              </Typography>
+              {car.guidelines.map((guidelines) => <Typography component="p" variant="body2">
+                - {guidelines}
+              </Typography>)}
             </Box>
             <Box sx={{}}>
-              <h3>Ratings and reviews</h3>
-              <h4>{ratingSumCar.toFixed(1)} <StarIcon /></h4>
-              <h5>({car.ratings.length} Ratings)</h5>
+              <Typography component="h3" variant="h3">
+                Ratings and reviews
+              </Typography>
+              <Typography component="h4" variant="h4">
+                {ratingSumCar.toFixed(1)} <StarIcon />
+              </Typography>
+              <Typography component="h5" variant="h5">
+                ({car.ratings.length} Ratings)
+              </Typography>
               {car.ratings.map((rating) =>
                 <Box sx={{}}>
                   <Rating name="read-only" value={rating.rating} readOnly />
-                  <h6>{rating.author}  <span style={{ fontStyle: "italic", color: "grey" }}>{rating.date}</span></h6>
-                  <p>{rating.text}</p>
+                  <Typography component="h6" variant="h6">
+                    {rating.author}  <span style={{ fontStyle: "italic", color: "grey" }}>{rating.date}</span>
+                  </Typography>
+                  <Typography component="p" variant="body2">
+                    {rating.text}
+                  </Typography>
                 </Box>)}
             </Box>
           </Box>

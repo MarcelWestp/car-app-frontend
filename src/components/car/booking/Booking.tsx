@@ -3,6 +3,7 @@ import Car from "../../../models/Car";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import DateRangePicker, { DateRange } from '@mui/lab/DateRangePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -23,8 +24,12 @@ const Booking = ({ car }: { car: Car }) => {
                     gap: 3,
                     gridTemplateColumns: 'repeat(2, 1fr)',
                 }}>
-                    <h3>$ {car.pricePerDay} / Day</h3>
-                    <h3>$ {estimatedPrice} est. total</h3>
+                    <Typography component="h3" variant="h3">
+                        $ {car.pricePerDay} / Day
+                    </Typography>
+                    <Typography component="h3" variant="h3">
+                        $ {estimatedPrice} est. total
+                    </Typography>
                 </Box>
                 <Box sx={{ marginTop: 3 }}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -46,8 +51,12 @@ const Booking = ({ car }: { car: Car }) => {
                     </LocalizationProvider>
                 </Box>
                 <Box sx={{ marginTop: 2 }}>
-                    <h4>Pick up & return Location</h4>
-                    <p>{car.address.zip} {car.address.city}, {car.address.street} {car.address.number}</p>
+                    <Typography component="h4" variant="h4">
+                        Pick up & return Location
+                    </Typography>
+                    <Typography component="p" variant="body2">
+                        {car.address.zip} {car.address.city}, {car.address.street} {car.address.number}
+                    </Typography>
                 </Box>
                 <Link to="/checkout">
                     <Button
@@ -58,7 +67,9 @@ const Booking = ({ car }: { car: Car }) => {
                     </Button>
                 </Link>
                 <Box sx={{ marginTop: 2 }}>
-                    <p>Distance included per day: {car.distancePerDay} miles</p>
+                    <Typography component="h3" variant="h3">
+                        Distance included per day: {car.distancePerDay} miles
+                    </Typography>
                     <span style={{ fontSize: 10, color: 'grey' }}>$2 / mi fee for additional miles driven</span>
                 </Box>
             </Box>
