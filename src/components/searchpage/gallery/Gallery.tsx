@@ -9,7 +9,7 @@ const Gallery = ({cars}:{cars:Car[]}) => (
             sx={{display: "grid", gridTemplateColumns: "repeat(4, 1fr)"}}
         >
             {cars.map((car, index) => (
-                <Link to={`/car/${car.id}`} target="_blank" key={index}>
+                <Link to={`/car/${car.id}`} target="_blank" key={index} style={{ textDecoration: 'none' }}>
                     <CarCard key={car.id} car={car}/>
                 </Link>
             ))}

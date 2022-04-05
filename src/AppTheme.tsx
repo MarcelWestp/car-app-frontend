@@ -1,4 +1,4 @@
-import { createTheme, styled } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import Theme from './models/Theme'
 
 const AppTheme = createTheme({

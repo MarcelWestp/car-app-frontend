@@ -69,21 +69,21 @@ const NewHeader = () => {
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
-                        variant="h6"
+                        variant="body1"
                         noWrap
-                        component="div"
-                        sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                        component={Link}
+                        sx={{ mr: 2, display: { xs: 'none', md: 'flex' },  }}
+                        to="/"
+                        style={{ textDecoration: 'none', color: 'white',  }}
                     >
-                        <Link to="/" className="brand">
-                            <Box sx={{ display: 'flex' }}>
-                                <Box sx={{ width: 50, height: 50 }}>
-                                    <img src={Logo} alt="Logo" />
-                                </Box>
-                                <Typography component="h2" variant="h2">
-                                    CarDealer
-                                </Typography>
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <Box sx={{ width: 50, height: 50, display: 'flex', marginRight: "5px" }}>
+                                <img src={Logo} alt="Logo" />
                             </Box>
-                        </Link>
+                            <Typography component="h1" variant="h1">
+                                CarToGo
+                            </Typography>
+                        </Box>
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -118,7 +118,7 @@ const NewHeader = () => {
                                     }}
                                 >
                                     {pages.map((page, index) => (
-                                        <Link to={page.url} key={index} >
+                                        <Link to={page.url} key={index} style={{ textDecoration: 'none' }} >
                                             <MenuItem key={page.title} onClick={handleCloseNavMenu}>
                                                 <Typography textAlign="center">{page.title}</Typography>
                                             </MenuItem>
@@ -129,27 +129,27 @@ const NewHeader = () => {
                         }
                     </Box>
                     <Typography
-                        variant="h6"
+                        variant="body1"
                         noWrap
-                        component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', bgcolor: "primary.light" } }}
+                        component={Link}
+                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+                        to="/"
+                        style={{ textDecoration: 'none', color: 'white' }}
                     >
-                        <Link to="/" className="brand">
-                            <Box sx={{ display: 'flex' }}>
-                                <Box sx={{ width: 50, height: 50 }}>
-                                    <img src={Logo} alt="Logo" />
-                                </Box>
-                                <Typography component="p" variant="body2">
-                                    CarDealer
-                                </Typography>
+                        <Box sx={{ display: 'flex', alignItems: 'center', }}>
+                            <Box sx={{ width: 50, height: 50 }}>
+                                <img src={Logo} alt="Logo" />
                             </Box>
-                        </Link>
+                            <Typography component="h1" variant="h1">
+                                CarToGo
+                            </Typography>
+                        </Box>
                     </Typography>
 
                     {user === undefined ?
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'right' }}>
                             {pages.map((page, index) => (
-                                <Link to={page.url} key={index}>
+                                <Link to={page.url} key={index} style={{ textDecoration: 'none' }} >
                                     <Button
                                         key={page.title}
                                         sx={{ my: 2, color: 'white', display: 'block' }}
@@ -161,7 +161,7 @@ const NewHeader = () => {
                         </Box>
                         :
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'right', marginRight: 6 }}>
-                            <Link to={settings[1].url} >
+                            <Link to={settings[1].url} style={{ textDecoration: 'none' }} >
                                 <Button
                                     key={settings[1].title}
                                     sx={{ my: 2, color: 'white', display: 'block' }}
@@ -192,7 +192,7 @@ const NewHeader = () => {
                             onClose={handleCloseUserMenu}
                         >
                             {settings.map((setting, index) => (
-                                <Link to={setting.url} key={index}>
+                                <Link to={setting.url} key={index} style={{ textDecoration: 'none' }} >
                                     <MenuItem key={setting.title}>
                                         <Typography textAlign="center">{setting.title}</Typography>
                                     </MenuItem>
@@ -200,7 +200,6 @@ const NewHeader = () => {
                             ))}
                         </Menu>
                     </Box>}
-
                 </Toolbar>
             </Container>
         </AppBar>

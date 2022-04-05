@@ -17,7 +17,7 @@ const Searchpage = () => {
   },[]);
 
   return (
-    <div style={{margin:"50px 10%"}}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 0', minHeight: '82vh'}}>
       <Searchbar />
       <FiltersBar />
       <Gallery cars={cars} />

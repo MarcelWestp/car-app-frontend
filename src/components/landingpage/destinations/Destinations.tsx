@@ -44,17 +44,11 @@ const images = [
   }
 ]
 
-const responsive = {
-  0: { items: 1 },
-  1224: { items: 2 },
-  1600: { items: 4 },
-};
-
 const Destinations = () => {
   return (
     <div id="destinations">
       <Typography component="h3" variant="h3">
-        <h3>Your next Destination:</h3>
+        Your next Destination:
       </Typography>
       <Carousel images={images} doubleImg={true} />
     </div>

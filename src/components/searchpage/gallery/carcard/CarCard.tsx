@@ -24,11 +24,11 @@ const CarCard = ({car} : {car: Car}) => {
           <Typography gutterBottom variant="h4" component="div">
           {`${car.make} ${car.model} ${car.year}`}
           </Typography>
-          <Typography gutterBottom variant="h5" component="div">
-          {ratingSum.toFixed(1)}<StarIcon />
+          <Typography gutterBottom variant="h5" component="div" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end'}}>
+          {ratingSum.toFixed(1)}<StarIcon color="primary" />
           </Typography>
           <Typography variant="h5" color="text.secondary">
-            {`this car cost $${car.pricePerDay} per Day`}
+            {`$${car.pricePerDay} per Day`}
           </Typography>
         </CardContent>
       </CardActionArea>

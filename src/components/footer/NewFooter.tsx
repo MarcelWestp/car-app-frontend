@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
 
 const NewFooter = () => (
-    <AppBar position="static" color="primary" sx={{ top: 'auto', bottom: 0 }}>
+    <AppBar position="static" color="transparent" sx={{ top: 'auto', bottom: 0 }}>
         <Toolbar>
             <Box sx={{ display: 'flex' }}>
                 <Typography
@@ -13,28 +13,24 @@ const NewFooter = () => (
                     noWrap
                     component="h1"
                 >
-                    CarDealer
+                    CarToGo
                 </Typography>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ marginRight: 2 }}>
-                <Typography component="h4" variant="h4">
-                    <Link to={"#"}>
+                <Typography component={Link} variant="h4" to={"#"} style={{ textDecoration: 'none', color: "black"}}>
                         Terms
-                    </Link>
                 </Typography>
             </Box>
             <Box>
-                <Typography component="h4" variant="h4">
-                    <Link to={"#"}>
+                <Typography component={Link} variant="h4" to={"#"} style={{ textDecoration: 'none', color: "black"}}>
                         About us
-                    </Link>
                 </Typography>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
             <Box>
                 <Typography component="p" variant="body2">
-                    &copy; {new Date().toLocaleString().substring(6, 10)} Cardealer
+                    &copy; {new Date().toLocaleString().substring(6, 10)} CarToGo
                 </Typography>
 
             </Box>

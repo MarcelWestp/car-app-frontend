@@ -52,11 +52,10 @@ const SearchBarNew = () => {
             <IconButton
               color="primary"
               aria-label="upload picture"
-              component="span"
+              component={Link}
+              to='/search'
             >
-              <Link to="/search">
                 <SearchIcon />
-              </Link>
             </IconButton>
           </Toolbar>
         </Container>

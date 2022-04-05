@@ -23,7 +23,7 @@ const ProfileDelete = ({ user }: { user: User }) => {
           Are you sure you want to delete this profile?
         </Typography>
         <Typography component="p" variant="body2">
-          Confrim with yout password to delete this profile.
+          Confrim with your password to delete this profile.
         </Typography>
         <Box
           sx={{

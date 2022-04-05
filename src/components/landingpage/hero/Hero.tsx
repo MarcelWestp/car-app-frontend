@@ -5,8 +5,9 @@ import "./hero.css"
 const Hero = () => {
   return (
     <div id="hero">
-      {/* <Searchbar/> */}
+      <div style={{ display: 'flex', justifyContent: 'center'}}>
       <NewSearchbar />
+      </div>
       <div className="title">
         <Typography component="h1" variant="h1">
           Search for a new Adventure?

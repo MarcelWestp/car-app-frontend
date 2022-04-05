@@ -19,7 +19,7 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
         },
         '& .MuiTypography-root': {
             border: '4px solid currentColor',
-            backgroundColor: theme.palette.common.black,
+            backgroundColor: '#02A676'
         },
     },
 }));
