@@ -13,7 +13,7 @@ const ProfileDetail = ({ user }: { user: User }) => {
       <Box sx={{ marginTop: 2, marginLeft: 5 }}>
         <Avatar
           alt="Mustermann"
-          src={portrait}
+          src={`data:${user.image.contentType};base64,${user.image.content.data}`}
           sx={{ width: 128, height: 128 }}
         />
         <Box

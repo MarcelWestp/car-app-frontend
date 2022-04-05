@@ -129,7 +129,7 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
                 }}>
                   <Avatar
                     alt={user.userName}
-                    src={user.image.content.data}
+                    src={`data:${user.image.contentType};base64,${user.image.content.data}`}
                     sx={{ width: 128, height: 128 }}
                   />
                   <Box sx={{
