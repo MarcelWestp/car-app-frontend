@@ -207,10 +207,6 @@ const HostACar = () => {
 
   const [input, setInput] = React.useState<any>();
   const [image, setImage] = React.useState<any>();
-  // const [userInfo, setuserInfo] = useState({
-  //   file: [],
-  //   filepreview: "",
-  // });
   const [userInfo, setuserInfo] = useState<any>("");
 
   const inputHandler = (e: any) => {
