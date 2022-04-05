@@ -1,15 +1,15 @@
 import React from "react";
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import { Circle, GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { Marker } from "@react-google-maps/api";
 
 const googleMapsApiKey = 'AIzaSyCyH9tROtDKihy8Pl6fuV4s7VBI0GVL2c8'
 
 const containerStyle = {
-  width: "90%",
-  height: "230px",
+  width: "100%",
+  height: "400px",
 };
 
-const CarMap = ({address}) => {
+const CarMap = ({ address }) => {
   const [position, setPositon] = React.useState();
 
   React.useEffect(() => {
@@ -17,7 +17,7 @@ const CarMap = ({address}) => {
       await getGeocodeAddress(address.street + " " + address.number + ", " + address.city);
     };
     load();
-  }, []);
+  }, [address]);
 
   const getGeocodeAddress = async (address) => {
     const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${googleMapsApiKey}`;
@@ -38,7 +38,7 @@ const CarMap = ({address}) => {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={position}
-        zoom={11}
+        zoom={16}
         options={{ disableDefaultUI: true, zoomControl: true }}
       >
         <Marker position={position} />

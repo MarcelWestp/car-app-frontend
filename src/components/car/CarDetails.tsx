@@ -25,7 +25,7 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
   let ratingSumUser: number = user.ratings.length === 0 ? 0 : (user.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0) / user.ratings.length);
 
   const getImages = () =>
-    car.images.map((img,index) => (
+    car.images.map((img, index) => (
       <img
         src={`data:${img.contentType};base64,${img.content.data}`}
         alt={car.model}
@@ -54,9 +54,9 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
         disableDotsControls={true}
         infinite={true}
       />
-      <div style={{ margin: "auto", width: '70%' }}>
+      <div style={{ margin: "auto", width: '80%' }}>
         <div>
-          <Typography component="h1" variant="h1" mt={8}>
+          <Typography component="h1" variant="h1" mt={6}>
             {car.make} {car.model} {car.year}
           </Typography>
           <Typography component="h2" variant="h2" mt={1}>
@@ -66,7 +66,8 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
         <div className="box">
           <Box sx={{
             display: 'grid',
-            gap: 3,
+            gap: 20,
+            justifyItems: "stretch",
             gridTemplateColumns: 'repeat(2, 1fr)',
           }}>
             <Box>
@@ -103,15 +104,15 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
                 </Typography>
               </Box>
               <Box sx={{}}>
-                <Typography component="h3" variant="h3" mt={6}>
+                <Typography component="h3" variant="h3" mt={6} mb={2}>
                   FEATURES
                 </Typography>
                 <Box sx={{
                   display: 'grid',
-                  gap: 3,
+                  gap: "20px",
                   gridTemplateColumns: 'repeat(2, 1fr)'
                 }}>
-                  {car.features.map((feature, index) => <Typography component="p" variant="body2" mt={2} key={index}>
+                  {car.features.map((feature, index) => <Typography component="p" variant="body2" key={index}>
                     {feature}
                   </Typography>)}
                 </Box>
@@ -125,7 +126,6 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
                   gap: 2,
                   gridTemplateColumns: 'repeat(2, 1fr)',
                   marginTop: 2,
-                  marginBottom: 5
                 }}>
                   <Avatar
                     alt={user.userName}
@@ -135,55 +135,57 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
                   <Box sx={{
                     marginTop: 3,
                   }}>
-                    <Typography component="h2" variant="h2">
+                    <Typography component="h2" sx={{ fontSize: 24, fontWeight: 400 }} variant="h2">
                       {user.userName}
                     </Typography>
-                    <Typography component="p" variant="body2">
+                    <Typography component="p" sx={{ fontSize: 24, fontWeight: 200 }} variant="body2">
                       {ratingSumUser.toFixed(1)} <StarIcon color="primary" />
                     </Typography>
                   </Box>
                 </Box>
               </Box>
-              <Box sx={{}}>
-                <Typography component="h3" variant="h3" mt={6} mb={2}>
-                  GUIDELINES
-                </Typography>
-                {car.guidelines.map((guidelines, index) => <Typography component="p" variant="body2" mt={1} key={index}>
-                  &#9675; {guidelines}
-                </Typography>)}
-              </Box>
-              <Box sx={{}}>
-                <Typography component="h3" variant="h3" mt={6} mb={3}>
-                  LOCATION
-                </Typography>
-                <CarMap address={car.address}/>
-              </Box>
-              <Box sx={{ marginBottom: 15 }}>
-                <Typography component="h3" variant="h3" mt={6} mb={1}>
-                  RATINGS AND REVIEWS
-                </Typography>
-                <Typography component="h4" variant="h4">
-                  {ratingSumCar.toFixed(1)} <StarIcon color="primary" fontSize="large" />
-                </Typography>
-                <Typography component="p" variant="caption" color={theme.palette.grey[600]} mb={2}>
-                  ({car.ratings.length} Ratings)
-                </Typography>
-                {car.ratings.map((rating, index) =>
-                  <Box sx={{marginTop:2}} key={index}>
-                    <StyledRating name="read-only" value={rating.rating} readOnly />
-                    <Typography component="h6" variant="h6" >
-                      {rating.author}  <span style={{ fontStyle: "italic", color: "grey" }}>{rating.date}</span>
-                    </Typography>
-                    <Typography component="p" variant="body2" mt={1} mb={3}>
-                      {rating.text}
-                    </Typography>
-                    <hr></hr>
-                  </Box>)}
-              </Box>
             </Box>
-            <Box>
+            <Box sx={{
+              width: "90%"
+            }}>
               <Booking car={car} />
             </Box>
+          </Box>
+          <Box sx={{}}>
+            <Typography component="h3" variant="h3" mt={6} mb={2}>
+              GUIDELINES
+            </Typography>
+            {car.guidelines.map((guidelines, index) => <Typography component="p" variant="body2" mt={1} ml={2} key={index}>
+              &#9675; {guidelines}
+            </Typography>)}
+          </Box>
+          <Box sx={{}}>
+            <Typography component="h3" variant="h3" mt={6} mb={3}>
+              LOCATION
+            </Typography>
+            <CarMap address={car.address} />
+          </Box>
+          <Box sx={{ marginBottom: 15 }}>
+            <Typography component="h3" variant="h3" mt={6} mb={1}>
+              RATINGS AND REVIEWS
+            </Typography>
+            <Typography component="h4" variant="h4">
+              {ratingSumCar.toFixed(1)} <StarIcon color="primary" />
+            </Typography>
+            <Typography component="p" variant="caption" color={theme.palette.grey[600]} mb={2}>
+              ({car.ratings.length} Ratings)
+            </Typography>
+            {car.ratings.map((rating, index) =>
+              <Box sx={{ marginTop: 2 }} key={index}>
+                <StyledRating name="read-only" value={rating.rating} readOnly />
+                <Typography component="h6" variant="h6" >
+                  {rating.author}  <span style={{ fontWeight: 400, fontStyle: 'italic', color: "#898989" }}>{rating.date}</span>
+                </Typography>
+                <Typography component="p" variant="body2" mt={1} mb={3}>
+                  {rating.text}
+                </Typography>
+                <hr></hr>
+              </Box>)}
           </Box>
         </div>
       </div>
