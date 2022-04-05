@@ -207,10 +207,11 @@ const HostACar = () => {
 
   const [input, setInput] = React.useState<any>();
   const [image, setImage] = React.useState<any>();
-  const [userInfo, setuserInfo] = useState({
-    file: [],
-    filepreview: "",
-  });
+  // const [userInfo, setuserInfo] = useState({
+  //   file: [],
+  //   filepreview: "",
+  // });
+  const [userInfo, setuserInfo] = useState<any>("");
 
   const inputHandler = (e: any) => {
     let file = e.target.files[0];
@@ -218,18 +219,18 @@ const HostACar = () => {
     console.log(file)
     setuserInfo({
       ...userInfo,
-      file: e.target.files[0],
-      filepreview: URL.createObjectURL(e.target.files[0]),
+      file:e.target.files[0],
+      filepreview:URL.createObjectURL(e.target.files[0]),
     });
   };
 
   const imageUploader = async (id:number) => {
     const formdata = new FormData();
     formdata.append("file", image, image.name);
-    formdata.append("referenceId", `${id}`);
-    formdata.append("type", "CAR");
-    console.log(formdata);
-    postImage(formdata);
+      formdata.append("referenceId", `${id}`);
+      formdata.append("type", "CAR");
+      postImage(formdata);
+      console.log(formdata);
   };
 
   async function postImage(formdata: FormData): Promise<any | undefined> {
@@ -245,7 +246,9 @@ const HostACar = () => {
           redirect: "follow",
         }
       );
-      console.log("UPLOAD COMPLETE")
+      if(response.status === 200){
+        console.log("UPLOAD COMPLETE")
+      }
     } catch (e) {
       console.log(e)
     }
@@ -263,7 +266,7 @@ const HostACar = () => {
           infinite={true}
           disableDotsControls={true}
         /> */}
-        {userInfo.filepreview !== "" ? (
+        {userInfo !== "" ? (
           <img
             className="previewimg"
             src={userInfo.filepreview}
