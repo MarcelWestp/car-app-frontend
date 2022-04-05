@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import { styled } from "@mui/material/styles";
+import {styled} from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select, {SelectChangeEvent} from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Grid from "@mui/material/Grid";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -17,56 +17,49 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import { useSelector } from "react-redux";
-import { RootState } from "./../../state/reducers/index";
-
-import oldtimer from "./../../res/img/cartypes/oldtimer.jpeg";
-import luxury from "./../../res/img/cartypes/luxury.jpeg";
-import sport from "./../../res/img/cartypes/sport.jpeg";
-import suv from "./../../res/img/cartypes/suv.jpeg";
+import {useSelector} from "react-redux";
+import {RootState} from "./../../state/reducers/index";
 
 const handleDragStart = (e: any) => e.preventDefault();
 
-const items = [
-  <div>
-    <img
-      src={oldtimer}
-      alt="classic-car"
-      onDragStart={handleDragStart}
-      role="presentation"
-    />
-    <h2>Classic car</h2>
-  </div>,
-  <div>
-    <img
-      src={luxury}
-      alt="luxury-car"
-      onDragStart={handleDragStart}
-      role="presentation"
-    />
-    <h2>Luxury</h2>
-  </div>,
-  <div>
-    <img
-      src={sport}
-      alt="sport-car"
-      onDragStart={handleDragStart}
-      role="presentation"
-    />
-    <h2>Sport</h2>
-  </div>,
-  <div>
-    <img
-      src={suv}
-      alt="suv-car"
-      onDragStart={handleDragStart}
-      role="presentation"
-    />
-    <h2>Suv</h2>
-  </div>,
-];
-
-// const items:any = string[];
+// const items = [
+//   <div>
+//     <img
+//       src={oldtimer}
+//       alt="classic-car"
+//       onDragStart={handleDragStart}
+//       role="presentation"
+//     />
+//     <h2>Classic car</h2>
+//   </div>,
+//   <div>
+//     <img
+//       src={luxury}
+//       alt="luxury-car"
+//       onDragStart={handleDragStart}
+//       role="presentation"
+//     />
+//     <h2>Luxury</h2>
+//   </div>,
+//   <div>
+//     <img
+//       src={sport}
+//       alt="sport-car"
+//       onDragStart={handleDragStart}
+//       role="presentation"
+//     />
+//     <h2>Sport</h2>
+//   </div>,
+//   <div>
+//     <img
+//       src={suv}
+//       alt="suv-car"
+//       onDragStart={handleDragStart}
+//       role="presentation"
+//     />
+//     <h2>Suv</h2>
+//   </div>,
+// ];
 
 const responsive = {
   0: { items: 1 },
@@ -198,21 +191,35 @@ const HostACar = () => {
           Accept: "application/json",
         },
       });
-      const carResponse = await response.json();
-      return carResponse;
+      return await response.json();
     } catch (e) {
       console.log(e)
     }
   }
 
   const [input, setInput] = React.useState<any>();
-  const [image, setImage] = React.useState<any>();
+  const [images, setImages] = React.useState<any>([]);
   const [userInfo, setuserInfo] = useState<any>("");
 
   const inputHandler = (e: any) => {
-    let file = e.target.files[0];
-    setImage(file);
-    console.log(file)
+    console.log(images.length +"hallo inputhandler");
+    let fileWihtIterator = {
+      prop: e.target.files[0],
+      [Symbol.iterator]() {
+        let values = Object.values(this);
+        let index = 0;
+        return {
+          next() {
+            if (index < values.length) {
+              let val = values[index];
+              index++;
+              return {value: val, done: false};
+            } else return {done: true};
+          }
+        }
+      }
+    }
+    setImages((prev:any) => [...prev, fileWihtIterator]);
     setuserInfo({
       ...userInfo,
       file:e.target.files[0],
@@ -221,12 +228,15 @@ const HostACar = () => {
   };
 
   const imageUploader = async (id:number) => {
+
+   images.forEach((img:any) => {
     const formdata = new FormData();
-    formdata.append("file", image, image.name);
+    formdata.append("file", img.prop, img.prop.name);
       formdata.append("referenceId", `${id}`);
       formdata.append("type", "CAR");
       postImage(formdata);
       console.log(formdata);
+   })
   };
 
   async function postImage(formdata: FormData): Promise<any | undefined> {
@@ -249,32 +259,54 @@ const HostACar = () => {
       console.log(e)
     }
   }
+  const displayImage = () => {
+    console.log(images.length +"länge")
+    return images.length > 0 ? images.map((img:any) => {
+       console.log(img)
+      let imageInfo = {
+      ...userInfo,
+          file:img.prop,
+          filepreview:URL.createObjectURL(img.prop),
+      }
+      return (
+          <img
+              className="previewimg"
+              src={imageInfo.filepreview}
+              alt="UploadImage"
+          />
+      )
+    }):[ <img
+        className="previewimg"
+        src="https://via.placeholder.com/150"
+        alt="UploadImage"
+      />]
+  }
 
   return (
     <Box style={{ margin: "20px 20%", maxWidth: 800 }}>
       <h2>List your car</h2>
       <Box style={{ margin: "10px 0px 20px 0" }}>
-        {/* <AliceCarousel
+        { <AliceCarousel
           mouseTracking
-          items={displayAImage()}
+          items={displayImage()}
           responsive={responsive}
           disableButtonsControls={true}
           infinite={true}
           disableDotsControls={true}
-        /> */}
-        {userInfo !== "" ? (
-          <img
-            className="previewimg"
-            src={userInfo.filepreview}
-            alt="UploadImage"
-          />
-        ) : (
-          <img
-            className="previewimg"
-            src="https://via.placeholder.com/150"
-            alt="UploadImage"
-          />
-        )}
+        /> }
+        {/*{userInfo !== "" ? (*/}
+        {/*  <img*/}
+        {/*    className="previewimg"*/}
+        {/*    src={userInfo.filepreview}*/}
+        {/*    alt="UploadImage"*/}
+        {/*  />*/}
+        {/*) : (*/}
+        {/*  <img*/}
+        {/*    className="previewimg"*/}
+        {/*    src="https://via.placeholder.com/150"*/}
+        {/*    alt="UploadImage"*/}
+        {/*  />*/}
+        {/*)}*/}
         <label htmlFor="icon-button-file">
           <Input
             id="icon-button-file"
@@ -558,7 +590,7 @@ const HostACar = () => {
             handleChangeHandler(event, setZip)
           }
         />
-        <p></p>
+        <p> </p>
         <Button
           style={{ marginTop: 20, height: 40 }}
           variant="contained"
