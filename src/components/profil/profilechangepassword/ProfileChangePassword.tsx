@@ -23,64 +23,62 @@ const ProfileChangePassword = ({ user }: { user: User }) => {
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ marginTop: 2, }}>
                 <Typography component="p" variant="body2">
-                    Change your password
+                    Are you sure you want to delete this profile?
+                </Typography>
+                <Typography component="p" variant="body2">
+                    Confrim with your password to delete this profile.
                 </Typography>
                 <Box
                     sx={{
-                        display: "flex",
+                        display: "grid",
+                        gap: 3,
+                        gridTemplateColumns: "repeat(2, 1fr)",
                         marginTop: 2,
-                        flexDirection: 'column',
                     }}
                 >
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Typography component="p" variant="body2">
-                            Current password:
-                        </Typography>
-                        <TextField
-                            required
-                            fullWidth
-                            name="current-password"
-                            label="Current password"
-                            type="password"
-                            id="current-password"
-                            autoComplete="current-password"
-                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChangeHandler(event, setCurrentPassword)}
-                        />
-                    </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Typography component="p" variant="body2">
-                            New password:
-                        </Typography>
-                        <TextField
-                            required
-                            fullWidth
-                            name="new-password"
-                            label="New password"
-                            type="password"
-                            id="new-password"
-                            autoComplete="new-password"
-                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChangeHandler(event, setNewPassword)}
-                        />
-                    </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Typography component="p" variant="body2">
-                            Confirm password:
-                        </Typography>
-                        <TextField
-                            required
-                            fullWidth
-                            name="new-password-confirm"
-                            label="New password confirm"
-                            type="password"
-                            id="new-password-confrim"
-                            autoComplete="new-password"
-                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChangeHandler(event, setNewPasswordConfrim)}
-                        />
-                    </Box>
-                    <Box sx={{ }}>
+                    <Typography component="p" variant="body2">
+                        Current Password
+                    </Typography>
+                    <TextField
+                        required
+                        fullWidth
+                        name="current-password"
+                        label="Current Password"
+                        type="password"
+                        id="current-password"
+                        autoComplete="new-password"
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChangeHandler(event, setCurrentPassword)}
+                    />
+                    <Typography component="p" variant="body2">
+                        New Password
+                    </Typography>
+                    <TextField
+                        required
+                        fullWidth
+                        name="new-password"
+                        label="New password"
+                        type="password"
+                        id="new-password"
+                        autoComplete="new-password"
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChangeHandler(event, setNewPassword)}
+                    />
+                    <Typography component="p" variant="body2">
+                        Confrim password:
+                    </Typography>
+                    <TextField
+                        required
+                        fullWidth
+                        name="confrim-password"
+                        label="Confrim password"
+                        type="password"
+                        id="confrim-password"
+                        autoComplete="new-password"
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChangeHandler(event, setNewPasswordConfrim)}
+                    />
+                    <Box sx={{ gridColumn: 2 }}>
                         <Button
                             variant="contained"
-                            disabled={newPassword !== newPasswordConfrim}
+                            disabled={newPassword !== newPasswordConfrim || newPassword === ""}
                         >
                             Confirm
                         </Button>

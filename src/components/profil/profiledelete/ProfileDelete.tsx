@@ -28,7 +28,7 @@ const ProfileDelete = ({ user }: { user: User }) => {
         <Box
           sx={{
             display: "grid",
-            gap: 1,
+            gap: 3,
             gridTemplateColumns: "repeat(2, 1fr)",
             marginTop: 2,
           }}
