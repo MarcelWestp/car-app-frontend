@@ -17,8 +17,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import { useSelector } from "react-redux"
-import { RootState } from './../../state/reducers/index'
+import { useSelector } from "react-redux";
+import { RootState } from "./../../state/reducers/index";
 
 import oldtimer from "./../../res/img/cartypes/oldtimer.jpeg";
 import luxury from "./../../res/img/cartypes/luxury.jpeg";
@@ -137,7 +137,7 @@ const HostACar = () => {
 
   const user = useSelector((state: RootState) => state.user);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (
       make !== "" ||
       model !== "" ||
@@ -161,12 +161,12 @@ const HostACar = () => {
         model,
         type,
         year: Number(year),
-        details:{
+        details: {
           fuelType,
           seats: Number(seats),
           doors: Number(doors),
           hp: Number(hp),
-          transmission
+          transmission,
         },
         features,
         description,
@@ -175,19 +175,20 @@ const HostACar = () => {
         pricePerDay: Number(pricePerDay),
         distancePerDay: Number(distancePerDay),
         bookings: [],
-        address:{
+        address: {
           street,
           number,
           city,
-          zip: Number(zip)
-        }
-      }
-      postCar(addCar)
+          zip: Number(zip),
+        },
+      };
+      const responseCar = await postCar(addCar);
+      imageUploader(responseCar.id);
     }
   };
 
-  async function postCar<Car>(carToPost: Car): Promise<Car | undefined > {
-    console.log(carToPost)
+  async function postCar<Car>(carToPost: Car): Promise<Car | undefined> {
+    console.log(carToPost);
     try {
       const response = await fetch(`${process.env.REACT_APP_BASE_URL}/car`, {
         method: "POST",
@@ -198,52 +199,90 @@ const HostACar = () => {
         },
       });
       const carResponse = await response.json();
-      console.log(carResponse)
       return carResponse;
-    } catch (e) {}
-  };
-
-  const [images,setImages] = React.useState<string>("");
-
-  const inputHandler = (e:any) => {
-    let file = e.target.files[0];
-    const imageData = new FormData();
-    imageData.append('imageFile', file);
-    console.log(imageData);
-    postImage(imageData);
+    } catch (e) {
+      console.log(e)
+    }
   }
 
-  async function postImage(imageToPost: FormData): Promise<any | undefined > {
-    try {
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/file/image?referenceId=33&type=CAR&file=${imageToPost}`, {
-        method: "POST",
-        // body: JSON.stringify(imageToPost),
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      const carResponse = await response.json();
-      console.log(carResponse)
-      return carResponse;
-    } catch (e) {}
+  const [input, setInput] = React.useState<any>();
+  const [image, setImage] = React.useState<any>();
+  const [userInfo, setuserInfo] = useState({
+    file: [],
+    filepreview: "",
+  });
+
+  const inputHandler = (e: any) => {
+    let file = e.target.files[0];
+    setImage(file);
+    console.log(file)
+    setuserInfo({
+      ...userInfo,
+      file: e.target.files[0],
+      filepreview: URL.createObjectURL(e.target.files[0]),
+    });
   };
 
+  const imageUploader = async (id:number) => {
+    const formdata = new FormData();
+    formdata.append("file", image, image.name);
+    formdata.append("referenceId", `${id}`);
+    formdata.append("type", "CAR");
+    console.log(formdata);
+    postImage(formdata);
+  };
+
+  async function postImage(formdata: FormData): Promise<any | undefined> {
+    try {
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", "Basic Og==");
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/file/image`,
+        {
+          method: "POST",
+          headers: myHeaders,
+          body: formdata,
+          redirect: "follow",
+        }
+      );
+      console.log("UPLOAD COMPLETE")
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   return (
     <Box style={{ margin: "20px 20%", maxWidth: 800 }}>
       <h2>List your car</h2>
       <Box style={{ margin: "10px 0px 20px 0" }}>
-        <AliceCarousel
+        {/* <AliceCarousel
           mouseTracking
-          items={items}
+          items={displayAImage()}
           responsive={responsive}
           disableButtonsControls={true}
           infinite={true}
           disableDotsControls={true}
-        />
+        /> */}
+        {userInfo.filepreview !== "" ? (
+          <img
+            className="previewimg"
+            src={userInfo.filepreview}
+            alt="UploadImage"
+          />
+        ) : (
+          <img
+            className="previewimg"
+            src="https://via.placeholder.com/150"
+            alt="UploadImage"
+          />
+        )}
         <label htmlFor="icon-button-file">
-          <Input id="icon-button-file" type="file" value={images} onChange={(e) => inputHandler(e)} />
+          <Input
+            id="icon-button-file"
+            type="file"
+            value={input}
+            onChange={(e) => inputHandler(e)}
+          />
           <IconButton
             color="primary"
             aria-label="upload picture"
@@ -521,7 +560,11 @@ const HostACar = () => {
           }
         />
         <p></p>
-        <Button style={{ marginTop: 20, height: 40 }} variant="contained" onClick={handleSubmit}>
+        <Button
+          style={{ marginTop: 20, height: 40 }}
+          variant="contained"
+          onClick={handleSubmit}
+        >
           <h2>Continue</h2>
         </Button>
       </Box>
