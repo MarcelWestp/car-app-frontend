@@ -19,20 +19,23 @@ const Booking = ({ car }: { car: Car }) => {
 
     return (
         <div>
-            <Box sx={{}}>
+            <Box sx={{ float: 'right', }}>
                 <Box sx={{
                     display: 'grid',
                     gap: 3,
                     gridTemplateColumns: 'repeat(2, 1fr)',
                 }}>
-                    <Typography component="h3" variant="h3">
+                    <Typography component="h2" variant="h2">
                         $ {car.pricePerDay} / Day
                     </Typography>
-                    <Typography component="h3" variant="h3">
+                    <Typography component="h2" variant="h2">
                         $ {estimatedPrice} est. total
                     </Typography>
                 </Box>
-                <Box sx={{ marginTop: 3 }}>
+                <Box sx={{
+                    marginTop: 3,
+                    marginBottom: 3
+                }}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DateRangePicker
                             startText="From"
@@ -44,15 +47,19 @@ const Booking = ({ car }: { car: Car }) => {
                             renderInput={(startProps, endProps) => (
                                 <React.Fragment>
                                     <TextField {...startProps} />
-                                    <Box sx={{ mx: 2 }}>to</Box>
+                                    <Box sx={{ mx: 2 }}></Box>
                                     <TextField {...endProps} />
                                 </React.Fragment>
                             )}
                         />
                     </LocalizationProvider>
                 </Box>
-                <Box sx={{ marginTop: 2 }}>
-                    <Typography component="h4" variant="h4">
+                <hr style={{ borderTop: "1px solid grey" }}></hr>
+                <Box sx={{
+                    marginTop: 3, 
+                    marginBottom: 3
+                }}>
+                    <Typography component="h5" variant="h5">
                         <b>Pick up & return Location</b>
                     </Typography>
                     <Typography component="p" variant="body2">
@@ -63,12 +70,18 @@ const Booking = ({ car }: { car: Car }) => {
                     <Button
                         type="button"
                         variant="contained"
-                        sx={{ mt: 3, mb: 2, width: 350 }}>
+                        sx={{
+                            marginLeft: "20%",
+                            mb: 3,
+                            width: "60%",
+                            height: 40
+                        }}>
                         Continue
                     </Button>
                 </Link>
-                <Box sx={{ marginTop: 2 }}>
-                    <Typography component="h3" variant="h3">
+                <hr style={{ borderTop: "1px solid grey" }}></hr>
+                <Box sx={{ marginTop: 3 }}>
+                    <Typography component="p" variant="body2">
                         Distance included per day: {car.distancePerDay} miles
                     </Typography>
                     <Typography component="p" variant="caption" color={theme.palette.grey[600]}>
