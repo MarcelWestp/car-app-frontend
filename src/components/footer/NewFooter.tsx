@@ -5,37 +5,34 @@ import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
 
 const NewFooter = () => (
-    <AppBar position="static" color="primary" sx={{top: 'auto', bottom: 0}}>
+    <AppBar position="static" color="transparent" sx={{ top: 'auto', bottom: 0 }}>
         <Toolbar>
-            <Box sx={{display: 'flex'}}>
+            <Box sx={{ display: 'flex' }}>
                 <Typography
-                    variant="h6"
+                    variant="h1"
                     noWrap
-                    component="div"
+                    component="h1"
                 >
-                    <h1>
-                        <span>C</span>ar<span>D</span>ealer
-                    </h1>
+                    CarToGo
                 </Typography>
             </Box>
-            <Box sx={{flexGrow: 1}}/>
-            <Box sx={{marginRight: 2}}>
-                <Link to={"#"}>
-                    <h4 style={{color: 'white'}}>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ marginRight: 2 }}>
+                <Typography component={Link} variant="h4" to={"#"} style={{ textDecoration: 'none', color: "black"}}>
                         Terms
-                    </h4>
-                </Link>
+                </Typography>
             </Box>
             <Box>
-                <Link to={"#"}>
-                    <h4 style={{color: 'white'}}>
+                <Typography component={Link} variant="h4" to={"#"} style={{ textDecoration: 'none', color: "black"}}>
                         About us
-                    </h4>
-                </Link>
+                </Typography>
             </Box>
-            <Box sx={{flexGrow: 1}}/>
+            <Box sx={{ flexGrow: 1 }} />
             <Box>
-                <h3>&copy; {new Date().toLocaleString().substring(6, 10)} Cardealer</h3>
+                <Typography component="p" variant="body2">
+                    &copy; {new Date().toLocaleString().substring(6, 10)} CarToGo
+                </Typography>
+
             </Box>
         </Toolbar>
     </AppBar>

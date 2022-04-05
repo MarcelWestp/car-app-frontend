@@ -10,6 +10,7 @@ import User from "./../../../models/User";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
+import Typography from "@mui/material/Typography";
 
 const EditModal = ({ user }: { user: User }) => {
   const [open, setOpen] = React.useState(false);
@@ -40,21 +41,27 @@ const EditModal = ({ user }: { user: User }) => {
               marginTop: 2,
             }}
           >
-            <p>Firstname:</p>
+            <Typography component="p" variant="body2">
+              Firstname:
+            </Typography>
             <TextField
               required
               id="outlined-required"
               label="Firstname:"
               defaultValue={user.firstName}
             />
-            <p>Lastname:</p>
+            <Typography component="p" variant="body2">
+              Lastname:
+            </Typography>
             <TextField
               required
               id="outlined-required"
               label="Lastname:"
               defaultValue={user.lastName}
             />
-            <p>Birthdate:</p>
+            <Typography component="p" variant="body2">
+              Birthdate:
+            </Typography>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label="Birthdate"
@@ -65,30 +72,40 @@ const EditModal = ({ user }: { user: User }) => {
                 renderInput={(params) => <TextField {...params} />}
               />
             </LocalizationProvider>
-            <p>Adress:</p>
+            <Typography component="p" variant="body2">
+              Adress:
+            </Typography>
             <p></p>
-            <p>Steet:</p>
+            <Typography component="p" variant="body2">
+              Steet:
+            </Typography>
             <TextField
               required
               id="outlined-required"
               label="Street:"
               defaultValue={user.address.street}
             />
-            <p>Nr:</p>
+            <Typography component="p" variant="body2">
+              Nr:
+            </Typography>
             <TextField
               required
               id="outlined-required"
               label="Street:"
               defaultValue={user.address.number}
             />
-            <p>City:</p>
+            <Typography component="p" variant="body2">
+              City:
+            </Typography>
             <TextField
               required
               id="outlined-required"
               label="City:"
               defaultValue={user.address.city}
             />
-            <p>Zip:</p>
+            <Typography component="p" variant="body2">
+              Zip:
+            </Typography>
             <TextField
               required
               type="number"

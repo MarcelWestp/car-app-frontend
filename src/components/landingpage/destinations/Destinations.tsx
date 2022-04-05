@@ -9,6 +9,7 @@ import hannover from "./../../../res/img/destination/hannover.jpeg";
 import dresden from "./../../../res/img/destination/dresden.jpeg";
 import frankfurt from "./../../../res/img/destination/frankfurt.jpeg";
 import köln from "./../../../res/img/destination/köln.jpeg";
+import Typography from "@mui/material/Typography";
 
 const images = [
   {
@@ -43,16 +44,12 @@ const images = [
   }
 ]
 
-const responsive = {
-  0: { items: 1 },
-  1224: { items: 2 },
-  1600: { items: 4 },
-};
-
 const Destinations = () => {
   return (
     <div id="destinations">
-      <h3>Your next Destination:</h3>
+      <Typography component="h3" variant="h3">
+        Your next Destination:
+      </Typography>
       <Carousel images={images} doubleImg={true} />
     </div>
   );

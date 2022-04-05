@@ -4,6 +4,7 @@ import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import Typography from '@mui/material/Typography';
 
 const ProfileHostCars = ({ user }: { user: User }) => {
 
@@ -62,7 +63,9 @@ const ProfileHostCars = ({ user }: { user: User }) => {
         />
       </Container>
         :
-        <p>Host your own car and make people happy.</p>
+        <Typography component="p" variant="body2">
+          Host your own car and make people happy.
+        </Typography>
       }
     </div>
   )

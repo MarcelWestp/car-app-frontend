@@ -3,10 +3,12 @@ import Car from "../../../models/Car";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import DateRangePicker, { DateRange } from '@mui/lab/DateRangePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { Link } from "react-router-dom";
+import theme from './../../../AppTheme'
 
 const Booking = ({ car }: { car: Car }) => {
 
@@ -17,16 +19,23 @@ const Booking = ({ car }: { car: Car }) => {
 
     return (
         <div>
-            <Box sx={{}}>
+            <Box sx={{ float: 'right', }}>
                 <Box sx={{
                     display: 'grid',
                     gap: 3,
                     gridTemplateColumns: 'repeat(2, 1fr)',
                 }}>
-                    <h3>$ {car.pricePerDay} / Day</h3>
-                    <h3>$ {estimatedPrice} est. total</h3>
+                    <Typography component="h2" variant="h2">
+                        $ {car.pricePerDay} / Day
+                    </Typography>
+                    <Typography component="h2" variant="h2">
+                        $ {estimatedPrice} est. total
+                    </Typography>
                 </Box>
-                <Box sx={{ marginTop: 3 }}>
+                <Box sx={{
+                    marginTop: 3,
+                    marginBottom: 3
+                }}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DateRangePicker
                             startText="From"
@@ -38,28 +47,46 @@ const Booking = ({ car }: { car: Car }) => {
                             renderInput={(startProps, endProps) => (
                                 <React.Fragment>
                                     <TextField {...startProps} />
-                                    <Box sx={{ mx: 2 }}>to</Box>
+                                    <Box sx={{ mx: 2 }}></Box>
                                     <TextField {...endProps} />
                                 </React.Fragment>
                             )}
                         />
                     </LocalizationProvider>
                 </Box>
-                <Box sx={{ marginTop: 2 }}>
-                    <h4>Pick up & return Location</h4>
-                    <p>{car.address.zip} {car.address.city}, {car.address.street} {car.address.number}</p>
+                <hr style={{ borderTop: "1px solid grey" }}></hr>
+                <Box sx={{
+                    marginTop: 3, 
+                    marginBottom: 3
+                }}>
+                    <Typography component="h5" variant="h5">
+                        <b>Pick up & return Location</b>
+                    </Typography>
+                    <Typography component="p" variant="body2">
+                        {car.address.zip} {car.address.city}, {car.address.street} {car.address.number}
+                    </Typography>
                 </Box>
-                <Link to="/checkout">
+                <Link to="/checkout" style={{ textDecoration: 'none' }} >
                     <Button
                         type="button"
                         variant="contained"
-                        sx={{ mt: 3, mb: 2, width: 350 }}>
+                        sx={{
+                            marginLeft: "20%",
+                            mb: 3,
+                            width: "60%",
+                            height: 40
+                        }}>
                         Continue
                     </Button>
                 </Link>
-                <Box sx={{ marginTop: 2 }}>
-                    <p>Distance included per day: {car.distancePerDay} miles</p>
-                    <span style={{ fontSize: 10, color: 'grey' }}>$2 / mi fee for additional miles driven</span>
+                <hr style={{ borderTop: "1px solid grey" }}></hr>
+                <Box sx={{ marginTop: 3 }}>
+                    <Typography component="p" variant="body2">
+                        Distance included per day: {car.distancePerDay} miles
+                    </Typography>
+                    <Typography component="p" variant="caption" color={theme.palette.grey[600]}>
+                        $2 / mi fee for additional miles driven
+                    </Typography>
                 </Box>
             </Box>
         </div>

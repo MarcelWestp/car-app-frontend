@@ -9,7 +9,7 @@ import Divider from '@mui/material/Divider';
 import ProfileDetail from './profiledetail/ProfileDetail';
 import ProfileTrips from './profiletrips/ProfileTrips';
 import ProfileHostCars from './profilehostcars/ProfileHostCars';
-import ProfileChangePassword from './profilepayment/ProfileChangePassword';
+import ProfileChangePassword from './profilechangepassword/ProfileChangePassword';
 import ProfileDelete from './profiledelete/ProfileDelete';
 import User from './../../models/User';
 import Contents from '../../models/ProfileContents';
@@ -27,8 +27,7 @@ const Profile = ({ user }: { user: User }) => {
   return (
     <div className="profile">
       <Box sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr)',
+        display: 'flex',
       }}>
 
         <Box sx={{
@@ -90,7 +89,7 @@ const Profile = ({ user }: { user: User }) => {
           </nav>
         </Box>
 
-        <Box sx={{ gridColumn: 2}}>
+        <Box sx={{ display: 'flex', minWidth: '30%', maxWidth: '80%', margin: '20px auto'}}>
           {content === Contents.PROFILE && <ProfileDetail user={user} />}
           {content === Contents.TRIPS && <ProfileTrips user={user} />}
           {content === Contents.HOST && <ProfileHostCars user={user} />}

@@ -44,40 +44,52 @@ const TripDetails = ({ trip }: { trip: Trip }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <Box sx={{}}>
-            <p>
-              <b>{trip.car.make} {trip.car.model} {trip.car.year}</b>
-            </p>
-            <p>
+            <Typography component="p" variant="body2">
+              {trip.car.make} {trip.car.model} {trip.car.year}
+            </Typography>
+            <Typography component="p" variant="body2">
               {trip.car.address.street} {trip.car.address.number}
-            </p>
-            <p>
+            </Typography>
+            <Typography component="p" variant="body2">
               {trip.car.address.zip} {trip.car.address.city}
-            </p>
-            <p>
-              <b>Price per Day:</b> $ {trip.car.pricePerDay}
-            </p>
-            <p>
-              <b>Distance per Day:</b> {trip.car.distancePerDay} miles
-            </p>
+            </Typography>
+            <Typography component="p" variant="body2">
+              Price per Day: $ {trip.car.pricePerDay}
+            </Typography>
+            <Typography component="p" variant="body2">
+              Distance per Day:{trip.car.distancePerDay} miles
+            </Typography>
           </Box>
         </Grid>
         <Grid item xs={6}>
-          <p><b>From: </b>{trip.from.toUTCString().substring(0,17)}</p>
+          <Typography component="p" variant="body2">
+            From: {trip.from.toUTCString().substring(0, 17)}
+          </Typography>
         </Grid>
         <Grid item xs={6}>
-          <p><b>Until: </b>{trip.until.toUTCString().substring(0,17)}</p>
+          <Typography component="p" variant="body2">
+            Until: {trip.until.toUTCString().substring(0, 17)}
+          </Typography>
         </Grid>
         <Grid item xs={4}>
-          <p><b>Est. Miles: </b></p>
+          <Typography component="p" variant="body2">
+            Est. Miles:
+          </Typography>
         </Grid>
         <Grid item xs={8}>
-          <h1><b>{estimatedMiles} miles</b></h1>
+          <Typography component="p" variant="body2">
+            {estimatedMiles} miles
+          </Typography>
         </Grid>
         <Grid item xs={4}>
-          <p><b>Est. price: </b></p>
+          <Typography component="p" variant="body2">
+            Est. price:
+          </Typography>
         </Grid>
         <Grid item xs={8}>
-          <h1><b>$ {estimatedPrice}</b></h1>
+          <Typography component="p" variant="body2">
+            $ {estimatedPrice}
+          </Typography>
         </Grid>
       </Grid>
     </React.Fragment>

@@ -19,6 +19,11 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import {useSelector} from "react-redux";
 import {RootState} from "./../../state/reducers/index";
+import oldtimer from "./../../res/img/cartypes/oldtimer.jpeg";
+import luxury from "./../../res/img/cartypes/luxury.jpeg";
+import sport from "./../../res/img/cartypes/sport.jpeg";
+import suv from "./../../res/img/cartypes/suv.jpeg";
+import Typography from "@mui/material/Typography";
 
 const handleDragStart = (e: any) => e.preventDefault();
 
@@ -284,7 +289,9 @@ const HostACar = () => {
 
   return (
     <Box style={{ margin: "20px 20%", maxWidth: 800 }}>
-      <h2>List your car</h2>
+      <Typography component="h2" variant="h2">
+        List your car
+      </Typography>
       <Box style={{ margin: "10px 0px 20px 0" }}>
         { <AliceCarousel
           mouseTracking
@@ -319,7 +326,9 @@ const HostACar = () => {
             aria-label="upload picture"
             component="span"
           >
-            <p>Bild hinzufügen: </p>
+            <Typography component="p" variant="body2">
+              Add image:
+            </Typography>
             <PhotoCamera />
           </IconButton>
         </label>
@@ -333,9 +342,13 @@ const HostACar = () => {
           marginBottom: 2,
         }}
       >
-        <h2>Car:</h2>
+        <Typography component="h2" variant="h2">
+          Car:
+        </Typography>
         <p></p>
-        <p>Make:</p>
+        <Typography component="p" variant="body2">
+          Make:
+        </Typography>
         <TextField
           id="make"
           label="Make"
@@ -344,7 +357,9 @@ const HostACar = () => {
             handleChangeHandler(event, setMake)
           }
         />
-        <p>Model:</p>
+        <Typography component="p" variant="body2">
+          Model:
+        </Typography>
         <TextField
           id="model"
           label="Model"
@@ -353,7 +368,9 @@ const HostACar = () => {
             handleChangeHandler(event, setModel)
           }
         />
-        <p>Type:</p>
+        <Typography component="p" variant="body2">
+          Type:
+        </Typography>
         <Select
           labelId="type"
           id="type"
@@ -370,7 +387,9 @@ const HostACar = () => {
           <MenuItem value={"Van"}>Van</MenuItem>
           <MenuItem value={"Cars"}>Cars</MenuItem>
         </Select>
-        <p>Year:</p>
+        <Typography component="p" variant="body2">
+          Year:
+        </Typography>
         <TextField
           id="year"
           type="number"
@@ -380,7 +399,9 @@ const HostACar = () => {
             handleChangeHandler(event, setYear)
           }
         />
-        <p>Fuel:</p>
+        <Typography component="p" variant="body2">
+          Fuel:
+        </Typography>
         <Select
           labelId="fuel"
           id="fuel"
@@ -395,7 +416,9 @@ const HostACar = () => {
           <MenuItem value={"Electric"}>Electric</MenuItem>
           <MenuItem value={"Gas"}>Gas</MenuItem>
         </Select>
-        <p>Seats:</p>
+        <Typography component="p" variant="body2">
+          Seats:
+        </Typography>
         <TextField
           id="seats"
           type="number"
@@ -405,7 +428,9 @@ const HostACar = () => {
             handleChangeHandler(event, setSeats)
           }
         />
-        <p>Doors:</p>
+        <Typography component="p" variant="body2">
+          Doors:
+        </Typography>
         <TextField
           id="doors"
           type="number"
@@ -415,7 +440,9 @@ const HostACar = () => {
             handleChangeHandler(event, setDoors)
           }
         />
-        <p>Hp:</p>
+        <Typography component="p" variant="body2">
+          Hp:
+        </Typography>
         <TextField
           id="hp"
           type="number"
@@ -425,7 +452,9 @@ const HostACar = () => {
             handleChangeHandler(event, setHp)
           }
         />
-        <p>Transmission:</p>
+        <Typography component="p" variant="body2">
+          Transmission:
+        </Typography>
         <Select
           labelId="transmission"
           id="transmission"
@@ -440,7 +469,9 @@ const HostACar = () => {
       </Box>
       <Grid container spacing={2}>
         <Grid item xs={4}>
-          <p>Fetures:</p>
+          <Typography component="p" variant="body2">
+            Features:
+          </Typography>
         </Grid>
         <Grid item xs={8} style={{ marginTop: 15 }}>
           <Autocomplete
@@ -470,7 +501,9 @@ const HostACar = () => {
           />
         </Grid>
         <Grid item xs={6}>
-          <p>Description:</p>
+          <Typography component="p" variant="body2">
+            Description:
+          </Typography>
         </Grid>
         <Grid item xs={6}>
           <Button onClick={handleClickOpen}>Edit Description</Button>
@@ -490,7 +523,9 @@ const HostACar = () => {
           </Dialog>
         </Grid>
         <Grid item xs={4}>
-          <p>Guidlines:</p>
+          <Typography component="p" variant="body2">
+            Guidelines:
+          </Typography>
         </Grid>
         <Grid item xs={8} style={{ marginTop: 15 }}>
           <Autocomplete
@@ -529,9 +564,13 @@ const HostACar = () => {
           marginBottom: 2,
         }}
       >
-        <h2>Pricing:</h2>
+        <Typography component="h2" variant="h2">
+          Pricing:
+        </Typography>
         <p></p>
-        <p>Price per day in $:</p>
+        <Typography component="p" variant="body2">
+          Price per day in $:
+        </Typography>
         <TextField
           id="priceperday"
           type="number"
@@ -541,7 +580,9 @@ const HostACar = () => {
             handleChangeHandler(event, setPricePerDay)
           }
         />
-        <p>Distance per day in miles:</p>
+        <Typography component="p" variant="body2">
+          Distance per day in miles:
+        </Typography>
         <TextField
           id="zip"
           type="number"
@@ -551,9 +592,13 @@ const HostACar = () => {
             handleChangeHandler(event, setDistancePerDay)
           }
         />
-        <h2>Car location:</h2>
+        <Typography component="h2" variant="h2">
+          Car location:
+        </Typography>
         <p></p>
-        <p>Street:</p>
+        <Typography component="p" variant="body2">
+          Street:
+        </Typography>
         <TextField
           id="street"
           label="Street"
@@ -562,7 +607,9 @@ const HostACar = () => {
             handleChangeHandler(event, setStreet)
           }
         />
-        <p>Nr:</p>
+        <Typography component="p" variant="body2">
+          Nr:
+        </Typography>
         <TextField
           id="nr"
           label="Number"
@@ -571,7 +618,9 @@ const HostACar = () => {
             handleChangeHandler(event, setNumber)
           }
         />
-        <p>City:</p>
+        <Typography component="p" variant="body2">
+          City:
+        </Typography>
         <TextField
           id="city"
           label="City"
@@ -580,7 +629,9 @@ const HostACar = () => {
             handleChangeHandler(event, setCity)
           }
         />
-        <p>Zip:</p>
+        <Typography component="p" variant="body2">
+          Zip:
+        </Typography>
         <TextField
           id="zip"
           type="number"
@@ -590,13 +641,11 @@ const HostACar = () => {
             handleChangeHandler(event, setZip)
           }
         />
-        <p> </p>
-        <Button
-          style={{ marginTop: 20, height: 40 }}
-          variant="contained"
-          onClick={handleSubmit}
-        >
-          <h2>Continue</h2>
+        <p></p>
+        <Button style={{ marginTop: 20, height: 40 }} variant="contained" onClick={handleSubmit}>
+          <Typography component="h2" variant="h2">
+            Continue
+          </Typography>
         </Button>
       </Box>
     </Box>
