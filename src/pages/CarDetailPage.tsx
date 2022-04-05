@@ -86,8 +86,6 @@ const Cardetail = () => {
     return await response.json();
   }
 
-
-
   React.useEffect(() => {
     async function fetchData() {
       const carResponse:Car = await fetchCar();
