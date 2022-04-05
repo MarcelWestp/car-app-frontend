@@ -19,14 +19,12 @@ import { RootState } from "./../../state/reducers/index";
 import { reducers } from "./../../state/reducers/index";
 
 const NewHeader = () => {
-
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
-
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -90,12 +88,19 @@ const NewHeader = () => {
             variant="body1"
             noWrap
             component={Link}
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, }}
+            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
             to="/"
-            style={{ textDecoration: 'none', color: 'white', }}
+            style={{ textDecoration: "none", color: "white" }}
           >
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Box sx={{ width: 50, height: 50, display: 'flex', marginRight: "5px" }}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Box
+                sx={{
+                  width: 50,
+                  height: 50,
+                  display: "flex",
+                  marginRight: "5px",
+                }}
+              >
                 <img src={Logo} alt="Logo" />
               </Box>
               <Typography component="h1" variant="h1">
@@ -104,8 +109,8 @@ const NewHeader = () => {
             </Box>
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            {user === undefined &&
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            {user === undefined && (
               <div>
                 <IconButton
                   size="large"
@@ -121,22 +126,26 @@ const NewHeader = () => {
                   id="menu-appbar"
                   anchorEl={anchorElNav}
                   anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
+                    vertical: "bottom",
+                    horizontal: "left",
                   }}
                   keepMounted
                   transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
+                    vertical: "top",
+                    horizontal: "left",
                   }}
                   open={Boolean(anchorElNav)}
                   onClose={handleCloseNavMenu}
                   sx={{
-                    display: { xs: 'block', md: 'none' },
+                    display: { xs: "block", md: "none" },
                   }}
                 >
                   {pages.map((page, index) => (
-                    <Link to={page.url} key={index} style={{ textDecoration: 'none' }} >
+                    <Link
+                      to={page.url}
+                      key={index}
+                      style={{ textDecoration: "none" }}
+                    >
                       <MenuItem key={page.title} onClick={handleCloseNavMenu}>
                         <Typography textAlign="center">{page.title}</Typography>
                       </MenuItem>
@@ -144,17 +153,17 @@ const NewHeader = () => {
                   ))}
                 </Menu>
               </div>
-            }
+            )}
           </Box>
           <Typography
             variant="body1"
             noWrap
             component={Link}
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
             to="/"
-            style={{ textDecoration: 'none', color: 'white' }}
+            style={{ textDecoration: "none", color: "white" }}
           >
-            <Box sx={{ display: 'flex', alignItems: 'center', }}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
               <Box sx={{ width: 50, height: 50 }}>
                 <img src={Logo} alt="Logo" />
               </Box>
@@ -164,62 +173,107 @@ const NewHeader = () => {
             </Box>
           </Typography>
 
-          {user !== undefined && user.id === 0 ? 
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'right' }}>
+          {user !== undefined && user.id === 0 ? (
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                justifyContent: "right",
+              }}
+            >
               {pages.map((page, index) => (
-                <Link to={page.url} key={index} style={{ textDecoration: 'none' }} >
+                <Link
+                  to={page.url}
+                  key={index}
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     key={page.title}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
+                    sx={{ my: 2, color: "white", display: "block" }}
                   >
                     {page.title}
                   </Button>
                 </Link>
               ))}
             </Box>
-          :
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'right', marginRight: 6 }}>
-              <Link to={settings[1].url} style={{ textDecoration: 'none' }} >
+          ) : user.cars.length === 0 ? (
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                justifyContent: "right",
+                marginRight: 6,
+              }}
+            >
+              <Link to={settings[1].url} style={{ textDecoration: "none" }}>
                 <Button
                   key={settings[1].title}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{ my: 2, color: "white", display: "block" }}
                 >
                   {settings[1].title}
                 </Button>
               </Link>
-            </Box>}
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                justifyContent: "right",
+                marginRight: 6,
+              }}
+            ></Box>
+          )}
 
-          {user !== undefined && user.id !== 0 && 
+          {user !== undefined && user.id !== 0 && (
             <Box sx={{ flexGrow: 0 }}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
               <Menu
-                sx={{ mt: '45px' }}
+                sx={{ mt: "45px" }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 keepMounted
                 transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting, index) => (
-                  <Link to={setting.url} key={index} style={{ textDecoration: 'none' }} >
+                {settings.map((setting, index) => index === 1 && user.cars.length !== 0  ? (
+                  <Link
+                    to={setting.url}
+                    key={index}
+                    style={{ textDecoration: "none" }}
+                  >
                     <MenuItem onClick={setting.handler} key={setting.title}>
-                      <Typography textAlign="center">{setting.title}</Typography>
+                      <Typography textAlign="center">
+                        Host another Car
+                      </Typography>
+                    </MenuItem>
+                  </Link>
+                ):(
+                  <Link
+                    to={setting.url}
+                    key={index}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <MenuItem onClick={setting.handler} key={setting.title}>
+                      <Typography textAlign="center">
+                        {setting.title}
+                      </Typography>
                     </MenuItem>
                   </Link>
                 ))}
               </Menu>
             </Box>
-          }
+          )}
         </Toolbar>
       </Container>
     </AppBar>
