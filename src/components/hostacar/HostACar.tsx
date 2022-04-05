@@ -206,16 +206,18 @@ const HostACar = () => {
   const [images,setImages] = React.useState<string>("");
 
   const inputHandler = (e:any) => {
-    console.log("IM HANDLER")
-    console.log(e.target.files[0] as string)
-    postImage(e.target.files[0] as string)
+    let file = e.target.files[0];
+    const imageData = new FormData();
+    imageData.append('imageFile', file);
+    console.log(imageData);
+    postImage(imageData);
   }
 
-  async function postImage(imageToPost: string): Promise<any | undefined > {
+  async function postImage(imageToPost: FormData): Promise<any | undefined > {
     try {
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/file/image?referenceId=12&type=CAR&file=${imageToPost}`, {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/file/image?referenceId=33&type=CAR&file=${imageToPost}`, {
         method: "POST",
-        body: JSON.stringify(imageToPost),
+        // body: JSON.stringify(imageToPost),
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
