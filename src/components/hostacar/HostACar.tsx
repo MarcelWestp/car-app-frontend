@@ -160,7 +160,7 @@ const HostACar = () => {
 
   const [input, setInput] = React.useState<any>();
   const [images, setImages] = React.useState<any>([]);
-  const [userInfo, setuserInfo] = useState<any>([]);
+  const [imageElement, setImageElement] =  useState<any>([]);
 
   const inputHandler = (e: any) => {
     e.preventDefault();
@@ -189,7 +189,7 @@ const HostACar = () => {
     let imgEle = (
       <img className="previewimg" src={pic.filepreview} alt="UploadImage" />
     );
-    setuserInfo((prev: any) => [...prev, imgEle]);
+    setImageElement((prev: any) => [...prev, imgEle]);
   };
 
   const imageUploader = async (id: number) => {
@@ -224,33 +224,6 @@ const HostACar = () => {
     }
   }
 
-  const displayImage = () => {
-    console.log(images.length + "länge");
-    return images.length > 0
-      ? images.map((img: any) => {
-          console.log(img);
-          let imageInfo = {
-            ...userInfo,
-            file: img.prop,
-            filepreview: URL.createObjectURL(img.prop),
-          };
-          return (
-            <img
-              className="previewimg"
-              src={imageInfo.filepreview}
-              alt="UploadImage"
-            />
-          );
-        })
-      : [
-          <img
-            className="previewimg"
-            src="https://via.placeholder.com/150"
-            alt="UploadImage"
-          />,
-        ];
-  };
-
   return (
     <Box style={{ margin: "20px 20%", maxWidth: 800 }}>
       <Typography component="h2" variant="h2">
@@ -260,7 +233,7 @@ const HostACar = () => {
         {
           <AliceCarousel
             mouseTracking
-            items={userInfo}
+            items={imageElement}
             responsive={responsive}
             disableButtonsControls={true}
             infinite={true}
