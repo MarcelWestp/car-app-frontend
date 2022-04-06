@@ -1,6 +1,5 @@
 import React from "react";
-import { Circle, GoogleMap, useJsApiLoader } from "@react-google-maps/api";
-import { Marker } from "@react-google-maps/api";
+import { Marker, GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 
 const googleMapsApiKey = 'AIzaSyCyH9tROtDKihy8Pl6fuV4s7VBI0GVL2c8'
 
@@ -41,7 +40,7 @@ const CarMap = ({ address }) => {
         zoom={16}
         options={{ disableDefaultUI: true, zoomControl: true }}
       >
-        <Marker position={position} />
+        <Marker position={position} icon={require("./../../res/img/CarMapMarker.png")} />
       </GoogleMap>
     </>
   ) : (
