@@ -20,23 +20,31 @@ const ProfileHostCars = ({ user }: { user: User }) => {
     {
       field: 'make',
       headerName: 'Make',
-      width: 150,
+      width: 250,
+      headerAlign: 'center',
+      align: 'center',
     },
     {
       field: 'model',
       headerName: 'Model',
-      width: 150,
+      width: 250,
+      headerAlign: 'center',
+      align: 'center',
     },
     {
       field: 'year',
       headerName: 'Year',
       type: 'number',
-      width: 50,
+      width: 100,
+      headerAlign: 'center',
+      align: 'center',
     },
     {
       field: 'delete',
       headerName: 'Delete',
       width: 150,
+      headerAlign: 'center',
+      align: 'center',
       renderCell: (cellValues) => (
         <strong>
           <Button
@@ -61,13 +69,13 @@ const ProfileHostCars = ({ user }: { user: User }) => {
           Host a Car
         </Link>
       </Button>
-      {user.cars.length > 0 ? <Container sx={{ height: 375, width: 560 }}>
+      {user.cars.length > 0 ? <Container sx={{ height: 500, width: 820 }}>
         <DataGrid
           rows={rows}
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}
-          checkboxSelection
+          rowHeight={75}
           disableSelectionOnClick
         />
       </Container>

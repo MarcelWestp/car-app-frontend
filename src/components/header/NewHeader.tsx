@@ -92,7 +92,7 @@ const NewHeader = () => {
             to="/"
             style={{ textDecoration: "none", color: "white" }}
           >
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center' }} ml='150px' >
               <Box sx={{ width: 50, height: 50, display: 'flex', marginRight: "5px" }}>
               <Avatar alt="Logo" src={Logo} sx={{ width: '52px', height: '52px', bgcolor: '#02A676' }} />
               </Box>

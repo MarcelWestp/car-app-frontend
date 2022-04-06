@@ -69,7 +69,7 @@ function Carousel({ images, doubleImg }: { images: Images[], doubleImg: boolean 
     }
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', margin: '40px 0' }}>
             <Button variant="text" onClick={backwardsAction}>
                 <ArrowBackIosIcon />
             </Button>
@@ -101,7 +101,7 @@ function Carousel({ images, doubleImg }: { images: Images[], doubleImg: boolean 
                 </Link>
 
                 {doubleImg &&
-                    <Link to={images[imgNumber2].url} >
+                    <Link to={images[imgNumber2].url} style={{ marginLeft: '20px' }}>
                         <ImageButton
                             focusRipple
                             key={images[imgNumber2].title}

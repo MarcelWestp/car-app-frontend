@@ -3,8 +3,8 @@ import { styled } from '@mui/material/styles';
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
     position: 'relative',
-    height: 350,
-    width: 500,
+    height: 450,
+    width: 550,
     [theme.breakpoints.down('sm')]: {
         width: '100% !important', // Overrides inline-style
         height: 100,
