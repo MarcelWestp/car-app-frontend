@@ -26,15 +26,17 @@ const Booking = ({ car }: { car: Car }) => {
                     gridTemplateColumns: 'repeat(2, 1fr)',
                 }}>
                     <Typography component="h2" variant="h2">
-                        $ {car.pricePerDay} / Day
+                        $ {car.pricePerDay}
+                        <span style={{ fontWeight: 300, fontSize: 15 }}> / Day</span>
                     </Typography>
                     <Typography component="h2" variant="h2">
-                        $ {estimatedPrice} est. total
+                        $ {estimatedPrice}
+                        <span style={{ fontWeight: 300, fontSize: 15 }}> est. total</span>
                     </Typography>
                 </Box>
                 <Box sx={{
                     marginTop: 3,
-                    marginBottom: 3
+                    marginBottom: 3,
                 }}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DateRangePicker
@@ -54,12 +56,17 @@ const Booking = ({ car }: { car: Car }) => {
                         />
                     </LocalizationProvider>
                 </Box>
-                <hr style={{ borderTop: "1px solid grey" }}></hr>
+                <hr style={{
+                    border: 0,
+                    height: 0,
+                    borderTop: '1px solid rgba(0, 0, 0, 0.1)',
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
+                }} ></hr>
                 <Box sx={{
-                    marginTop: 3, 
+                    marginTop: 3,
                     marginBottom: 3
                 }}>
-                    <Typography component="h5" variant="h5">
+                    <Typography component="h3" variant="h3" mb={1}>
                         <b>Pick up & return Location</b>
                     </Typography>
                     <Typography component="p" variant="body2">
@@ -79,9 +86,14 @@ const Booking = ({ car }: { car: Car }) => {
                         Continue
                     </Button>
                 </Link>
-                <hr style={{ borderTop: "1px solid grey" }}></hr>
+                <hr style={{
+                    border: 0,
+                    height: 0,
+                    borderTop: '1px solid rgba(0, 0, 0, 0.1)',
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
+                }} ></hr>
                 <Box sx={{ marginTop: 3 }}>
-                    <Typography component="p" variant="body2">
+                    <Typography component="p" sx={{ fontSize: 15 }} variant="body2">
                         Distance included per day: {car.distancePerDay} miles
                     </Typography>
                     <Typography component="p" variant="caption" color={theme.palette.grey[600]}>
@@ -89,7 +101,7 @@ const Booking = ({ car }: { car: Car }) => {
                     </Typography>
                 </Box>
             </Box>
-        </div>
+        </div >
     )
 }
 

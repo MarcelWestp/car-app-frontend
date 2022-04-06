@@ -11,10 +11,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import Autocomplete from "@mui/material/Autocomplete";
 import citys from "./citys";
 
-import "./searchbar.css";
 import { Link } from "react-router-dom";
 
-const SearchBarNew = ({handleLocationChange}:{ handleLocationChange:any}) => {
+const SearchBarNew = ({ handleLocationChange }: { handleLocationChange: any }) => {
   const [value, setValue] = React.useState<DateRange<Date>>([null, null]);
 
   return (
@@ -23,12 +22,12 @@ const SearchBarNew = ({handleLocationChange}:{ handleLocationChange:any}) => {
       sx={{
         justifyContent: "center",
         borderRadius: "55px",
-        width: 600,
-        height: 75,
+        width: 630,
+        height: 90,
         backgroundColor: "white",
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="md">
         <Toolbar disableGutters>
           <Autocomplete
             freeSolo
@@ -38,7 +37,8 @@ const SearchBarNew = ({handleLocationChange}:{ handleLocationChange:any}) => {
             renderInput={(params) => (
               <TextField
                 onChange={handleLocationChange}
-                style={{width: 200}}
+                style={{ width: 200 }}
+                sx={{ mr: "7px" }}
                 {...params}
                 label="Search Location"
                 InputProps={{
@@ -58,23 +58,24 @@ const SearchBarNew = ({handleLocationChange}:{ handleLocationChange:any}) => {
               }}
               renderInput={(startProps, endProps) => (
                 <React.Fragment>
-                  <TextField {...startProps} />
-                  <TextField {...endProps} />
-                </React.Fragment>
+                  <TextField {...startProps} sx={{ mr: "7px" }} />
+                  <TextField {...endProps} sx={{ mr: "7px" }} />
+                </React.Fragment >
               )}
             />
-          </LocalizationProvider>
+          </LocalizationProvider >
           <IconButton
             color="primary"
             aria-label="upload picture"
+            size="large"
             component={Link}
-            to="/search"
+            to='/search'
           >
             <SearchIcon />
           </IconButton>
-        </Toolbar>
-      </Container>
-    </AppBar>
+        </Toolbar >
+      </Container >
+    </AppBar >
   );
 };
 

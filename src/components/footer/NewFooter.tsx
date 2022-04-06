@@ -9,30 +9,30 @@ const NewFooter = () => (
         <Toolbar>
             <Box sx={{ display: 'flex' }}>
                 <Typography
-                    variant="h1"
+                    variant="h2"
                     noWrap
-                    component="h1"
+                    component="h2"
+                    sx={{ fontWeight: '400' }}
                 >
                     CarToGo
                 </Typography>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ marginRight: 2 }}>
-                <Typography component={Link} variant="h4" to={"#"} style={{ textDecoration: 'none', color: "black"}}>
-                        Terms
+                <Typography component={Link} variant="h4" to={"#"} style={{ textDecoration: 'none', fontWeight: 400, fontSize: '12px', color: "#898989" }} >
+                    Terms
                 </Typography>
             </Box>
             <Box>
-                <Typography component={Link} variant="h4" to={"#"} style={{ textDecoration: 'none', color: "black"}}>
-                        About us
+                <Typography component={Link} variant="h4" to={"#"} style={{ textDecoration: 'none', fontWeight: 400, fontSize: '12px', color: "#898989" }} >
+                    About us
                 </Typography>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
             <Box>
-                <Typography component="p" variant="body2">
-                    &copy; {new Date().toLocaleString().substring(6, 10)} CarToGo
+                <Typography component="p" variant="body2" sx={{ fontSize: '14px' }} >
+                    &copy;{new Date().toLocaleString().substring(6, 10)} CarToGo
                 </Typography>
-
             </Box>
         </Toolbar>
     </AppBar>

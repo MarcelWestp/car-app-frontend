@@ -1,5 +1,4 @@
 import { createTheme } from '@mui/material/styles';
-import Theme from './models/Theme'
 
 const AppTheme = createTheme({
     palette: {
@@ -7,7 +6,8 @@ const AppTheme = createTheme({
             main: '#02A676',
         },
         secondary: {
-            main: '#00A991'
+            light: '#FFD580',
+            main: '#FFCE00'
         },
         grey: {
             600: "#757575"
@@ -17,15 +17,16 @@ const AppTheme = createTheme({
         htmlFontSize: 16,
         fontSize: 12,
         h1: { 
-            fontSize: 20
+            fontSize: 26,
+            fontWeight: 500
         },
         h2: { 
-            fontSize: 36,
+            fontSize: 18,
             fontWeight: 700
         },
         h3: { 
-            fontSize: 20,
-            fontWeight: 600
+            fontSize: 14,
+            fontWeight: 700
         },
         h4: { 
             fontSize: 20
@@ -34,14 +35,14 @@ const AppTheme = createTheme({
             fontSize: 20
         },
         h6: { 
-            fontSize: 14,
+            fontSize: 13,
             fontWeight: 600
         },
         body1: {
             fontSize: 16
         },
         body2: {
-            fontSize: 18
+            fontSize: 16,
         },
         subtitle1: { 
             fontSize: 12,

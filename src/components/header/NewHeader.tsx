@@ -10,13 +10,13 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import Logo from "./../../res/img/logo.jpeg";
+import Logo from "./../../res/img/logo2full.jpeg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "./../../state/index";
 import { RootState } from "./../../state/reducers/index";
-import { reducers } from "./../../state/reducers/index";
+import theme from './../../AppTheme'
 
 const NewHeader = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -92,19 +92,12 @@ const NewHeader = () => {
             to="/"
             style={{ textDecoration: "none", color: "white" }}
           >
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Box
-                sx={{
-                  width: 50,
-                  height: 50,
-                  display: "flex",
-                  marginRight: "5px",
-                }}
-              >
-                <img src={Logo} alt="Logo" />
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Box sx={{ width: 50, height: 50, display: 'flex', marginRight: "5px" }}>
+              <Avatar alt="Logo" src={Logo} sx={{ width: '52px', height: '52px', bgcolor: '#02A676' }} />
               </Box>
-              <Typography component="h1" variant="h1">
-                CarToGo
+              <Typography component="h1" variant="h1" sx={{ fontSize: '32px' }} >
+                Car<span style={{ color: `${theme.palette.secondary.light}` }}>To</span>Go
               </Typography>
             </Box>
           </Typography>

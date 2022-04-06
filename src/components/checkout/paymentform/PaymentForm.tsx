@@ -2,22 +2,31 @@ import * as React from "react";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
 
 const PaymentForm = ({
   setCardName,
   setCardNumber,
   setExpiryDate,
   setCvv,
+  cardName,
+  cardNumber,
+  expiryDate,
+  cvv
 }: {
   setCardName: Function;
   setCardNumber: Function;
   setExpiryDate: Function;
   setCvv: Function;
+  cardName: string;
+  cardNumber: string;
+  expiryDate: string;
+  cvv: string;
 }) => {
   
 
   return (
-    <React.Fragment>
+    <Box sx={{ minHeight: '532px' }} >
       <Typography variant="h6" gutterBottom>
         Payment method
       </Typography>
@@ -30,6 +39,7 @@ const PaymentForm = ({
             fullWidth
             autoComplete="cc-name"
             variant="standard"
+            value={cardName}
             onChange={(event:React.ChangeEvent<HTMLInputElement>) => setCardName(event.target.value as string)}
           />
         </Grid>
@@ -41,6 +51,7 @@ const PaymentForm = ({
             fullWidth
             autoComplete="cc-number"
             variant="standard"
+            value={cardNumber}
             onChange={(event:React.ChangeEvent<HTMLInputElement>) => setCardNumber(event.target.value as string)}
           />
         </Grid>
@@ -52,6 +63,7 @@ const PaymentForm = ({
             fullWidth
             autoComplete="cc-exp"
             variant="standard"
+            value={expiryDate}
             onChange={(event:React.ChangeEvent<HTMLInputElement>) => setExpiryDate(event.target.value as string)}
           />
         </Grid>
@@ -64,11 +76,12 @@ const PaymentForm = ({
             fullWidth
             autoComplete="cc-csc"
             variant="standard"
+            value={cvv}
             onChange={(event:React.ChangeEvent<HTMLInputElement>) => setCvv(event.target.value as string)}
           />
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Box>
   );
 };
 

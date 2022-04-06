@@ -82,7 +82,7 @@ const FiltersBar = ({
 
   return (
     <div className="filtersbar" style={{ display: "flex" }}>
-      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2, display: "flex" }}>
+      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2, display: "flex", mr: '7px' }}>
         <FormControl fullWidth>
           <InputLabel id="fuel-filter-label" sx={{ display: "flex" }}>
             Fuel
@@ -97,14 +97,14 @@ const FiltersBar = ({
           >
             <MenuItem value={"None"}>None</MenuItem>
             <MenuItem value={"Gas"}>Gas</MenuItem>
-            <MenuItem value={"electric"}>Electro</MenuItem>
+            <MenuItem value={"Electric"}>Electro</MenuItem>
             <MenuItem value={"Diesel"}>Diesel</MenuItem>
             <MenuItem value={"Petrol"}>Petrol</MenuItem>
             <MenuItem value={"Hybrid"}>Hybrid</MenuItem>
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2 }}>
+      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2, mr: '7px' }}>
         <FormControl fullWidth>
           <InputLabel id="cartype-filter-label" sx={{ display: "flex" }}>
             Cartype
@@ -128,7 +128,7 @@ const FiltersBar = ({
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2 }}>
+      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2, mr: '7px' }}>
         <FormControl fullWidth>
           <InputLabel id="seats-filter-label" sx={{ display: "flex" }}>
             Seats
@@ -149,7 +149,7 @@ const FiltersBar = ({
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2 }}>
+      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2, mr: '7px' }}>
         <FormControl fullWidth>
           <InputLabel id="transmission-filter-label" sx={{ display: "flex" }}>
             Transmission
@@ -173,7 +173,7 @@ const FiltersBar = ({
         size="medium"
         startIcon={<FilterAltIcon />}
         onClick={handleOpen}
-        sx={{ marginTop: 2 }}
+        sx={{ marginTop: 2, mr: '7px' }}
       >
         <FilterModal
           open={open}
@@ -185,15 +185,7 @@ const FiltersBar = ({
           handleClear={handleModalClear}
         />
       </Button>
-      <Button
-        variant="outlined"
-        size="medium"
-        startIcon={<FilterAltOffIcon />}
-        onClick={handleClear}
-        sx={{ marginTop: 2 }}
-      >
-        Clear
-      </Button>
+      <Button variant="outlined" size="medium" startIcon={<FilterAltOffIcon />} onClick={handleClear} sx={{ marginTop: 2 }}>Clear</Button>
       <Button
         variant="contained"
         size="medium"

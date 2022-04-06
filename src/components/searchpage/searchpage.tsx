@@ -93,7 +93,7 @@ const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,l
         flexDirection: "column",
         alignItems: "center",
         margin: "20px 0",
-        minHeight: "82vh",
+        minHeight: "83vh",
       }}
     >
       <Searchbar handleLocationChange={handleLocationChange} />
