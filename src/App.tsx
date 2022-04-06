@@ -14,12 +14,13 @@ import Hostacar from "./pages/HostACarPage";
 import CheckoutPage from "./pages/CheckoutPage";
 
 const App = () => {
+
   const [location, setLocation] = React.useState<string>("");
 
-  const handleLocationChange = (e: any) => {
+  const handleLocationChange = (value: any) => {
     //TODO: autokomplette läuft nicht auf onChange
-    e.preventDefault();
-    setLocation(e.target.value);
+    setLocation(value);
+    console.log(value);
   };
 
   return (
@@ -31,7 +32,7 @@ const App = () => {
             <Route
               path="/"
               element={
-                <Landingpage handleLocationChange={handleLocationChange} />
+                <Landingpage handleLocationChange={handleLocationChange} location={location} />
               }
             />
             <Route path="signup" element={<Signup />} />

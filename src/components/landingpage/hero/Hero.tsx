@@ -5,12 +5,12 @@ import MovingIcon from '@mui/icons-material/Moving';
 import theme from './../../../AppTheme'
 import "./hero.css";
 
-const Hero = ({handleLocationChange}:{ handleLocationChange:any}) => {
+const Hero = ({handleLocationChange,location}:{ handleLocationChange:any,location:string}) => {
   return (
     <div id="hero">
       <video src="/video/herovid.mp4" autoPlay loop muted />
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <NewSearchbar handleLocationChange={handleLocationChange} />
+        <NewSearchbar handleLocationChange={handleLocationChange} location={location} />
       </div>
       <div className="title">
         <Typography component="h2" variant="h2">

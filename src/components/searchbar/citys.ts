@@ -1,8 +1,9 @@
 const Citys = [
-    "Wolfsburg",
-    "Hannover",
-    "Gifhorn",
-    "Braunschweig",
+    {location:"Wolfsburg"},
+    {location:"Hannover"},
+    {location:"Gifhorn"} ,
+    {location:"Braunschweig"},
+    {location:"Berlin"},
 ];
 
 export default Citys;

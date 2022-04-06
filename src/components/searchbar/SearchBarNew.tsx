@@ -13,7 +13,7 @@ import citys from "./citys";
 
 import { Link } from "react-router-dom";
 
-const SearchBarNew = ({ handleLocationChange }: { handleLocationChange: any }) => {
+const SearchBarNew = ({ handleLocationChange,location}:{ handleLocationChange:any,location:string}) => {
   const [value, setValue] = React.useState<DateRange<Date>>([null, null]);
 
   return (
@@ -33,10 +33,12 @@ const SearchBarNew = ({ handleLocationChange }: { handleLocationChange: any }) =
             freeSolo
             id="free-solo-2-demo"
             disableClearable
-            options={citys.map((city) => city)}
+            value={location}
+            onChange={(e:any,value:string | null) => handleLocationChange(value)}
+            onInputChange={(e:any,value:string | null) => handleLocationChange(value)}
+            options={citys.map((city) => city.location)}
             renderInput={(params) => (
               <TextField
-                onChange={handleLocationChange}
                 style={{ width: 200 }}
                 sx={{ mr: "7px" }}
                 {...params}

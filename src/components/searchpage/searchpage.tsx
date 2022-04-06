@@ -96,7 +96,7 @@ const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,l
         minHeight: "83vh",
       }}
     >
-      <Searchbar handleLocationChange={handleLocationChange} />
+      <Searchbar handleLocationChange={handleLocationChange} location={location}/>
       <FiltersBar
         fuel={fuel}
         handleFuelChange={handleFuelChange}
