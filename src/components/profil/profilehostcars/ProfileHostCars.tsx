@@ -2,13 +2,19 @@ import User from './../../../models/User'
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
-import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Typography from '@mui/material/Typography';
+
+
 
 const ProfileHostCars = ({ user }: { user: User }) => {
 
   let rows = user.cars.map(car => ({ id: car.id, make: car.make, model: car.model, year: car.year, delete: 0 }))
+
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, cellValues: any) => {
+      console.log(cellValues)
+  };
 
   const columns: GridColDef[] = [
     {
@@ -31,12 +37,15 @@ const ProfileHostCars = ({ user }: { user: User }) => {
       field: 'delete',
       headerName: 'Delete',
       width: 150,
-      renderCell: (params: GridRenderCellParams<number>) => (
+      renderCell: (cellValues) => (
         <strong>
           <Button
             type="button"
             fullWidth
             variant="contained"
+            onClick={(event) => {
+              handleClick(event, cellValues);
+            }}
             sx={{ marginLeft: 1, mt: 3, mb: 2, bgcolor: "secondary.main" }}>
             <DeleteForeverIcon />
           </Button>

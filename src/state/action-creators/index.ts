@@ -44,12 +44,12 @@ export const getCarById = (id: number) => {
   };
 };
 
-export const delteCarById = (id: number) => {
+export const deleteCarById = (id: number) => {
   return async (dispatch: any) => {
     try {
       const response = await fetch(`${URL}/car/${id}`, { method: "DELETE" });
       const carById = await response.json();
-      dispatch({ type: "delteCarById", payload: carById });
+      dispatch({ type: "deleteCarById", payload: carById });
     } catch (e) {}
   };
 };
@@ -127,12 +127,12 @@ export const updateUser = (user: User) => {
   };
 };
 
-export const delteUserById = (id: number) => {
+export const deleteUserById = (id: number) => {
   return async (dispatch: any) => {
     try {
       const response = await fetch(`${URL}/user/${id}`, { method: "DELETE" });
       const userValidate = await response.json();
-      dispatch({ type: "delteUserById", payload: userValidate });
+      dispatch({ type: "deleteUserById", payload: userValidate });
     } catch (e) {}
   };
 };
@@ -142,3 +142,22 @@ export const logoutUser = () => {
     dispatch({ type: "logoutUser"});
   };
 };
+
+export const deleteBookingById = (id: number) => {
+  return async (dispatch: any) => {
+    try {
+      console.log(id)
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+     await fetch(`${URL}/booking/${id}`,{    method: 'DELETE',
+        headers: myHeaders,
+        redirect: 'follow'});
+      dispatch({ type: "deleteBookingById", payload: id });
+    } catch (e) {}
+  };
+};
+
+
+// async function fetchDeleteBooking<Booking>(bookingId: number) {
+
+// }

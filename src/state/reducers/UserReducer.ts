@@ -29,8 +29,10 @@ const initialState: User = {
 
 type Payload = {
   type: string;
-  payload: User;
+  payload: any;
 };
+
+
 
 const reducer = (state = initialState, action: Payload) => {
   switch (action.type) {
@@ -44,6 +46,9 @@ const reducer = (state = initialState, action: Payload) => {
       return initialState;
     case "postUser":
       return action.payload;
+    case "deleteBookingById":
+      let booking = state.bookings.filter(e => e.id !== action.payload)
+      return {...state, bookings: booking}
     default:
       return state;
   }

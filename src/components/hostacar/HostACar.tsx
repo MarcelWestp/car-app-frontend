@@ -18,7 +18,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import {useSelector} from "react-redux";
-import {RootState} from "./../../state/reducers/index";
+import {RootState} from "../../state/reducers";
 import Typography from "@mui/material/Typography";
 
 const responsive = {
@@ -159,7 +159,8 @@ const HostACar = () => {
         }
     }
 
-    const [input, setInput] = React.useState<any>();
+    // const [input, setInput] = React.useState<any>();
+    let input = "";
     const [images, setImages] = React.useState<any>([]);
     const [userInfo, setuserInfo] = useState<any>("");
 
@@ -260,20 +261,10 @@ const HostACar = () => {
                     disableButtonsControls={true}
                     infinite={true}
                     disableDotsControls={true}
+                    autoPlay={images.length !== 0}
+                    autoPlayInterval={5000}
+                    keyboardNavigation={true}
                 />}
-                {/*{userInfo !== "" ? (*/}
-                {/*  <img*/}
-                {/*    className="previewimg"*/}
-                {/*    src={userInfo.filepreview}*/}
-                {/*    alt="UploadImage"*/}
-                {/*  />*/}
-                {/*) : (*/}
-                {/*  <img*/}
-                {/*    className="previewimg"*/}
-                {/*    src="https://via.placeholder.com/150"*/}
-                {/*    alt="UploadImage"*/}
-                {/*  />*/}
-                {/*)}*/}
                 <label htmlFor="icon-button-file">
                     <Input
                         id="icon-button-file"
@@ -429,7 +420,7 @@ const HostACar = () => {
             </Box>
             <Grid container spacing={2}>
                 <Grid item xs={4}>
-                    <Typography component="p" variant="body2">
+                    <Typography component="p" variant="body2" >
                         Features:
                     </Typography>
                 </Grid>
@@ -461,7 +452,7 @@ const HostACar = () => {
                     />
                 </Grid>
                 <Grid item xs={6}>
-                    <Typography component="p" variant="body2">
+                    <Typography component="p" variant="body2" onSubmit={(e: any) => setDescription(e.target.value)}>
                         Description:
                     </Typography>
                 </Grid>

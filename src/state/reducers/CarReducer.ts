@@ -11,7 +11,7 @@ const reducer = (state = initialState, action: Payload) => {
   switch (action.type) {
     case "getAllCarsByHostId":
       return [...action.payload];
-    case "delteCarById":
+    case "deleteCarById":
       return action.payload;
     case "postCar":
       return action.payload;
