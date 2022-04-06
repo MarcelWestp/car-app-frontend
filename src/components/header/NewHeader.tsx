@@ -243,11 +243,11 @@ const NewHeader = () => {
                   <Link
                     to={setting.url}
                     key={index}
-                    style={{ textDecoration: "none" }}
+                    style={{ textDecoration: "none", color: "black"}}
                   >
                     <MenuItem onClick={setting.handler} key={setting.title}>
                       <Typography textAlign="center">
-                        Host another Car
+                        Host car
                       </Typography>
                     </MenuItem>
                   </Link>
@@ -255,7 +255,7 @@ const NewHeader = () => {
                   <Link
                     to={setting.url}
                     key={index}
-                    style={{ textDecoration: "none" }}
+                    style={{ textDecoration: "none", color: "black"}}
                   >
                     <MenuItem onClick={setting.handler} key={setting.title}>
                       <Typography textAlign="center">
