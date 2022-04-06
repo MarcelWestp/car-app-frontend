@@ -7,28 +7,28 @@ import StarIcon from '@mui/icons-material/Star';
 import Car from "./../../../../models/Car";
 
 
-const CarCard = ({car} : {car: Car}) => {
+const CarCard = ({ car }: { car: Car }) => {
 
-   let ratingSum: number = car.ratings.length === 0 ? 0 : (car.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0)  / car.ratings.length);
+  let ratingSum: number = car.ratings.length === 0 ? 0 : (car.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0) / car.ratings.length);
 
   return (
     <Card sx={{ maxWidth: '300px', minWidth: '300px', margin: 2, maxHeight: '250px', minHeight: '250px' }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          height="160"
           image={`data:${car.images[0].contentType};base64,${car.images[0].content.data}`}
           alt={`${car.make} ${car.model}`}
         />
         <CardContent>
-          <Typography gutterBottom variant="h4" component="div">
-          {`${car.make} ${car.model} ${car.year}`}
+          <Typography gutterBottom variant="h2" component="div">
+            {`${car.make} ${car.model} ${car.year}`}
           </Typography>
-          <Typography gutterBottom variant="h5" component="div" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end'}}>
-          {ratingSum.toFixed(1)}<StarIcon color="primary" />
+          <Typography gutterBottom variant="h3" component="div" sx={{ display: 'flex', alignItems: 'center' }}>
+            {ratingSum.toFixed(1)}<StarIcon color="primary" /> <span style={{ fontWeight: 400, color: "#898989" }}>({car.ratings.length} trips)</span>
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {`$${car.pricePerDay} per Day`}
+          <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', justifyContent: 'flex-end', fontSize: '14px' }}>
+            {`$${car.pricePerDay} / day`}
           </Typography>
         </CardContent>
       </CardActionArea>

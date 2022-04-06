@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "./../../state/index";
 import { RootState } from "./../../state/reducers/index";
+import theme from './../../AppTheme'
 
 const NewHeader = () => {
 
@@ -98,7 +99,7 @@ const NewHeader = () => {
               <Avatar alt="Logo" src={Logo} sx={{ width: '52px', height: '52px', bgcolor: '#02A676' }} />
               </Box>
               <Typography component="h1" variant="h1" sx={{ fontSize: '32px' }} >
-                CarToGo
+                Car<span style={{ color: `${theme.palette.secondary.light}` }}>To</span>Go
               </Typography>
             </Box>
           </Typography>

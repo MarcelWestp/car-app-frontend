@@ -1,5 +1,4 @@
 import { createTheme } from '@mui/material/styles';
-import Theme from './models/Theme'
 
 const AppTheme = createTheme({
     palette: {
@@ -7,7 +6,8 @@ const AppTheme = createTheme({
             main: '#02A676',
         },
         secondary: {
-            main: '#00A991'
+            light: '#FFD580',
+            main: '#FFCE00'
         },
         grey: {
             600: "#757575"

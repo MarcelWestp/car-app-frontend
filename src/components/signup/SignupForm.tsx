@@ -254,7 +254,7 @@ const Signup = () => {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link to="/login" style={{ textDecoration: 'none' }} >
+              <Link to="/login" style={{ textDecoration: 'none', color: 'black'  }} >
                 Already have an account? Log in
               </Link>
             </Grid>

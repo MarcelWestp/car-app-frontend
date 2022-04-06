@@ -111,10 +111,10 @@ const LoginForm = () => {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link to="#" style={{ textDecoration: 'none' }} >Forgot password?</Link>
+                <Link to="#" style={{ textDecoration: 'none', color: 'black' }} >Forgot password?</Link>
               </Grid>
               <Grid item>
-                <Link to="/signup" style={{ textDecoration: 'none' }} >{"Don't have an account? Sign Up"}</Link>
+                <Link to="/signup" style={{ textDecoration: 'none', color: 'black'  }} >{"Don't have an account? Sign Up"}</Link>
               </Grid>
             </Grid>
           </Box>
