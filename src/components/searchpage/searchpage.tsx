@@ -8,14 +8,18 @@ import { actionCreators } from "../../state/index";
 import { RootState } from "./../../state/reducers/index";
 import { SelectChangeEvent } from "@mui/material/Select";
 
-const Searchpage = ({handleLocationChange}:{ handleLocationChange:any}) => {
+const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,location:string}) => {
   const dispatch = useDispatch();
-  const { getAllCars } = bindActionCreators(actionCreators, dispatch);
+  const { getAllCars,getAllCarsByCity } = bindActionCreators(actionCreators, dispatch);
   const cars = useSelector((state: RootState) => state.car);
 
   React.useEffect(() => {
-    getAllCars();
-  }, []);
+    if(location === ""){
+      getAllCars()
+    }else{
+      getAllCarsByCity(location)
+    }
+  }, [location]);
 
   const [fuel, setFuel] = useState("");
   const [cartype, setCartype] = useState("");

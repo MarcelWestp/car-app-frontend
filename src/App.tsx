@@ -14,14 +14,13 @@ import Hostacar from "./pages/HostACarPage";
 import CheckoutPage from "./pages/CheckoutPage";
 
 const App = () => {
+  const [location, setLocation] = React.useState<string>("");
 
-  const [location,setLocation] = React.useState<string>("")
-
-  const handleLocationChange = (e:any) => {
+  const handleLocationChange = (e: any) => {
     //TODO: autokomplette läuft nicht auf onChange
     e.preventDefault();
     setLocation(e.target.value);
-  }
+  };
 
   return (
     <div className="App">
@@ -29,10 +28,23 @@ const App = () => {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route path="/" element={<Landingpage handleLocationChange={handleLocationChange} />} />
+            <Route
+              path="/"
+              element={
+                <Landingpage handleLocationChange={handleLocationChange} />
+              }
+            />
             <Route path="signup" element={<Signup />} />
             <Route path="login" element={<Login />} />
-            <Route path="search" element={<Search handleLocationChange={handleLocationChange} />} />
+            <Route
+              path="search"
+              element={
+                <Search
+                  handleLocationChange={handleLocationChange}
+                  location={location}
+                />
+              }
+            />
             <Route path="profile/" element={<ProfilePage />} />
             <Route path="car/:id" element={<Cardetail />} />
             <Route path="hostacar" element={<Hostacar />} />
