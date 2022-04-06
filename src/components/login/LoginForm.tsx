@@ -60,7 +60,7 @@ const LoginForm = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            minHeight: '72vh'
+            minHeight: '74vh'
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>

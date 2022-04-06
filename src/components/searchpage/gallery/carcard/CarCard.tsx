@@ -12,7 +12,7 @@ const CarCard = ({car} : {car: Car}) => {
    let ratingSum: number = car.ratings.length === 0 ? 0 : (car.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0)  / car.ratings.length);
 
   return (
-    <Card sx={{ maxWidth: 345, margin: 2 }}>
+    <Card sx={{ maxWidth: '300px', minWidth: '300px', margin: 2, maxHeight: '250px', minHeight: '250px' }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -27,7 +27,7 @@ const CarCard = ({car} : {car: Car}) => {
           <Typography gutterBottom variant="h5" component="div" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end'}}>
           {ratingSum.toFixed(1)}<StarIcon color="primary" />
           </Typography>
-          <Typography variant="h5" color="text.secondary">
+          <Typography variant="body2" color="text.secondary">
             {`$${car.pricePerDay} per Day`}
           </Typography>
         </CardContent>

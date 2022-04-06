@@ -3,6 +3,7 @@ import Trip from "./../../../models/Trip";
 import Payment from "./../../../models/Payment";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box"
 
 const CheckoutDetails = ({
   trip,
@@ -25,8 +26,8 @@ const CheckoutDetails = ({
 
 
   return (
-    <div>
-      <TripDetails trip={trip} />
+    <Box >
+      <TripDetails trip={trip} height='35vh'/>
       <hr style={{ margin: "20px 0px" }}></hr>
       <Typography variant="h4" gutterBottom>
         Payment details:
@@ -66,7 +67,7 @@ const CheckoutDetails = ({
           </Typography>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 };
 

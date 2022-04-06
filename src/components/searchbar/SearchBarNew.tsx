@@ -9,57 +9,58 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import SearchIcon from "@mui/icons-material/Search";
 
-import "./searchbar.css";
 import { Link } from "react-router-dom";
 
 const SearchBarNew = () => {
   const [value, setValue] = React.useState<DateRange<Date>>([null, null]);
 
   return (
-      <AppBar
-        position="static"
-        sx={{
-          justifyContent: "center",
-          borderRadius: "55px",
-          width: 600,
-          height: 75,
-          backgroundColor: "white",
-        }}
-      >
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <TextField
-              id="outlined-search"
-              label="Search Location"
-              type="search"
+    <AppBar
+      position="static"
+      sx={{
+        justifyContent: "center",
+        borderRadius: "55px",
+        width: 630,
+        height: 90,
+        backgroundColor: "white",
+      }}
+    >
+      <Container maxWidth="md">
+        <Toolbar disableGutters>
+          <TextField
+            id="outlined-search"
+            label="Search Location"
+            type="search"
+            sx={{ mr: "7px" }}
+          />
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DateRangePicker
+              startText="From"
+              endText="Until"
+              value={value}
+              onChange={(newValue) => {
+                setValue(newValue);
+              }}
+              renderInput={(startProps, endProps) => (
+                <React.Fragment>
+                  <TextField {...startProps} sx={{ mr: "7px" }} />
+                  <TextField {...endProps} sx={{ mr: "7px" }} />
+                </React.Fragment>
+              )}
             />
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <DateRangePicker
-                startText="From"
-                endText="Until"
-                value={value}
-                onChange={(newValue) => {
-                  setValue(newValue);
-                }}
-                renderInput={(startProps, endProps) => (
-                  <React.Fragment>
-                    <TextField {...startProps} />
-                    <TextField {...endProps} />
-                  </React.Fragment>
-                )}
-              />
-            </LocalizationProvider>
-            <IconButton
-              color="primary"
-              aria-label="upload picture"
-              component={Link}
-              to='/search'
-            >
-                <SearchIcon />
-            </IconButton>
-          </Toolbar>
-        </Container>
-      </AppBar>
+          </LocalizationProvider>
+          <IconButton
+            color="primary"
+            aria-label="upload picture"
+            size="large"
+            component={Link}
+            to='/search'
+          >
+            <SearchIcon />
+          </IconButton>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 };
 

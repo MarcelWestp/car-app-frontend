@@ -37,7 +37,7 @@ const ProfileHostCars = ({ user }: { user: User }) => {
             type="button"
             fullWidth
             variant="contained"
-            sx={{ marginLeft: 1, mt: 3, mb: 2, bgcolor: "secondary.main" }}>
+            sx={{ marginLeft: 1, mt: 3, mb: 2, bgcolor: "primary.main" }}>
             <DeleteForeverIcon />
           </Button>
         </strong>

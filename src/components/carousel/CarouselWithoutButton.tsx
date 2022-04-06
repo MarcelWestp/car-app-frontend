@@ -68,15 +68,38 @@ function Carousel({ images, doubleImg }: { images: Images[], doubleImg: boolean 
     }
 
     return (
-        <div style={{ display: 'flex' }}>
-            <Button variant="text" onClick={backwardsAction}>
-                <ArrowBackIosIcon />
-            </Button>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+        <div style={{ display: 'flex', marginTop: '40px' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%', justifyContent: 'center' }}>
+                <Button variant="text" onClick={backwardsAction}>
+                    <ArrowBackIosIcon />
+                </Button>
+                <ImageClean
+                    key={images[imgNumber].title}
+                >
+                    <ImageSrc style={{ backgroundImage: `url(${images[imgNumber].src})` }} />
+                    <ImageBackdrop className="MuiImageBackdrop-root" />
+                    <Image>
+                        <Typography
+                            component="span"
+                            variant="subtitle1"
+                            color="inherit"
+                            sx={{
+                                position: 'relative',
+                                p: 4,
+                                pt: 2,
+                                pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                            }}
+                        >
+                        </Typography>
+                    </Image>
+                </ImageClean>
+
+                {doubleImg &&
                     <ImageClean
-                        key={images[imgNumber].title}
+                        key={images[imgNumber2].title}
+                        sx={{ marginLeft: 1 }}
                     >
-                        <ImageSrc style={{ backgroundImage: `url(${images[imgNumber].src})` }} />
+                        <ImageSrc style={{ backgroundImage: `url(${images[imgNumber2].src})` }} />
                         <ImageBackdrop className="MuiImageBackdrop-root" />
                         <Image>
                             <Typography
@@ -90,34 +113,11 @@ function Carousel({ images, doubleImg }: { images: Images[], doubleImg: boolean 
                                     pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
                                 }}
                             >
+                                {images[imgNumber2].title}
+                                <ImageMarked className="MuiImageMarked-root" />
                             </Typography>
                         </Image>
-                    </ImageClean>
-
-                {doubleImg &&
-                        <ImageClean
-                            key={images[imgNumber2].title}
-                            sx={{ marginLeft: 1 }}
-                        >
-                            <ImageSrc style={{ backgroundImage: `url(${images[imgNumber2].src})` }} />
-                            <ImageBackdrop className="MuiImageBackdrop-root" />
-                            <Image>
-                                <Typography
-                                    component="span"
-                                    variant="subtitle1"
-                                    color="inherit"
-                                    sx={{
-                                        position: 'relative',
-                                        p: 4,
-                                        pt: 2,
-                                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-                                    }}
-                                >
-                                    {images[imgNumber2].title}
-                                    <ImageMarked className="MuiImageMarked-root" />
-                                </Typography>
-                            </Image>
-                        </ImageClean>}
+                    </ImageClean>}
                 <Button variant="text" onClick={forwardsAction}>
                     <ArrowForwardIosIcon />
                 </Button>

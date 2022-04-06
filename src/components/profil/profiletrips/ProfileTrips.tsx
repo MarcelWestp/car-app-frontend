@@ -25,12 +25,12 @@ const ProfileTrips = ({ user }: { user: User }) => {
       width: 150,
       renderCell: (params: GridRenderCellParams<number>) => (
         <strong>
-          <Link to={`/car/${params.value}`} target="_blank">
+          <Link to={`/car/${params.value}`} target="_blank" style={{ textDecoration: 'none' }}>
             <Button
               type="button"
               fullWidth
               variant="contained"
-              sx={{ marginLeft: 1, mt: 3, mb: 2, bgcolor: "secondary.main" }}>
+              sx={{ marginLeft: 1, mt: 3, mb: 2, bgcolor: "primary.main" }}>
               Link to car
             </Button>
           </Link>
@@ -47,7 +47,7 @@ const ProfileTrips = ({ user }: { user: User }) => {
             type="button"
             fullWidth
             variant="contained"
-            sx={{ marginLeft: 1, mt: 3, mb: 2, bgcolor: "secondary.main" }}>
+            sx={{ marginLeft: 1, mt: 3, mb: 2, bgcolor: "primary.main" }}>
             <DeleteForeverIcon />
           </Button>
         </strong>
