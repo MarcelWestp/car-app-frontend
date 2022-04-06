@@ -21,6 +21,10 @@ const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,l
     }
   }, [location]);
 
+  const [map, setMap] = useState<boolean>(false);
+  const handleMap = () => setMap(!map)
+
+
   const [fuel, setFuel] = useState("");
   const [cartype, setCartype] = useState("");
   const [seats, setSeats] = useState("");
@@ -108,6 +112,8 @@ const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,l
         make={make}
         handleMakeChange={handleMakeChange}
         handleModalClear={handleModalClear}
+        map={map}
+        handleMap={handleMap}
       />
       <Gallery cars={filteredCars()} />
     </div>

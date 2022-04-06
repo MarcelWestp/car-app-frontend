@@ -14,6 +14,8 @@ import FilterAltOffIcon from "@mui/icons-material/FilterAltOff";
 import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import EventSeatIcon from "@mui/icons-material/EventSeat";
 import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
+import MapIcon from "@mui/icons-material/Map";
+import GarageIcon from "@mui/icons-material/Garage";
 
 const MyLocalGasStationIcon = styled(LocalGasStationIcon)({
   "&.MuiSelect-iconOpen": {
@@ -53,7 +55,9 @@ const FiltersBar = ({
   handleDoorsChange,
   make,
   handleMakeChange,
-  handleModalClear
+  handleModalClear,
+  map,
+  handleMap,
 }: {
   fuel: string;
   handleFuelChange: any;
@@ -69,8 +73,9 @@ const FiltersBar = ({
   make: string;
   handleMakeChange: any;
   handleModalClear: any;
+  map: boolean;
+  handleMap: any;
 }) => {
- 
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(!open);
@@ -170,7 +175,15 @@ const FiltersBar = ({
         onClick={handleOpen}
         sx={{ marginTop: 2 }}
       >
-        <FilterModal open={open} handleOpen={handleOpen} doors={doors} handleDoorsChange={handleDoorsChange} make={make} handleMakeChange={handleMakeChange} handleClear={handleModalClear} />
+        <FilterModal
+          open={open}
+          handleOpen={handleOpen}
+          doors={doors}
+          handleDoorsChange={handleDoorsChange}
+          make={make}
+          handleMakeChange={handleMakeChange}
+          handleClear={handleModalClear}
+        />
       </Button>
       <Button
         variant="outlined"
@@ -180,6 +193,15 @@ const FiltersBar = ({
         sx={{ marginTop: 2 }}
       >
         Clear
+      </Button>
+      <Button
+        variant="contained"
+        size="medium"
+        startIcon={map ? <MapIcon /> : <GarageIcon />}
+        onClick={handleMap}
+        sx={{ marginTop: 2, marginLeft: 4 }}
+      >
+        {map ? "on map" : "gallery"}
       </Button>
     </div>
   );
