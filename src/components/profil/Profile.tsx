@@ -19,10 +19,13 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import CardTravelIcon from '@mui/icons-material/CardTravel';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import {RootState} from "../../state/reducers";
+import {useSelector} from "react-redux";
 
-const Profile = ({ user }: { user: User }) => {
+const Profile = () => {
 
   const [content, setContent] = useState(Contents.PROFILE);
+  const user = useSelector((state: RootState) => state.user);
 
   return (
     <div className="profile">

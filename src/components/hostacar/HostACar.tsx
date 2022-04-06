@@ -17,8 +17,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import { useSelector } from "react-redux";
-import { RootState } from "./../../state/reducers/index";
+import {useSelector} from "react-redux";
+import {RootState} from "../../state/reducers";
 import Typography from "@mui/material/Typography";
 
 const responsive = {

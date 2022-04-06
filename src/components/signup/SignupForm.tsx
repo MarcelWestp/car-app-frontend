@@ -15,7 +15,7 @@ import PostUser from './../../models/PostUser'
 import { useSelector, useDispatch } from "react-redux"
 import { bindActionCreators } from 'redux'
 import { actionCreators } from "./../../state/index"
-import { RootState } from './../../state/reducers/index'
+import { RootState } from '../../state/reducers'
 import { format } from 'date-fns'
 import { useNavigate, } from "react-router-dom";
 
