@@ -20,6 +20,7 @@ import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import StarIcon from '@mui/icons-material/Star';
 
+
 const CarDetails = ({ car, user }: { car: Car, user: User }) => {
 
   let ratingSumCar: number = car.ratings.length === 0 ? 0 : (car.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0) / car.ratings.length);
@@ -36,7 +37,6 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
   //       style={{ width: "90%" }}
   //       key={index}
   //     />
-  //   ));
 
   let images: CarouselImage[] = [{
     src: Placeholder,
