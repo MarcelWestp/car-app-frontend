@@ -14,7 +14,7 @@ import citys from "./citys";
 import "./searchbar.css";
 import { Link } from "react-router-dom";
 
-const SearchBarNew = () => {
+const SearchBarNew = ({handleLocationChange}:{ handleLocationChange:any}) => {
   const [value, setValue] = React.useState<DateRange<Date>>([null, null]);
 
   return (
@@ -37,6 +37,7 @@ const SearchBarNew = () => {
             options={citys.map((city) => city)}
             renderInput={(params) => (
               <TextField
+                onChange={handleLocationChange}
                 style={{width: 200}}
                 {...params}
                 label="Search Location"

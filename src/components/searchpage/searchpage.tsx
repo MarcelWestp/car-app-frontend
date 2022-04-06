@@ -8,7 +8,7 @@ import { actionCreators } from "../../state/index";
 import { RootState } from "./../../state/reducers/index";
 import { SelectChangeEvent } from "@mui/material/Select";
 
-const Searchpage = () => {
+const Searchpage = ({handleLocationChange}:{ handleLocationChange:any}) => {
   const dispatch = useDispatch();
   const { getAllCars } = bindActionCreators(actionCreators, dispatch);
   const cars = useSelector((state: RootState) => state.car);
@@ -88,7 +88,7 @@ const Searchpage = () => {
         minHeight: "82vh",
       }}
     >
-      <Searchbar />
+      <Searchbar handleLocationChange={handleLocationChange} />
       <FiltersBar
         fuel={fuel}
         handleFuelChange={handleFuelChange}

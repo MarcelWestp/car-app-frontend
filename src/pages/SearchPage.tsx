@@ -1,9 +1,9 @@
 import Search from '../components/searchpage/searchpage'
 
-const SearchPage = () => {
+const SearchPage = ({handleLocationChange}:{ handleLocationChange:any}) => {
   return (
     <div>
-        <Search />
+        <Search handleLocationChange={handleLocationChange} />
     </div>
   )
 }
