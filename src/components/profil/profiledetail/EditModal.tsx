@@ -23,7 +23,21 @@ const EditModal = ({ user }: { user: User }) => {
     setOpen(false);
   };
 
-  const [value, setValue] = React.useState<string | null>(user.dateOfBirth);
+  const [dob, setDob] = React.useState<string | null>(user.dateOfBirth);
+  const [firstName, setFirstName] = React.useState<string>(user.firstName);
+  const [lastName, setLastName] = React.useState<string>(user.lastName);
+  const [street, setStreet] = React.useState<string>(user.address.street);
+  const [nr, setNr] = React.useState<string>(user.address.number);
+  const [city, setCity] = React.useState<string>(user.address.city);
+  const [zip, setZip] = React.useState<string>(String(user.address.zip));
+ 
+  const handleChangeHandler = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    setter: React.Dispatch<React.SetStateAction<string>>
+  ) => {
+    event.preventDefault();
+    setter(event.target.value as string);
+  };
 
   return (
     <div>
@@ -48,7 +62,10 @@ const EditModal = ({ user }: { user: User }) => {
               required
               id="outlined-required"
               label="Firstname:"
-              defaultValue={user.firstName}
+              defaultValue={firstName}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleChangeHandler(event, setFirstName)
+              }
             />
             <Typography component="p" variant="body2">
               Lastname:
@@ -57,7 +74,10 @@ const EditModal = ({ user }: { user: User }) => {
               required
               id="outlined-required"
               label="Lastname:"
-              defaultValue={user.lastName}
+              defaultValue={lastName}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleChangeHandler(event, setLastName)
+              }
             />
             <Typography component="p" variant="body2">
               Birthdate:
@@ -65,9 +85,9 @@ const EditModal = ({ user }: { user: User }) => {
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label="Birthdate"
-                value={value}
+                value={dob}
                 onChange={(newValue) => {
-                  setValue(newValue);
+                  setDob(newValue);
                 }}
                 renderInput={(params) => <TextField {...params} />}
               />
@@ -83,7 +103,10 @@ const EditModal = ({ user }: { user: User }) => {
               required
               id="outlined-required"
               label="Street:"
-              defaultValue={user.address.street}
+              defaultValue={street}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleChangeHandler(event, setStreet)
+              }
             />
             <Typography component="p" variant="body2">
               Nr:
@@ -91,8 +114,11 @@ const EditModal = ({ user }: { user: User }) => {
             <TextField
               required
               id="outlined-required"
-              label="Street:"
-              defaultValue={user.address.number}
+              label="Number:"
+              defaultValue={nr}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleChangeHandler(event, setNr)
+              }
             />
             <Typography component="p" variant="body2">
               City:
@@ -101,7 +127,10 @@ const EditModal = ({ user }: { user: User }) => {
               required
               id="outlined-required"
               label="City:"
-              defaultValue={user.address.city}
+              defaultValue={city}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleChangeHandler(event, setCity)
+              }
             />
             <Typography component="p" variant="body2">
               Zip:
@@ -111,7 +140,10 @@ const EditModal = ({ user }: { user: User }) => {
               type="number"
               id="outlined-required"
               label="Zip:"
-              defaultValue={user.address.zip}
+              defaultValue={zip}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleChangeHandler(event, setZip)
+              }
             />
           </Box>
         </DialogContent>
