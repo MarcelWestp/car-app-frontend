@@ -5,11 +5,13 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import Car from "./../../../../models/Car";
-
+import Placeholder from './../../res/img/placeholder.jpeg'
 
 const CarCard = ({ car }: { car: Car }) => {
 
   let ratingSum: number = car.ratings.length === 0 ? 0 : (car.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0) / car.ratings.length);
+
+  let image: any = car.images.length === 0 ? Placeholder : `data:${car.images[0].contentType};base64,${car.images[0].content.data}` 
 
   return (
     <Card sx={{ maxWidth: '300px', minWidth: '300px', margin: 2, maxHeight: '250px', minHeight: '250px' }}>
@@ -17,7 +19,7 @@ const CarCard = ({ car }: { car: Car }) => {
         <CardMedia
           component="img"
           height="160"
-          image={`data:${car.images[0].contentType};base64,${car.images[0].content.data}`}
+          image={image}  
           alt={`${car.make} ${car.model}`}
         />
         <CardContent>

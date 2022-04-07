@@ -26,18 +26,6 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
   let ratingSumCar: number = car.ratings.length === 0 ? 0 : (car.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0) / car.ratings.length);
   let ratingSumUser: number = user.ratings.length === 0 ? 0 : (user.ratings.map(rating => rating.rating).reduce((prev, curr) => prev + curr, 0) / user.ratings.length);
 
-  // const handleDragStart = (e: any) => e.preventDefault();
-  // const getImages = () =>
-  //   car.images.map((img, index) => (
-  //     <img
-  //       src={`data:${img.contentType};base64,${img.content.data}`}
-  //       alt={car.model}
-  //       onDragStart={handleDragStart}
-  //       role="presentation"
-  //       style={{ width: "90%" }}
-  //       key={index}
-  //     />
-
   let images: CarouselImage[] = [{
     src: Placeholder,
     title: `placeholder`,

@@ -3,6 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
+import theme from "./../../AppTheme"
 
 const NewFooter = () => (
     <AppBar position="static" color="transparent" sx={{ top: 'auto', bottom: 0 }}>
@@ -14,7 +15,7 @@ const NewFooter = () => (
                     component="h2"
                     sx={{ fontWeight: '400' }}
                 >
-                    CarToGo
+                     Car<span style={{ color: `${theme.palette.primary.main}` }}>To</span>Go
                 </Typography>
             </Box>
             <Box sx={{ flexGrow: 1 }} />

@@ -53,7 +53,7 @@ const ImageMarked = styled('span')(({ theme }) => ({
     transition: theme.transitions.create('opacity'),
 }));
 
-function Carousel({ images, doubleImg,handleChange }: { images: Images[], doubleImg: boolean,handleChange: any }) {
+function Carousel({ images, doubleImg, handleChange }: { images: Images[], doubleImg: boolean, handleChange: any }) {
 
     const [imgNumber, setImgNumber] = React.useState(0);
     const [imgNumber2, setImgNumber2] = React.useState(1);
@@ -69,7 +69,7 @@ function Carousel({ images, doubleImg,handleChange }: { images: Images[], double
     }
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', margin: '40px 0' }}>
             <Button variant="text" onClick={backwardsAction}>
                 <ArrowBackIosIcon />
             </Button>
@@ -101,7 +101,7 @@ function Carousel({ images, doubleImg,handleChange }: { images: Images[], double
                 </Link>
 
                 {doubleImg &&
-                    <Link to={images[imgNumber2].url} onClick={() => handleChange(images[imgNumber2].title)}>
+                    <Link to={images[imgNumber2].url} onClick={() => handleChange(images[imgNumber2].title)} style={{ marginLeft: '20px' }}>
                         <ImageButton
                             focusRipple
                             key={images[imgNumber2].title}

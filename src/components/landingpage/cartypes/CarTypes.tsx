@@ -1,6 +1,8 @@
 import "react-alice-carousel/lib/alice-carousel.css";
 import "./cartypes.css";
 import Carousel from "../../carousel/CarouselWithButton"
+import Box from '@mui/material/Box'
+import theme from './../../../AppTheme'
 
 import oldtimer from "./../../../res/img/cartypes/oldtimer.jpeg";
 import luxury from "./../../../res/img/cartypes/luxury.jpeg";
@@ -31,13 +33,15 @@ const images = [
   }
 ]
 
-const CarTypes = ({handleCarTypeChange}:{handleCarTypeChange:any}) => {
+const CarTypes = ({ handleCarTypeChange }: { handleCarTypeChange: any }) => {
   return (
     <div id="cartypes">
-      <Typography component="h3" variant="h3">
-        Your Dreamcar?!..
-      </Typography>
-      <Carousel images={images} doubleImg={true} handleChange={handleCarTypeChange} />
+      <Box sx={{ display: 'flex', width: '59%' }} >
+        <Typography component="h3" variant="h3" >
+          Your dream <span style={{ color: `${theme.palette.primary.main}` }} >car</span>?!..
+        </Typography>
+        <Carousel images={images} doubleImg={true} handleChange={handleCarTypeChange} />
+      </Box>
     </div>
   );
 };

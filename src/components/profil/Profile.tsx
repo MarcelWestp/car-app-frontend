@@ -31,6 +31,7 @@ const Profile = () => {
     <div className="profile">
       <Box sx={{
         display: 'flex',
+        minHeight: '847px'
       }}>
 
         <Box sx={{
@@ -39,7 +40,6 @@ const Profile = () => {
           minHeight: 800,
           maxHeight: 800,
           bgcolor: 'background.paper',
-          gridColumn: 1
         }}>
           <nav aria-label="main profile-list">
             <List>

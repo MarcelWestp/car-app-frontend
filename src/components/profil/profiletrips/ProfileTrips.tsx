@@ -24,17 +24,23 @@ const ProfileTrips = ({ user }: { user: User }) => {
     {
       field: 'from',
       headerName: 'From',
-      width: 150,
+      width: 250,
+      headerAlign: 'center',
+      align: 'center',
     },
     {
       field: 'until',
       headerName: 'Until',
-      width: 150,
+      width: 250,
+      headerAlign: 'center',
+      align: 'center',
     },
     {
       field: 'car',
       headerName: 'Car',
-      width: 150,
+      width: 250,
+      headerAlign: 'center',
+      align: 'center',
       renderCell: (cellValues:any) => (
         <strong>
           <Link to={`/car/${cellValues.value}`} target="_blank" style={{ textDecoration: 'none' }}>
@@ -52,7 +58,9 @@ const ProfileTrips = ({ user }: { user: User }) => {
     {
       field: 'delete',
       headerName: 'Delete',
-      width: 150,
+      width: 250,
+      headerAlign: 'center',
+      align: 'center',
       renderCell: (cellValues:any) => (
         <strong>
           <Button
@@ -72,13 +80,13 @@ const ProfileTrips = ({ user }: { user: User }) => {
   let rows = user.bookings.map(trip => ({ id: trip.id, from: trip.from, until: trip.until, car: trip.carId, delete: 0 }))
   return (
     <div>
-      {user.bookings.length > 0 ? <Container sx={{ marginTop: 5, height: 375, width: 675 }}>
+      {user.bookings.length > 0 ? <Container sx={{ marginTop: 5, height: 500, width: 1045 }}>
         <DataGrid
           rows={rows}
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}
-          checkboxSelection
+          rowHeight={75}
           disableSelectionOnClick
         />
       </Container>
