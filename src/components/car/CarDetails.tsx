@@ -33,7 +33,7 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
   }]
 
   let getImages = () => {
-    if (car.id !== 0) {
+    if (car.id !== 0 && car.images.length !== 0) {
       images = []
       for (let i = 0; i < car.images.length; i++) {
         images.push({
