@@ -12,11 +12,7 @@ import hannover from "./../../../res/img/destination/hannover.jpeg";
 import dresden from "./../../../res/img/destination/dresden.jpeg";
 import frankfurt from "./../../../res/img/destination/frankfurt.jpeg";
 import köln from "./../../../res/img/destination/köln.jpeg";
-<<<<<<< HEAD
-import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
-=======
->>>>>>> adjust
 
 const images = [
   {
@@ -54,19 +50,12 @@ const images = [
 const Destinations = ({handleLocationChange}:{ handleLocationChange:any}) => {
   return (
     <div id="destinations">
-<<<<<<< HEAD
-      <Typography component="h3" variant="h3">
-        Your next Destination:
-      </Typography>
-      <Carousel images={images} doubleImg={true} handleChange={handleLocationChange} />
-=======
       <Box sx={{ display: 'flex', width: '59%' }} >
         <Typography component="h3" variant="h3">
           Your next <span style={{ color: `${theme.palette.primary.main}` }} >destination</span>:
         </Typography>
       </Box>
-      <Carousel images={images} doubleImg={true} />
->>>>>>> adjust
+      <Carousel images={images} doubleImg={true} handleChange={handleLocationChange}/>
     </div>
   );
 };

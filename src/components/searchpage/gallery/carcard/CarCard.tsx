@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import Car from "./../../../../models/Car";
-import Placeholder from './../../res/img/placeholder.jpeg'
+import Placeholder from './../../../../res/img/placeholder.jpeg'
 
 const CarCard = ({ car }: { car: Car }) => {
 
