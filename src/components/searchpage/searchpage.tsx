@@ -8,34 +8,47 @@ import { actionCreators } from "../../state/index";
 import { RootState } from "./../../state/reducers/index";
 import { SelectChangeEvent } from "@mui/material/Select";
 
-const Searchpage = ({handleLocationChange,location,handleTypeChange,type}:{ handleLocationChange:any,location:any,handleTypeChange:any,type:string}) => {
+import GalleryMap from "./gallerymap/GalleryMap";
+
+const Searchpage = ({
+  handleLocationChange,
+  location,
+  handleTypeChange,
+  type,
+}: {
+  handleLocationChange: any;
+  location: any;
+  handleTypeChange: any;
+  type: string;
+}) => {
   const dispatch = useDispatch();
-  const { getAllCars,getAllCarsByCity } = bindActionCreators(actionCreators, dispatch);
+  const { getAllCars, getAllCarsByCity } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
   const cars = useSelector((state: RootState) => state.car);
 
   React.useEffect(() => {
-    if(location === ""){
-      getAllCars()
-    }else{
-      getAllCarsByCity(location)
+    if (location === "") {
+      getAllCars();
+    } else {
+      getAllCarsByCity(location);
     }
   }, [location]);
 
   const [map, setMap] = useState<boolean>(false);
-  const handleMap = () => setMap(!map)
-
+  const handleMap = () => setMap(!map);
 
   const [fuel, setFuel] = useState("");
   const [seats, setSeats] = useState("");
   const [transmission, setTransmission] = useState("");
   const [doors, setDoors] = useState("");
   const [make, setMake] = useState("");
-  
 
   const handleFuelChange = (event: SelectChangeEvent) => {
     setFuel(event.target.value as string);
   };
-  
+
   const handleSeatsChange = (event: SelectChangeEvent) => {
     setSeats(event.target.value as string);
   };
@@ -48,41 +61,46 @@ const Searchpage = ({handleLocationChange,location,handleTypeChange,type}:{ hand
   const handleMakeChange = (event: SelectChangeEvent) => {
     setMake(event.target.value as string);
   };
-  
+
   const handleClear = () => {
     setFuel("");
-    handleTypeChange("")
+    handleTypeChange("");
     setSeats("");
     setTransmission("");
-    setDoors('');
-    setMake('');
+    setDoors("");
+    setMake("");
   };
 
   const handleModalClear = () => {
-    setDoors('');
-    setMake('');
-}
+    setDoors("");
+    setMake("");
+  };
 
   const filteredCars = () => {
     return cars
       .filter(
         (car) => fuel === "" || fuel === "None" || car.details.fuelType === fuel
       )
+      .filter((car) => type === "" || type === "None" || car.type === type)
       .filter(
-        (car) => type === "" || type === "None" || car.type === type
+        (car) =>
+          seats === "" ||
+          Number(seats) === 0 ||
+          car.details.seats === Number(seats)
       )
       .filter(
-        (car) => seats === "" || Number(seats) === 0 || car.details.seats === Number(seats)
+        (car) =>
+          transmission === "" ||
+          transmission === "None" ||
+          car.details.transmission === transmission
       )
       .filter(
-        (car) => transmission === "" || transmission === "None" || car.details.transmission === transmission
+        (car) =>
+          doors === "" ||
+          Number(doors) === 0 ||
+          car.details.doors === Number(doors)
       )
-      .filter(
-        (car) => doors === "" || Number(doors) === 0 || car.details.doors === Number(doors)
-      )
-      .filter(
-        (car) => make === "" || make === "None" || car.make === make
-      );
+      .filter((car) => make === "" || make === "None" || car.make === make);
   };
 
   return (
@@ -95,7 +113,10 @@ const Searchpage = ({handleLocationChange,location,handleTypeChange,type}:{ hand
         minHeight: "83vh",
       }}
     >
-      <Searchbar handleLocationChange={handleLocationChange} location={location}/>
+      <Searchbar
+        handleLocationChange={handleLocationChange}
+        location={location}
+      />
       <FiltersBar
         fuel={fuel}
         handleFuelChange={handleFuelChange}
@@ -114,7 +135,11 @@ const Searchpage = ({handleLocationChange,location,handleTypeChange,type}:{ hand
         map={map}
         handleMap={handleMap}
       />
-      <Gallery cars={filteredCars()} />
+      {map ? (
+        <GalleryMap address={location} />
+      ) : (
+        <Gallery cars={filteredCars()} />
+      )}
     </div>
   );
 };

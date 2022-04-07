@@ -82,7 +82,15 @@ const FiltersBar = ({
 
   return (
     <div className="filtersbar" style={{ display: "flex" }}>
-      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2, display: "flex", mr: '7px' }}>
+      <Box
+        sx={{
+          minWidth: 160,
+          maxWidth: 160,
+          marginTop: 2,
+          display: "flex",
+          mr: "7px",
+        }}
+      >
         <FormControl fullWidth>
           <InputLabel id="fuel-filter-label" sx={{ display: "flex" }}>
             Fuel
@@ -104,7 +112,7 @@ const FiltersBar = ({
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2, mr: '7px' }}>
+      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2, mr: "7px" }}>
         <FormControl fullWidth>
           <InputLabel id="cartype-filter-label" sx={{ display: "flex" }}>
             Cartype
@@ -128,7 +136,7 @@ const FiltersBar = ({
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2, mr: '7px' }}>
+      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2, mr: "7px" }}>
         <FormControl fullWidth>
           <InputLabel id="seats-filter-label" sx={{ display: "flex" }}>
             Seats
@@ -149,7 +157,7 @@ const FiltersBar = ({
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2, mr: '7px' }}>
+      <Box sx={{ minWidth: 160, maxWidth: 160, marginTop: 2, mr: "7px" }}>
         <FormControl fullWidth>
           <InputLabel id="transmission-filter-label" sx={{ display: "flex" }}>
             Transmission
@@ -173,7 +181,7 @@ const FiltersBar = ({
         size="medium"
         startIcon={<FilterAltIcon />}
         onClick={handleOpen}
-        sx={{ marginTop: 2, mr: '7px' }}
+        sx={{ marginTop: 2, mr: "7px" }}
       >
         <FilterModal
           open={open}
@@ -185,15 +193,23 @@ const FiltersBar = ({
           handleClear={handleModalClear}
         />
       </Button>
-      <Button variant="outlined" size="medium" startIcon={<FilterAltOffIcon />} onClick={handleClear} sx={{ marginTop: 2 }}>Clear</Button>
+      <Button
+        variant="outlined"
+        size="medium"
+        startIcon={<FilterAltOffIcon />}
+        onClick={handleClear}
+        sx={{ marginTop: 2 }}
+      >
+        Clear
+      </Button>
       <Button
         variant="contained"
         size="medium"
-        startIcon={map ? <MapIcon /> : <GarageIcon />}
+        startIcon={map ? <GarageIcon /> : <MapIcon />}
         onClick={handleMap}
         sx={{ marginTop: 2, marginLeft: 4 }}
       >
-        {map ? "on map" : "gallery"}
+        {map ? "gallery" : "on map"}
       </Button>
     </div>
   );
