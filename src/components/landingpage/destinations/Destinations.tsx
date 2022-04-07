@@ -10,6 +10,7 @@ import dresden from "./../../../res/img/destination/dresden.jpeg";
 import frankfurt from "./../../../res/img/destination/frankfurt.jpeg";
 import köln from "./../../../res/img/destination/köln.jpeg";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 const images = [
   {
@@ -44,13 +45,13 @@ const images = [
   }
 ]
 
-const Destinations = () => {
+const Destinations = ({handleLocationChange}:{ handleLocationChange:any}) => {
   return (
     <div id="destinations">
       <Typography component="h3" variant="h3">
         Your next Destination:
       </Typography>
-      <Carousel images={images} doubleImg={true} />
+      <Carousel images={images} doubleImg={true} handleChange={handleLocationChange} />
     </div>
   );
 };

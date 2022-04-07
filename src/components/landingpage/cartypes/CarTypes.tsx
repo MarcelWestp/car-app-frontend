@@ -31,13 +31,13 @@ const images = [
   }
 ]
 
-const CarTypes = () => {
+const CarTypes = ({handleCarTypeChange}:{handleCarTypeChange:any}) => {
   return (
     <div id="cartypes">
       <Typography component="h3" variant="h3">
         Your Dreamcar?!..
       </Typography>
-      <Carousel images={images} doubleImg={true} />
+      <Carousel images={images} doubleImg={true} handleChange={handleCarTypeChange} />
     </div>
   );
 };

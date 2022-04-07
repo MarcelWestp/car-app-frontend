@@ -8,7 +8,7 @@ import { actionCreators } from "../../state/index";
 import { RootState } from "./../../state/reducers/index";
 import { SelectChangeEvent } from "@mui/material/Select";
 
-const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,location:string}) => {
+const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,location:any}) => {
   const dispatch = useDispatch();
   const { getAllCars,getAllCarsByCity } = bindActionCreators(actionCreators, dispatch);
   const cars = useSelector((state: RootState) => state.car);
@@ -26,18 +26,16 @@ const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,l
 
 
   const [fuel, setFuel] = useState("");
-  const [cartype, setCartype] = useState("");
   const [seats, setSeats] = useState("");
   const [transmission, setTransmission] = useState("");
   const [doors, setDoors] = useState("");
   const [make, setMake] = useState("");
+  const [cartype, setCartype] = useState("");
 
   const handleFuelChange = (event: SelectChangeEvent) => {
     setFuel(event.target.value as string);
   };
-  const handleCartypeChange = (event: SelectChangeEvent) => {
-    setCartype(event.target.value as string);
-  };
+  
   const handleSeatsChange = (event: SelectChangeEvent) => {
     setSeats(event.target.value as string);
   };
@@ -50,9 +48,12 @@ const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,l
   const handleMakeChange = (event: SelectChangeEvent) => {
     setMake(event.target.value as string);
   };
+  const handleTypeChange = (event: SelectChangeEvent) => {
+    setMake(event.target.value as string);
+  };
   const handleClear = () => {
     setFuel("");
-    setCartype("");
+    setCartype("")
     setSeats("");
     setTransmission("");
     setDoors('');
@@ -101,7 +102,7 @@ const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,l
         fuel={fuel}
         handleFuelChange={handleFuelChange}
         cartype={cartype}
-        handleCartypeChange={handleCartypeChange}
+        handleCartypeChange={handleTypeChange}
         seats={seats}
         handleSeatsChange={handleSeatsChange}
         transmission={transmission}

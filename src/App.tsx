@@ -7,19 +7,23 @@ import Footer from "./components/footer/NewFooter";
 import Landingpage from "./pages/LandingPage";
 import Signup from "./pages/SignupPage";
 import Login from "./pages/LoginPage";
-import Search from "./pages/SearchPage";
+import SearchPage from "./pages/SearchPage";
 import Cardetail from "./pages/CarDetailPage";
 import ProfilePage from "./pages/ProfilePage";
 import Hostacar from "./pages/HostACarPage";
 import CheckoutPage from "./pages/CheckoutPage";
 
 const App = () => {
-
   const [location, setLocation] = React.useState<string>("");
+  const [type, setType] = React.useState<string>("");
 
   const handleLocationChange = (value: any) => {
-    //TODO: autokomplette läuft nicht auf onChange
     setLocation(value);
+    console.log(value);
+  };
+
+  const handleTypeChange = (value: any) => {
+    setType(value);
     console.log(value);
   };
 
@@ -32,7 +36,11 @@ const App = () => {
             <Route
               path="/"
               element={
-                <Landingpage handleLocationChange={handleLocationChange} location={location} />
+                <Landingpage
+                  handleLocationChange={handleLocationChange}
+                  location={location}
+                  handleTypeChange={handleTypeChange}
+                />
               }
             />
             <Route path="signup" element={<Signup />} />
@@ -40,7 +48,7 @@ const App = () => {
             <Route
               path="search"
               element={
-                <Search
+                <SearchPage
                   handleLocationChange={handleLocationChange}
                   location={location}
                 />
