@@ -7,8 +7,6 @@ import { bindActionCreators } from "redux";
 import { actionCreators } from "../../state/index";
 import { RootState } from "./../../state/reducers/index";
 import { SelectChangeEvent } from "@mui/material/Select";
-import { Marker } from "@react-google-maps/api";
-import markerimg from "./../../res/img/CarMapMarker.png";
 import Car from './../../models/Car'
 
 import GalleryMap from "./gallerymap/GalleryMap";
@@ -52,7 +50,6 @@ const Searchpage = ({
   React.useEffect(() => {
     async function fetchData() {
       let carsForMap: any = await fetchCarsMap();
-      console.log(carsForMap);
       setCarsMap(carsForMap);
     }
     fetchData();
@@ -68,7 +65,10 @@ const Searchpage = ({
     for (const carForMap of filteredCars(cars)) {
       let cord:Cord | void = await getGeocodeAddress(carForMap);
       if(cord !== undefined) {
-        cords.push(cord);
+        cords.push({
+          car:carForMap,
+          cord
+        });
       }
     }
     return cords;

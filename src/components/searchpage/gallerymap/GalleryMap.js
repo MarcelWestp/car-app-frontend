@@ -1,8 +1,8 @@
 import React from "react";
-import { Marker, GoogleMap, useJsApiLoader } from "@react-google-maps/api";
-import Markerimg from './../../../res/img/CarMapMarker.png'
+import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import CarMarker from "./CarMarker";
 
-const googleMapsApiKey = 'AIzaSyCyH9tROtDKihy8Pl6fuV4s7VBI0GVL2c8'
+const googleMapsApiKey = "AIzaSyCyH9tROtDKihy8Pl6fuV4s7VBI0GVL2c8";
 
 const containerStyle = {
   marginTop: 20,
@@ -11,20 +11,19 @@ const containerStyle = {
   height: "1200px",
 };
 
-const GalleryMap = ({ address,carsMap }) => {
-  
+const GalleryMap = ({ address, carsMap }) => {
   const [position, setPositon] = React.useState();
   const [zoom, setZoom] = React.useState(7);
 
   React.useEffect(() => {
     const load = async () => {
-      if(address === ""){
-        setZoom(7)
+      if (address === "") {
+        setZoom(7);
         setPositon({
           lat: 51.165691,
-          lng: 10.451526
+          lng: 10.451526,
         });
-      }else{
+      } else {
         setZoom(12);
         await getGeocodeAddress(address);
       }
@@ -54,7 +53,9 @@ const GalleryMap = ({ address,carsMap }) => {
         zoom={zoom}
         options={{ disableDefaultUI: true, zoomControl: true }}
       >
-      {carsMap.map((car,index) => <Marker key={index} position={car}  />)}
+        {carsMap.map((ele, index) => (
+          <CarMarker key={index} ele={ele} />
+        ))}
       </GoogleMap>
     </>
   ) : (
