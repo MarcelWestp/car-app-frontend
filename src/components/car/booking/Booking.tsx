@@ -9,13 +9,35 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { Link } from "react-router-dom";
 import theme from './../../../AppTheme'
+import { RootState } from "./../../../state/reducers";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "./../../../state/index";
+import Trip from './../../../models/Trip'
 
 const Booking = ({ car }: { car: Car }) => {
+
+    const dispatch = useDispatch();
+    const { setTripDetails } = bindActionCreators(
+      actionCreators,
+      dispatch
+    );
+
+    const user = useSelector((state: RootState) => state.user);
 
     const [value, setValue] = React.useState<DateRange<Date>>([new Date(), new Date()]);
 
     // @ts-ignore: Object is possibly 'undefined'.
     let estimatedPrice: number = (Math.abs(value[1]?.getTime() - value[0]?.getTime()) / (1000 * 60 * 60 * 24) + 1) * car.pricePerDay
+
+    const handleCheckout = () => {
+        let trip: Trip = {
+            car: car,
+            from: value[0],
+            until: value[1]
+        }
+        setTripDetails(trip)
+    }
 
     return (
         <div>
@@ -73,19 +95,22 @@ const Booking = ({ car }: { car: Car }) => {
                         {car.address.zip} {car.address.city}, {car.address.street} {car.address.number}
                     </Typography>
                 </Box>
-                <Link to="/checkout" style={{ textDecoration: 'none' }} >
-                    <Button
-                        type="button"
-                        variant="contained"
-                        sx={{
-                            marginLeft: "20%",
-                            mb: 3,
-                            width: "60%",
-                            height: 40
-                        }}>
+                <Button
+                    type="button"
+                    variant="contained"
+                    sx={{
+                        marginLeft: "20%",
+                        mb: 3,
+                        width: "60%",
+                        height: 40
+                    }}
+                    onClick={handleCheckout}
+                    disabled={user.id === 0 && value[0] !== null && value[1] !== null}
+                >
+                    <Link to="/checkout" style={{ textDecoration: 'none', color: user.id === 0 ? 'black' : 'white' }} >
                         Continue
-                    </Button>
-                </Link>
+                    </Link>
+                </Button>
                 <hr style={{
                     border: 0,
                     height: 0,

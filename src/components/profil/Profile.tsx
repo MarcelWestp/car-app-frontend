@@ -11,7 +11,6 @@ import ProfileTrips from './profiletrips/ProfileTrips';
 import ProfileHostCars from './profilehostcars/ProfileHostCars';
 import ProfileChangePassword from './profilechangepassword/ProfileChangePassword';
 import ProfileDelete from './profiledelete/ProfileDelete';
-import User from './../../models/User';
 import Contents from '../../models/ProfileContents';
 
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';

@@ -7,14 +7,19 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Trip from "./../../models/Trip"
 import TripDetails from "./tripdetails/TripDetails"
 import PaymentForm from "./paymentform/PaymentForm"
 import CheckoutDetails from "./checkoutdetails/CheckoutDetails"
+import { Link } from 'react-router-dom'
+import { RootState } from "../../state/reducers";
+import { useSelector } from "react-redux";
 
 const steps = ['Trip details', 'Payment details', 'Review your order'];
 
-const Checkout = ({ trip }: { trip: Trip }) => {
+const Checkout = () => {
+
+  const user = useSelector((state: RootState) => state.user);
+  const trip = useSelector((state: RootState) => state.trip);
 
   const [cardName, setCardName] = React.useState<string>('');
   const [cardNumber, setCardNumber] = React.useState<string>('');
@@ -34,8 +39,8 @@ const Checkout = ({ trip }: { trip: Trip }) => {
           cardName={cardName}
           cardNumber={cardNumber}
           expiryDate={expiryDate}
-          cvv={cvv} 
-          />;
+          cvv={cvv}
+        />;
       case 2:
         return <CheckoutDetails trip={trip} payment={{ cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvv: cvv }} />;
       default:
@@ -46,11 +51,13 @@ const Checkout = ({ trip }: { trip: Trip }) => {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
-    if(activeStep === 1){
-      if(cardName !== "" && cardNumber !== "" && expiryDate !== "" && cvv !== ""){
+    if (activeStep === 1) {
+      if (cardName !== "" && cardNumber !== "" && expiryDate !== "" && cvv !== "") {
         setActiveStep(activeStep + 1);
       }
-    }else{
+    } else if(activeStep === 2) {
+      
+    } else {
       setActiveStep(activeStep + 1);
     }
   };
@@ -81,6 +88,15 @@ const Checkout = ({ trip }: { trip: Trip }) => {
               <Typography variant="subtitle1">
                 Your trip has been booked. You can find information about your trips on your profile.
               </Typography>
+              <Button
+                variant="contained"
+                color="primary"
+                style={{ marginTop: 10 }}
+              >
+                <Link to="/" style={{ textDecoration: 'none', color: 'white' }} >
+                  Back to home
+                </Link>
+              </Button>
             </Box>
           ) : (
             <React.Fragment>
