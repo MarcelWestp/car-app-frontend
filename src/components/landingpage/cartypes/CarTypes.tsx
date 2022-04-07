@@ -40,8 +40,8 @@ const CarTypes = ({ handleCarTypeChange }: { handleCarTypeChange: any }) => {
         <Typography component="h3" variant="h3" >
           Your dream <span style={{ color: `${theme.palette.primary.main}` }} >car</span>?!..
         </Typography>
-        <Carousel images={images} doubleImg={true} handleChange={handleCarTypeChange} />
       </Box>
+      <Carousel images={images} doubleImg={true} handleChange={handleCarTypeChange} />
     </div>
   );
 };

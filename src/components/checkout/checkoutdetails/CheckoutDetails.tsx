@@ -27,8 +27,14 @@ const CheckoutDetails = ({
 
   return (
     <Box >
-      <TripDetails trip={trip} height='35vh'/>
-      <hr style={{ margin: "20px 0px" }}></hr>
+      <TripDetails trip={trip} height='40vh' />
+      <hr style={{
+        border: 0,
+        height: 0,
+        borderTop: '1px solid rgba(0, 0, 0, 0.1)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
+        margin: '20px 0px'
+      }}></hr>
       <Typography variant="h4" gutterBottom>
         Payment details:
       </Typography>

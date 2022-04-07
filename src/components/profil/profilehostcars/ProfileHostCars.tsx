@@ -63,8 +63,12 @@ const ProfileHostCars = ({ user }: { user: User }) => {
 
   return (
     <div>
-      <Button >
-        <Link to="/hostacar">
+      <Button 
+      variant="contained"
+      color="primary"
+      style={{ margin: '10px 0' }}
+      >
+        <Link to="/hostacar" style={{ textDecoration: 'none', color: 'white' }}>
           Host a Car
         </Link>
       </Button>

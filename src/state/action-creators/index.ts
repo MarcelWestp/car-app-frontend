@@ -1,6 +1,7 @@
 import Car from "./../../models/Car";
 import User from "./../../models/User";
 import PostUser from "./../../models/PostUser";
+import Trip from "./../../models/Trip";
 
 const URL: string = process.env.REACT_APP_BASE_URL as string;
 
@@ -156,6 +157,18 @@ export const deleteBookingById = (id: number) => {
         redirect: 'follow'});
       dispatch({ type: "deleteBookingById", payload: id });
     } catch (e) {}
+  };
+};
+
+export const setTripDetails = (trip: Trip) => {
+  return async (dispatch: any) => {
+    dispatch({ type: "setTripDetails", payload: trip});
+  };
+};
+
+export const clearTrip = () => {
+  return async (dispatch: any) => {
+    dispatch({ type: "clearTrip"});
   };
 };
 
