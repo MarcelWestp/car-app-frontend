@@ -57,6 +57,7 @@ const Checkout = () => {
       }
     } else if(activeStep === 2) {
       
+      setActiveStep(activeStep + 1);
     } else {
       setActiveStep(activeStep + 1);
     }
