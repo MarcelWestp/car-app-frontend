@@ -2,8 +2,8 @@ import Car from "./Car"
 
 interface Trip{
     car: Car,
-    from: Date | null,
-    until: Date | null
+    from: Date,
+    until: Date
 }
 
 export default Trip

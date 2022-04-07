@@ -17,9 +17,7 @@ const ImageSrc = styled("span")({
 });
 
 const TripDetails = ({ trip, height }: { trip: Trip, height: string }) => {
-
-  console.log(trip)
-
+  
   const estimatedPrice = () => (
     (Math.abs(trip.until!.getTime() - trip.from!.getTime()) / (1000 * 60 * 60 * 24) + 1) * trip.car.pricePerDay
   )

@@ -46,6 +46,9 @@ const reducer = (state = initialState, action: Payload) => {
       return initialState;
     case "postUser":
       return action.payload;
+    case "postBooking":
+      let trips = [...state.bookings, action.payload];
+      return {... state, bookings: trips};
     case "deleteBookingById":
       let booking = state.bookings.filter(e => e.id !== action.payload)
       return {...state, bookings: booking}

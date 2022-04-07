@@ -12,11 +12,19 @@ import PaymentForm from "./paymentform/PaymentForm"
 import CheckoutDetails from "./checkoutdetails/CheckoutDetails"
 import { Link } from 'react-router-dom'
 import { RootState } from "../../state/reducers";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux"
+import { bindActionCreators } from 'redux'
+import { actionCreators } from "./../../state/index"
+import { format } from 'date-fns'
+import PostBooking from './../../models/PostBooking'
+
 
 const steps = ['Trip details', 'Payment details', 'Review your order'];
 
 const Checkout = () => {
+
+  const dispatch = useDispatch();
+  const { postBooking, clearTrip } = bindActionCreators(actionCreators, dispatch);
 
   const user = useSelector((state: RootState) => state.user);
   const trip = useSelector((state: RootState) => state.trip);
@@ -56,12 +64,25 @@ const Checkout = () => {
         setActiveStep(activeStep + 1);
       }
     } else if(activeStep === 2) {
-      
+      addBooking();
       setActiveStep(activeStep + 1);
     } else {
       setActiveStep(activeStep + 1);
     }
   };
+
+  const addBooking = () => {
+    let from: string = format(trip.from, 'yyyy-MM-dd')
+    let until: string = format(trip.until, 'yyyy-MM-dd')
+    let booking: PostBooking ={
+      carId: trip.car.id,
+      userId: user.id,
+      from: from,
+      until: until,
+    }
+    postBooking(booking)
+    clearTrip()
+  }
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);

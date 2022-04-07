@@ -33,8 +33,8 @@ const Booking = ({ car }: { car: Car }) => {
     const handleCheckout = () => {
         let trip: Trip = {
             car: car,
-            from: value[0],
-            until: value[1]
+            from: value[0]!,
+            until: value[1]!
         }
         setTripDetails(trip)
     }
