@@ -17,6 +17,7 @@ import { bindActionCreators } from "redux";
 import { actionCreators } from "./../../state/index";
 import { RootState } from "./../../state/reducers/index";
 import theme from './../../AppTheme'
+import Placeholder from './../../res/img/profilePlaceholder.jpeg'
 
 const NewHeader = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -220,8 +221,9 @@ const NewHeader = () => {
 
           {user !== undefined && user.id !== 0 && (
             <Box sx={{ flexGrow: 0 }}>
+              {console.log(user.image === null )}
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={`data:${user.image.contentType};base64,${user.image.content.data}`} />
+                <Avatar alt={`${user.username}`} src={user.image === null ? Placeholder : `data:${user.image.contentType};base64,${user.image.content.data}`} />
               </IconButton>
               <Menu
                 sx={{ mt: "45px" }}

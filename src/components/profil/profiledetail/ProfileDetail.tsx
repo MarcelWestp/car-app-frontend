@@ -3,9 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import User from "./../../../models/User";
 import EditModal from "./EditModal";
 import Typography from "@mui/material/Typography";
-
-const portrait: string =
-  "https://cdn.pixabay.com/photo/2016/03/27/07/26/darth-vader-1282288_1280.jpg";
+import Placeholder from './../../../res/img/profilePlaceholder.jpeg'
 
 const ProfileDetail = ({ user }: { user: User }) => {
   return (
@@ -13,7 +11,7 @@ const ProfileDetail = ({ user }: { user: User }) => {
       <Box sx={{ marginTop: 2, marginLeft: 5 }}>
         <Avatar
           alt="Mustermann"
-          src={`data:${user.image.contentType};base64,${user.image.content.data}`}
+          src={user.image === null ? Placeholder : `data:${user.image.contentType};base64,${user.image.content.data}`}
           sx={{ width: 128, height: 128 }}
         />
         <Box

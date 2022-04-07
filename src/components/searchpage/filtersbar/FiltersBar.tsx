@@ -104,10 +104,9 @@ const FiltersBar = ({
             onChange={handleFuelChange}
           >
             <MenuItem value={"None"}>None</MenuItem>
-            <MenuItem value={"Gas"}>Gas</MenuItem>
-            <MenuItem value={"Electric"}>Electro</MenuItem>
+            <MenuItem value={"Regular"}>Regular</MenuItem>
+            <MenuItem value={"Electric"}>Electric</MenuItem>
             <MenuItem value={"Diesel"}>Diesel</MenuItem>
-            <MenuItem value={"Petrol"}>Petrol</MenuItem>
             <MenuItem value={"Hybrid"}>Hybrid</MenuItem>
           </Select>
         </FormControl>
@@ -126,13 +125,12 @@ const FiltersBar = ({
             onChange={handleCartypeChange}
           >
             <MenuItem value={"None"}>None</MenuItem>
-            <MenuItem value={"Luxury"}>Luxury</MenuItem>
-            <MenuItem value={"Classic"}>Classic</MenuItem>
             <MenuItem value={"Sport"}>Sport</MenuItem>
+            <MenuItem value={"Classic"}>Classic</MenuItem>
+            <MenuItem value={"Hatchback"}>Hatchback</MenuItem>
+            <MenuItem value={"Luxury"}>Luxury</MenuItem>
+            <MenuItem value={"Convertible"}>Convertible</MenuItem>
             <MenuItem value={"SUV"}>SUV</MenuItem>
-            <MenuItem value={"Cabrio"}>Cabrio</MenuItem>
-            <MenuItem value={"Van"}>Van</MenuItem>
-            <MenuItem value={"Cars"}>Cars</MenuItem>
           </Select>
         </FormControl>
       </Box>
@@ -172,7 +170,7 @@ const FiltersBar = ({
           >
             <MenuItem value={"None"}>None</MenuItem>
             <MenuItem value={"Automatic"}>Automatic</MenuItem>
-            <MenuItem value={"Shift"}>Shift</MenuItem>
+            <MenuItem value={"Manual"}>Manual</MenuItem>
           </Select>
         </FormControl>
       </Box>

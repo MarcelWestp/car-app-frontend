@@ -62,7 +62,9 @@ const FilterModal = ({
                 >
                   <MenuItem value={0}>None</MenuItem>
                   <MenuItem value={2}>2</MenuItem>
+                  <MenuItem value={3}>3</MenuItem>
                   <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={5}>5</MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -79,12 +81,15 @@ const FilterModal = ({
                   <MenuItem value={"None"}>None</MenuItem>
                   <MenuItem value={"Volkswagen"}>Volkswagen</MenuItem>
                   <MenuItem value={"Ford"}>Ford</MenuItem>
-                  <MenuItem value={"Bentley"}>Bentley</MenuItem>
+                  <MenuItem value={"Mercedes"}>Mercedes</MenuItem>
                   <MenuItem value={"BMW"}>BMW</MenuItem>
-                  <MenuItem value={"Seat"}>Seat</MenuItem>
-                  <MenuItem value={"Audi"}>Audi</MenuItem>
-                  <MenuItem value={"Ferrari"}>Ferrari</MenuItem>
+                  <MenuItem value={"Fiat"}>Fiat</MenuItem>
+                  <MenuItem value={"Jeep"}>Jeep</MenuItem>
+                  <MenuItem value={"Dodge"}>Dodge</MenuItem>
                   <MenuItem value={"Tesla"}>Tesla</MenuItem>
+                  <MenuItem value={"Nissan"}>Nissan</MenuItem>
+                  <MenuItem value={"Chevrolet"}>Chevrolet</MenuItem>
+                  <MenuItem value={"Delorean"}>Delorean</MenuItem>
                 </Select>
               </FormControl>
             </Box>

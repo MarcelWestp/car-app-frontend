@@ -12,6 +12,7 @@ import CarMap from './CarMap'
 import Carousel from './../carousel/CarouselWithoutButton'
 import CarouselImage from './../../models/CarouselImages'
 import Placeholder from './../../res/img/placeholder.jpeg'
+import ProfilePlaceholder from './../../res/img/profilePlaceholder.jpeg'
 
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import EventSeatIcon from '@mui/icons-material/EventSeat';
@@ -133,7 +134,7 @@ const CarDetails = ({ car, user }: { car: Car, user: User }) => {
                 }}>
                   <Avatar
                     alt={user.userName}
-                    src={`data:${user.image.contentType};base64,${user.image.content.data}`}
+                    src={user.image === null ? ProfilePlaceholder : `data:${user.image.contentType};base64,${user.image.content.data}`}
                     sx={{ width: 128, height: 128 }}
                   />
                   <Box sx={{

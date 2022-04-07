@@ -4,6 +4,8 @@ const Citys = [
     {location:"Gifhorn"} ,
     {location:"Braunschweig"},
     {location:"Berlin"},
+    {location:"Hamburg"},
+    {location:"München"},
 ];
 
 export default Citys;

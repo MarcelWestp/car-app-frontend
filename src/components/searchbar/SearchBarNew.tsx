@@ -10,7 +10,6 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import SearchIcon from "@mui/icons-material/Search";
 import Autocomplete from "@mui/material/Autocomplete";
 import citys from "./citys";
-
 import { Link } from "react-router-dom";
 
 const SearchBarNew = ({ handleLocationChange,location}:{ handleLocationChange:any,location:string}) => {
