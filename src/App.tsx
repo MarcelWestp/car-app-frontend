@@ -19,12 +19,10 @@ const App = () => {
 
   const handleLocationChange = (value: any) => {
     setLocation(value);
-    console.log(value);
   };
 
   const handleTypeChange = (value: any) => {
     setType(value);
-    console.log(value);
   };
 
   return (
