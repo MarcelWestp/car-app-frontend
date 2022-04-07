@@ -21,6 +21,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../state/reducers";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from 'react-router-dom'
+import {useDispatch} from "react-redux";
+import {bindActionCreators} from "redux";
+import { actionCreators } from "./../../state/index";
 
 const responsive = {
   0: { items: 1 },
@@ -32,6 +35,10 @@ const Input = styled("input")({
 });
 
 const HostACar = () => {
+
+  const dispatch = useDispatch();
+  const { addCarToUser } = bindActionCreators(actionCreators, dispatch);
+
   const featuresArray = [
     "4x4",
     "Backup Camera",
@@ -143,13 +150,13 @@ const HostACar = () => {
         },
       };
       const responseCar = await postCar(addCar);
+      addCarToUser(responseCar);
       imageUploader(responseCar.id);
       navigate(`/`);
     }
   };
 
   async function postCar<Car>(carToPost: Car): Promise<Car | undefined> {
-    console.log(carToPost);
     try {
       const response = await fetch(`${process.env.REACT_APP_BASE_URL}/car`, {
         method: "POST",
@@ -171,7 +178,6 @@ const HostACar = () => {
 
   const inputHandler = (e: any) => {
     e.preventDefault();
-    console.log(images.length + "hallo inputhandler");
     let fileWihtIterator = {
       prop: e.target.files[0],
       [Symbol.iterator]() {
@@ -206,7 +212,6 @@ const HostACar = () => {
       formdata.append("referenceId", `${id}`);
       formdata.append("type", "CAR");
       postImage(formdata);
-      console.log(formdata);
     });
   };
 
@@ -312,7 +317,6 @@ const HostACar = () => {
             handleChangeHandler(event, setType)
           }
         >
-          <MenuItem value={"None"}>None</MenuItem>
           <MenuItem value={"Sport"}>Sport</MenuItem>
           <MenuItem value={"Classic"}>Classic</MenuItem>
           <MenuItem value={"Hatchback"}>Hatchback</MenuItem>

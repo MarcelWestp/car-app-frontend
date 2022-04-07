@@ -51,27 +51,19 @@ export const getCarById = (id: number) => {
 export const deleteCarById = (id: number) => {
   return async (dispatch: any) => {
     try {
-      const response = await fetch(`${URL}/car/${id}`, { method: "DELETE" });
-      const carById = await response.json();
-      dispatch({ type: "deleteCarById", payload: carById });
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      await fetch(`${URL}/car/${id}`,{    method: 'DELETE',
+      headers: myHeaders,
+      redirect: 'follow'});
+      dispatch({ type: "deleteCarById", payload: id });
     } catch (e) {}
   };
 };
 
-export const postCar = (car: Car) => {
+export const addCarToUser = (car: Car) => {
   return async (dispatch: any) => {
-    try {
-      const response = await fetch(`${URL}/car`, {
-        method: "POST",
-        body: JSON.stringify(car),
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      const carById = await response.json();
-      dispatch({ type: "postCar", payload: carById });
-    } catch (e) {}
+      dispatch({ type: "postCar", payload: car });
   };
 };
 
