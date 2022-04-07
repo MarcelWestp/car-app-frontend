@@ -17,9 +17,10 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import {useSelector} from "react-redux";
-import {RootState} from "../../state/reducers";
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/reducers";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from 'react-router-dom'
 
 const responsive = {
   0: { items: 1 },
@@ -50,26 +51,29 @@ const HostACar = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (unsave: boolean) => {
+    if (unsave) {
+      setDescription("")
+    }
     setOpen(false);
   };
 
-  const [make, setMake] = useState("Nizza");
-  const [model, setModel] = useState("Salat");
-  const [type, setType] = useState("Van");
-  const [year, setYear] = useState("1986");
-  const [fuelType, setFuel] = useState("Petrol");
-  const [seats, setSeats] = useState("2");
-  const [doors, setDoors] = useState("3");
-  const [hp, setHp] = useState("126");
-  const [transmission, setTransmission] = useState("Automatic");
-  const [pricePerDay, setPricePerDay] = useState("12");
-  const [distancePerDay, setDistancePerDay] = useState("144");
-  const [street, setStreet] = useState("dorfstraße 11");
-  const [number, setNumber] = useState("12");
-  const [city, setCity] = useState("wob");
-  const [zip, setZip] = useState("1586");
-  const [description, setDescription] = useState("WAS EIN GEILES CAR!");
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
+  const [type, setType] = useState("");
+  const [year, setYear] = useState("");
+  const [fuelType, setFuel] = useState("");
+  const [seats, setSeats] = useState("");
+  const [doors, setDoors] = useState("");
+  const [hp, setHp] = useState("");
+  const [transmission, setTransmission] = useState("");
+  const [pricePerDay, setPricePerDay] = useState("");
+  const [distancePerDay, setDistancePerDay] = useState("");
+  const [street, setStreet] = useState("");
+  const [number, setNumber] = useState("");
+  const [city, setCity] = useState("");
+  const [zip, setZip] = useState("");
+  const [description, setDescription] = useState("Cool car");
 
   const handleChangeHandler = (
     event: SelectChangeEvent | React.ChangeEvent<HTMLInputElement>,
@@ -90,6 +94,8 @@ const HostACar = () => {
   };
 
   const user = useSelector((state: RootState) => state.user);
+
+  let navigate = useNavigate();
 
   const handleSubmit = async () => {
     if (
@@ -138,6 +144,7 @@ const HostACar = () => {
       };
       const responseCar = await postCar(addCar);
       imageUploader(responseCar.id);
+      navigate(`/`);
     }
   };
 
@@ -160,7 +167,7 @@ const HostACar = () => {
 
   const [input, setInput] = React.useState<any>();
   const [images, setImages] = React.useState<any>([]);
-  const [imageElement, setImageElement] =  useState<any>([]);
+  const [imageElement, setImageElement] = useState<any>([]);
 
   const inputHandler = (e: any) => {
     e.preventDefault();
@@ -305,13 +312,13 @@ const HostACar = () => {
             handleChangeHandler(event, setType)
           }
         >
-          <MenuItem value={"Classic"}>Classic</MenuItem>
-          <MenuItem value={"Luxury"}>Luxury</MenuItem>
+          <MenuItem value={"None"}>None</MenuItem>
           <MenuItem value={"Sport"}>Sport</MenuItem>
+          <MenuItem value={"Classic"}>Classic</MenuItem>
+          <MenuItem value={"Hatchback"}>Hatchback</MenuItem>
+          <MenuItem value={"Luxury"}>Luxury</MenuItem>
+          <MenuItem value={"Convertible"}>Convertible</MenuItem>
           <MenuItem value={"SUV"}>SUV</MenuItem>
-          <MenuItem value={"Cabrio"}>Cabrio</MenuItem>
-          <MenuItem value={"Van"}>Van</MenuItem>
-          <MenuItem value={"Cars"}>Cars</MenuItem>
         </Select>
         <Typography component="p" variant="body2">
           Year:
@@ -336,11 +343,10 @@ const HostACar = () => {
             handleChangeHandler(event, setFuel)
           }
         >
-          <MenuItem value={"Petrol"}>Petrol</MenuItem>
+          <MenuItem value={"Regular"}>Regular</MenuItem>
+          <MenuItem value={"Electric"}>Electric</MenuItem>
           <MenuItem value={"Diesel"}>Diesel</MenuItem>
           <MenuItem value={"Hybrid"}>Hybrid</MenuItem>
-          <MenuItem value={"Electric"}>Electric</MenuItem>
-          <MenuItem value={"Gas"}>Gas</MenuItem>
         </Select>
         <Typography component="p" variant="body2">
           Seats:
@@ -389,8 +395,8 @@ const HostACar = () => {
             handleChangeHandler(event, setTransmission)
           }
         >
-          <MenuItem value={"Shift"}>Shift</MenuItem>
           <MenuItem value={"Automatic"}>Automatic</MenuItem>
+          <MenuItem value={"Manual"}>Manual</MenuItem>
         </Select>
       </Box>
       <Grid container spacing={2}>
@@ -440,11 +446,12 @@ const HostACar = () => {
                 minRows={4}
                 placeholder="Your description..."
                 style={{ width: 200 }}
+                onChange={(event) => setDescription(event.target.value as string)}
               />
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose}>Cancel</Button>
-              <Button onClick={handleClose}>Okay</Button>
+              <Button onClick={() => handleClose(true)}>Cancel</Button>
+              <Button onClick={() => handleClose(false)}>Okay</Button>
             </DialogActions>
           </Dialog>
         </Grid>

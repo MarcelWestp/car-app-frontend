@@ -221,7 +221,6 @@ const NewHeader = () => {
 
           {user !== undefined && user.id !== 0 && (
             <Box sx={{ flexGrow: 0 }}>
-              {console.log(user.image === null )}
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt={`${user.username}`} src={user.image === null ? Placeholder : `data:${user.image.contentType};base64,${user.image.content.data}`} />
               </IconButton>
