@@ -166,6 +166,12 @@ export const setTripDetails = (trip: Trip) => {
   };
 };
 
+export const clearTrip = () => {
+  return async (dispatch: any) => {
+    dispatch({ type: "clearTrip"});
+  };
+};
+
 
 // async function fetchDeleteBooking<Booking>(bookingId: number) {
 
