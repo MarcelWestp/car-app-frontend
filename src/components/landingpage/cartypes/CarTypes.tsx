@@ -11,17 +11,17 @@ import Typography from "@mui/material/Typography";
 const images = [
   {
     src: oldtimer,
-    title: 'Classic Car',
+    title: 'Classic',
     url: '/search'
   },
   {
     src: luxury,
-    title: 'Luxury Car',
+    title: 'Luxury',
     url: '/search'
   },
   {
     src: sport,
-    title: 'Sportcar',
+    title: 'Sport',
     url: '/search'
   },
   {

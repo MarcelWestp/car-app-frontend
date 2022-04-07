@@ -8,7 +8,7 @@ import { actionCreators } from "../../state/index";
 import { RootState } from "./../../state/reducers/index";
 import { SelectChangeEvent } from "@mui/material/Select";
 
-const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,location:any}) => {
+const Searchpage = ({handleLocationChange,location,handleTypeChange,type}:{ handleLocationChange:any,location:any,handleTypeChange:any,type:string}) => {
   const dispatch = useDispatch();
   const { getAllCars,getAllCarsByCity } = bindActionCreators(actionCreators, dispatch);
   const cars = useSelector((state: RootState) => state.car);
@@ -30,7 +30,7 @@ const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,l
   const [transmission, setTransmission] = useState("");
   const [doors, setDoors] = useState("");
   const [make, setMake] = useState("");
-  const [cartype, setCartype] = useState("");
+  
 
   const handleFuelChange = (event: SelectChangeEvent) => {
     setFuel(event.target.value as string);
@@ -48,12 +48,10 @@ const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,l
   const handleMakeChange = (event: SelectChangeEvent) => {
     setMake(event.target.value as string);
   };
-  const handleTypeChange = (event: SelectChangeEvent) => {
-    setMake(event.target.value as string);
-  };
+  
   const handleClear = () => {
     setFuel("");
-    setCartype("")
+    handleTypeChange("")
     setSeats("");
     setTransmission("");
     setDoors('');
@@ -71,7 +69,7 @@ const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,l
         (car) => fuel === "" || fuel === "None" || car.details.fuelType === fuel
       )
       .filter(
-        (car) => cartype === "" || cartype === "None" || car.type === cartype
+        (car) => type === "" || type === "None" || car.type === type
       )
       .filter(
         (car) => seats === "" || Number(seats) === 0 || car.details.seats === Number(seats)
@@ -101,7 +99,7 @@ const Searchpage = ({handleLocationChange,location}:{ handleLocationChange:any,l
       <FiltersBar
         fuel={fuel}
         handleFuelChange={handleFuelChange}
-        cartype={cartype}
+        cartype={type}
         handleCartypeChange={handleTypeChange}
         seats={seats}
         handleSeatsChange={handleSeatsChange}

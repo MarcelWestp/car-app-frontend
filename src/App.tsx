@@ -51,6 +51,8 @@ const App = () => {
                 <SearchPage
                   handleLocationChange={handleLocationChange}
                   location={location}
+                  handleTypeChange={handleTypeChange}
+                  type={type}
                 />
               }
             />

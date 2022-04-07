@@ -118,7 +118,7 @@ const FiltersBar = ({
             onChange={handleCartypeChange}
           >
             <MenuItem value={"None"}>None</MenuItem>
-            <MenuItem value={"Luxery"}>Luxery</MenuItem>
+            <MenuItem value={"Luxury"}>Luxury</MenuItem>
             <MenuItem value={"Classic"}>Classic</MenuItem>
             <MenuItem value={"Sport"}>Sport</MenuItem>
             <MenuItem value={"SUV"}>SUV</MenuItem>
