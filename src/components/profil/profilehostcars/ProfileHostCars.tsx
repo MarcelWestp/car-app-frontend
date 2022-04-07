@@ -34,7 +34,6 @@ const ProfileHostCars = ({ user }: { user: User }) => {
     {
       field: 'year',
       headerName: 'Year',
-      type: 'number',
       width: 100,
       headerAlign: 'center',
       align: 'center',
