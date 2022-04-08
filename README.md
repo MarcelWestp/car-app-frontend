@@ -12,15 +12,30 @@ Every user can host and rent cars here.
 
 To start the app run:
 
-
 **initialize the project for the first time with this two following commands**
 ### `npm install`
 ### `npm update`
+
+<br>
 
 **run only this command to start the app after initialize**
 ### `npm start`
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+***
+
+## Notes
+
+This app contains all of the forntend for the:
+
+`CarToGo` app
+
+<br>
+
+The backend will be available at: 
+
+### [Backend Git repo](https://github.com/AlexS94/car-app-backend)
 
 ***
 
@@ -51,4 +66,10 @@ Page to host a car  ****only after login correctly***
 
 ## Our team
 
-Marian Kowall, Alex Schulz, David Druecke, Marcel Westphal
+Marian Kowall `Backend`
+
+Alex Schulz `Backend` 
+
+David Druecke `Frontend`
+
+Marcel Westphal `Frontend`
