@@ -5,15 +5,17 @@ const SearchPage = ({
   location,
   handleTypeChange,
   type,
+  setType,
 }: {
   handleLocationChange: any;
   location: string;
   handleTypeChange: any;
   type: string;
+  setType: any;
 }) => {
   return (
     <div>
-      <Search handleLocationChange={handleLocationChange} location={location} handleTypeChange={handleTypeChange} type={type}/>
+      <Search setType={setType} handleLocationChange={handleLocationChange} location={location} handleTypeChange={handleTypeChange} type={type}/>
     </div>
   );
 };

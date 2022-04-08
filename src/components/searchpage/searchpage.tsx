@@ -18,11 +18,13 @@ const Searchpage = ({
   location,
   handleTypeChange,
   type,
+  setType,
 }: {
   handleLocationChange: any;
   location: any;
   handleTypeChange: any;
   type: string;
+  setType: any;
 }) => {
   const dispatch = useDispatch();
   const { getAllCars, getAllCarsByCity } = bindActionCreators(
@@ -110,7 +112,7 @@ const Searchpage = ({
 
   const handleClear = () => {
     setFuel("");
-    handleTypeChange("");
+    setType("");
     setSeats("");
     setTransmission("");
     setDoors("");

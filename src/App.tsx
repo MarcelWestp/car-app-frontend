@@ -26,6 +26,10 @@ const App = () => {
     setType(event.target.value as string);
   };
 
+  const handleCarTypeChange = (value: string) => {
+    setType(value);
+  };
+
   return (
     <div className="App">
       <ThemeProvider theme={AppTheme}>
@@ -38,7 +42,7 @@ const App = () => {
                 <Landingpage
                   handleLocationChange={handleLocationChange}
                   location={location}
-                  handleTypeChange={handleTypeChange}
+                  handleTypeChange={handleCarTypeChange}
                 />
               }
             />
@@ -51,6 +55,7 @@ const App = () => {
                   handleLocationChange={handleLocationChange}
                   location={location}
                   handleTypeChange={handleTypeChange}
+                  setType={setType}
                   type={type}
                 />
               }
