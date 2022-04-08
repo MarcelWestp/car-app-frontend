@@ -57,7 +57,6 @@ const reducer = (state = initialState, action: Payload) => {
       return { ...state, bookings: booking }
     case "postCar":
       let cars = [...state.cars, action.payload]
-      console.log(cars)
       return { ...state, cars: cars }
     default:
       return state;

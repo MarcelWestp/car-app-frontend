@@ -53,7 +53,7 @@ const Searchpage = ({
       setCarsMap(carsForMap);
     }
     fetchData();
-  }, [cars,seats,doors,transmission,make,transmission]);
+  }, [cars, seats, doors, transmission, make, transmission]);
 
   type Cord = {
     lat: number
@@ -63,10 +63,10 @@ const Searchpage = ({
   const fetchCarsMap = async () => {
     let cords = [];
     for (const carForMap of filteredCars(cars)) {
-      let cord:Cord | void = await getGeocodeAddress(carForMap);
-      if(cord !== undefined) {
+      let cord: Cord | void = await getGeocodeAddress(carForMap);
+      if (cord !== undefined) {
         cords.push({
-          car:carForMap,
+          car: carForMap,
           cord
         });
       }
@@ -74,7 +74,7 @@ const Searchpage = ({
     return cords;
   };
 
-  const getGeocodeAddress = async (car: any): Promise<Cord | void > =>  {
+  const getGeocodeAddress = async (car: any): Promise<Cord | void> => {
     const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${car.address.street} ${car.address.number}, ${car.address.city}&key=${googleMapsApiKey}`;
     return await fetch(geocodingUrl)
       .then((result) => result.json())
@@ -88,8 +88,6 @@ const Searchpage = ({
   const [map, setMap] = useState<boolean>(false);
   const handleMap = () => setMap(!map);
 
-  
-
   const handleFuelChange = (event: SelectChangeEvent) => {
     setFuel(event.target.value as string);
   };
@@ -97,12 +95,15 @@ const Searchpage = ({
   const handleSeatsChange = (event: SelectChangeEvent) => {
     setSeats(event.target.value as string);
   };
+
   const handleTransmissionChange = (event: SelectChangeEvent) => {
     setTransmission(event.target.value as string);
   };
+
   const handleDoorsChange = (event: SelectChangeEvent) => {
     setDoors(event.target.value as string);
   };
+
   const handleMakeChange = (event: SelectChangeEvent) => {
     setMake(event.target.value as string);
   };

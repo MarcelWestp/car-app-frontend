@@ -12,6 +12,7 @@ import Cardetail from "./pages/CarDetailPage";
 import ProfilePage from "./pages/ProfilePage";
 import Hostacar from "./pages/HostACarPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import { SelectChangeEvent } from "@mui/material/Select";
 
 const App = () => {
   const [location, setLocation] = React.useState<string>("");
@@ -21,8 +22,8 @@ const App = () => {
     setLocation(value);
   };
 
-  const handleTypeChange = (value: any) => {
-    setType(value);
+  const handleTypeChange = (event: SelectChangeEvent) => {
+    setType(event.target.value as string);
   };
 
   return (

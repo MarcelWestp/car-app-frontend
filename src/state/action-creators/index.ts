@@ -29,10 +29,8 @@ export const getAllCarsByHostId = (id: number) => {
 export const getAllCarsByCity = (city: string) => {
   return async (dispatch: any) => {
     try {
-      console.log(city);
       const response = await fetch(`${URL}/cars/city/${city}`);
       const cars = await response.json();
-      console.log(cars)
       dispatch({ type: "getAllCarsByCity", payload: cars });
     } catch (e) {}
   };

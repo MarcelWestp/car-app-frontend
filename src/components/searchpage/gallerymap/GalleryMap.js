@@ -5,10 +5,9 @@ import CarMarker from "./CarMarker";
 const googleMapsApiKey = "AIzaSyCyH9tROtDKihy8Pl6fuV4s7VBI0GVL2c8";
 
 const containerStyle = {
-  marginTop: 20,
-
-  width: "80%",
-  height: "1200px",
+  margin: '20px 0',
+  width: "70%",
+  height: "960px",
 };
 
 const GalleryMap = ({ address, carsMap }) => {
