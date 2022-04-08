@@ -2,7 +2,7 @@ import User from './../../../models/User'
 import Container from "@mui/material/Container";
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
-import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Typography from '@mui/material/Typography';
 import {useDispatch} from "react-redux";
@@ -11,12 +11,10 @@ import { actionCreators } from "./../../../state/index"
 
 const ProfileTrips = ({ user }: { user: User }) => {
 
-
   const dispatch = useDispatch();
   const { deleteBookingById } = bindActionCreators(actionCreators, dispatch);
 
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, cellValues: any) => {
-    console.log(cellValues.row)
    deleteBookingById(cellValues.row.id)
   };
 
@@ -77,7 +75,9 @@ const ProfileTrips = ({ user }: { user: User }) => {
       ),
     }
   ];
+
   let rows = user.bookings.map(trip => ({ id: trip.id, from: trip.from, until: trip.until, car: trip.carId, delete: 0 }))
+  
   return (
     <div>
       {user.bookings.length > 0 ? <Container sx={{ marginTop: 5, height: 500, width: 1045 }}>

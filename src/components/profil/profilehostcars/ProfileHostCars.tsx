@@ -5,17 +5,19 @@ import { Link } from "react-router-dom";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Typography from '@mui/material/Typography';
+import {useDispatch} from "react-redux";
+import {bindActionCreators} from "redux";
+import { actionCreators } from "./../../../state/index";
 
+const ProfileHostCars = ({ user }: { user: User}) => {
 
-
-const ProfileHostCars = ({ user }: { user: User }) => {
-
-  let rows = user.cars.map(car => ({ id: car.id, make: car.make, model: car.model, year: car.year, delete: 0 }))
+  const dispatch = useDispatch();
+  const { deleteCarById } = bindActionCreators(actionCreators, dispatch);
 
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>, cellValues: any) => {
-      console.log(cellValues)
+    deleteCarById(cellValues.row.id)
   };
-
+  
   const columns: GridColDef[] = [
     {
       field: 'make',
@@ -44,7 +46,7 @@ const ProfileHostCars = ({ user }: { user: User }) => {
       width: 150,
       headerAlign: 'center',
       align: 'center',
-      renderCell: (cellValues) => (
+      renderCell: (cellValues:any) => (
         <strong>
           <Button
             type="button"
@@ -60,7 +62,9 @@ const ProfileHostCars = ({ user }: { user: User }) => {
       ),
     }
   ];
-
+  
+  let rows = user.cars.map(car => ({ id: car.id, make: car.make, model: car.model, year: car.year, delete: 0 }))
+  
   return (
     <div>
       <Button 

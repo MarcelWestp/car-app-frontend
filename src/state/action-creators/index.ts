@@ -2,6 +2,7 @@ import Car from "./../../models/Car";
 import User from "./../../models/User";
 import PostUser from "./../../models/PostUser";
 import Trip from "./../../models/Trip";
+import PostBooking from "./../../models/PostBooking";
 
 const URL: string = process.env.REACT_APP_BASE_URL as string;
 
@@ -50,27 +51,19 @@ export const getCarById = (id: number) => {
 export const deleteCarById = (id: number) => {
   return async (dispatch: any) => {
     try {
-      const response = await fetch(`${URL}/car/${id}`, { method: "DELETE" });
-      const carById = await response.json();
-      dispatch({ type: "deleteCarById", payload: carById });
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      await fetch(`${URL}/car/${id}`,{    method: 'DELETE',
+      headers: myHeaders,
+      redirect: 'follow'});
+      dispatch({ type: "deleteCarById", payload: id });
     } catch (e) {}
   };
 };
 
-export const postCar = (car: Car) => {
+export const addCarToUser = (car: Car) => {
   return async (dispatch: any) => {
-    try {
-      const response = await fetch(`${URL}/car`, {
-        method: "POST",
-        body: JSON.stringify(car),
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      const carById = await response.json();
-      dispatch({ type: "postCar", payload: carById });
-    } catch (e) {}
+      dispatch({ type: "postCar", payload: car });
   };
 };
 
@@ -149,13 +142,29 @@ export const logoutUser = () => {
 export const deleteBookingById = (id: number) => {
   return async (dispatch: any) => {
     try {
-      console.log(id)
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-     await fetch(`${URL}/booking/${id}`,{    method: 'DELETE',
-        headers: myHeaders,
-        redirect: 'follow'});
+      await fetch(`${URL}/booking/${id}`,{    method: 'DELETE',
+      headers: myHeaders,
+      redirect: 'follow'});
       dispatch({ type: "deleteBookingById", payload: id });
+    } catch (e) {}
+  };
+};
+
+export const postBooking = (booking: PostBooking) => {
+  return async (dispatch: any) => {
+    try {
+      const response = await fetch(`${URL}/booking`, {
+        method: "POST",
+        body: JSON.stringify(booking),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const postBooking:any = await response.json();
+      dispatch({ type: "postBooking", payload: postBooking });
     } catch (e) {}
   };
 };

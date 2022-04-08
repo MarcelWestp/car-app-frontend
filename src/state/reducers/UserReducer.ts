@@ -46,9 +46,19 @@ const reducer = (state = initialState, action: Payload) => {
       return initialState;
     case "postUser":
       return action.payload;
+    case "deleteCarById":
+      let deleteCar = state.cars.filter(car => car.id !== action.payload)
+      return { ...state, cars: deleteCar }
+    case "postBooking":
+      let trips = [...state.bookings, action.payload];
+      return { ...state, bookings: trips };
     case "deleteBookingById":
-      let booking = state.bookings.filter(e => e.id !== action.payload)
-      return {...state, bookings: booking}
+      let booking = state.bookings.filter(trip => trip.id !== action.payload)
+      return { ...state, bookings: booking }
+    case "postCar":
+      let cars = [...state.cars, action.payload]
+      console.log(cars)
+      return { ...state, cars: cars }
     default:
       return state;
   }
