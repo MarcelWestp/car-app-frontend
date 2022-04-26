@@ -12,7 +12,8 @@ const AppTheme = createTheme({
     },
     palette: {
         primary: {
-            main: '#02A676',
+            main: '#02A600',
+            light: '#02A676',
         },
         secondary: {
             light: '#FFD580',
